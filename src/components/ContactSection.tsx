@@ -1,0 +1,187 @@
+"use client";
+
+import { FormEvent, useState } from "react";
+import { CheckCircle2, Mail, MapPin, Phone, Send } from "lucide-react";
+import { SITE, STACK_NEEDED_OPTIONS } from "@/lib/data";
+
+export default function ContactSection() {
+  const [submitted, setSubmitted] = useState(false);
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setSubmitted(true);
+  }
+
+  return (
+    <section id="contact" className="px-4 py-24 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl">
+        <div className="mx-auto mb-14 max-w-2xl text-center">
+          <span className="text-xs font-semibold uppercase tracking-widest text-cyan-400">
+            Get In Touch
+          </span>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-100 sm:text-4xl">
+            Scope Your Project
+          </h2>
+          <p className="mt-4 text-slate-400">
+            Tell us what you&apos;re building — a human architect reviews every
+            submission before any agent is deployed.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-5">
+          <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-8 lg:col-span-3">
+            {submitted ? (
+              <div className="flex h-full flex-col items-center justify-center py-12 text-center">
+                <CheckCircle2 className="h-10 w-10 text-emerald-400" />
+                <h3 className="mt-4 text-lg font-semibold text-slate-100">
+                  Proposal received
+                </h3>
+                <p className="mt-2 max-w-sm text-sm text-slate-400">
+                  Thanks for reaching out. {SITE.name} will respond directly
+                  to your email with next steps.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                  <div>
+                    <label
+                      htmlFor="name"
+                      className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-400"
+                    >
+                      Name
+                    </label>
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      required
+                      placeholder="Your full name"
+                      className="w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3.5 py-2.5 text-sm text-slate-100 outline-none placeholder:text-slate-600 focus:border-emerald-500/60"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-400"
+                    >
+                      Email
+                    </label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      placeholder="you@company.com"
+                      className="w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3.5 py-2.5 text-sm text-slate-100 outline-none placeholder:text-slate-600 focus:border-emerald-500/60"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="stack"
+                    className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-400"
+                  >
+                    Stack Needed
+                  </label>
+                  <select
+                    id="stack"
+                    name="stack"
+                    required
+                    defaultValue=""
+                    className="w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3.5 py-2.5 text-sm text-slate-100 outline-none focus:border-emerald-500/60"
+                  >
+                    <option value="" disabled>
+                      Select a domain
+                    </option>
+                    {STACK_NEEDED_OPTIONS.map((opt) => (
+                      <option key={opt} value={opt}>
+                        {opt}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="details"
+                    className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-400"
+                  >
+                    Project Details
+                  </label>
+                  <textarea
+                    id="details"
+                    name="details"
+                    required
+                    rows={5}
+                    placeholder="Tell us about your project, timeline, and goals..."
+                    className="w-full resize-none rounded-lg border border-slate-700 bg-slate-950/60 px-3.5 py-2.5 text-sm text-slate-100 outline-none placeholder:text-slate-600 focus:border-emerald-500/60"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-500 px-6 py-3 text-sm font-semibold text-slate-950 shadow-[0_0_25px_rgba(16,185,129,0.35)] transition-colors hover:bg-emerald-400 sm:w-auto"
+                >
+                  <Send className="h-4 w-4" />
+                  Submit Proposal
+                </button>
+              </form>
+            )}
+          </div>
+
+          <div className="flex flex-col gap-4 lg:col-span-2">
+            <a
+              href={`mailto:${SITE.email}`}
+              className="flex items-center gap-4 rounded-2xl border border-slate-800 bg-slate-900/50 p-6 transition-colors hover:border-emerald-500/40"
+            >
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-400">
+                <Mail className="h-5 w-5" />
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-wide text-slate-500">
+                  Email
+                </p>
+                <p className="text-sm font-medium text-slate-100">
+                  {SITE.email}
+                </p>
+              </div>
+            </a>
+
+            <a
+              href={`tel:${SITE.phone.replace(/\s+/g, "")}`}
+              className="flex items-center gap-4 rounded-2xl border border-slate-800 bg-slate-900/50 p-6 transition-colors hover:border-cyan-500/40"
+            >
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-cyan-500/30 bg-cyan-500/10 text-cyan-400">
+                <Phone className="h-5 w-5" />
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-wide text-slate-500">
+                  Phone
+                </p>
+                <p className="text-sm font-medium text-slate-100">
+                  {SITE.phone}
+                </p>
+              </div>
+            </a>
+
+            <div className="flex items-center gap-4 rounded-2xl border border-slate-800 bg-slate-900/50 p-6">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-700 bg-slate-800/60 text-slate-300">
+                <MapPin className="h-5 w-5" />
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-wide text-slate-500">
+                  Location
+                </p>
+                <p className="text-sm font-medium text-slate-100">
+                  {SITE.location}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
