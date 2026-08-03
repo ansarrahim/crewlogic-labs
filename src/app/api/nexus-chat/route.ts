@@ -1,12 +1,20 @@
 import { GoogleGenAI } from "@google/genai";
 import { NextResponse } from "next/server";
 import { AGENTS, CASE_STUDIES, CEO, SITE } from "@/lib/data";
+import { isRateLimited } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 
 const MODEL = "gemini-2.5-flash";
 const MAX_HISTORY = 20;
 const MAX_MESSAGE_LENGTH = 2000;
+const MAX_TOTAL_LENGTH = 6000;
+
+function getClientIdentifier(request: Request): string {
+  const forwardedFor = request.headers.get("x-forwarded-for");
+  if (forwardedFor) return forwardedFor.split(",")[0].trim();
+  return request.headers.get("x-real-ip") ?? "unknown";
+}
 
 type ChatMessage = {
   role: "user" | "model";
@@ -32,6 +40,14 @@ function getClient(): GoogleGenAI | null {
 }
 
 export async function POST(request: Request) {
+  const identifier = getClientIdentifier(request);
+  if (isRateLimited(identifier)) {
+    return NextResponse.json(
+      { error: "NEXUS-AI is getting a lot of messages right now — please wait a moment and try again." },
+      { status: 429, headers: { "Retry-After": "30" } }
+    );
+  }
+
   let body: unknown;
   try {
     body = await request.json();
@@ -55,6 +71,11 @@ export async function POST(request: Request) {
   );
   if (!valid) {
     return NextResponse.json({ error: "Malformed message history." }, { status: 400 });
+  }
+
+  const totalLength = history.reduce((sum, m) => sum + m.text.length, 0);
+  if (totalLength > MAX_TOTAL_LENGTH) {
+    return NextResponse.json({ error: "Conversation is too long — please start a new chat." }, { status: 413 });
   }
 
   const client = getClient();
