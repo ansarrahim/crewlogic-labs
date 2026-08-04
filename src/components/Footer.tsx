@@ -1,17 +1,20 @@
+import Link from "next/link";
 import { ExternalLink, Mail, Terminal } from "lucide-react";
 import { SITE } from "@/lib/data";
+import { GITHUB_PROFILE_URL } from "@/lib/github";
 
 const QUICK_LINKS = [
-  { href: "#leadership", label: "Leadership" },
-  { href: "#squad", label: "Squad" },
-  { href: "#case-studies", label: "Case Studies" },
-  { href: "#terminal", label: "Terminal" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#leadership", label: "Leadership" },
+  { href: "/#squad", label: "Squad" },
+  { href: "/#case-studies", label: "Case Studies" },
+  { href: "/#terminal", label: "Terminal" },
+  { href: "/projects", label: "Projects" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 const SOCIALS = [
   { href: "https://linkedin.com", label: "LinkedIn" },
-  { href: "https://github.com", label: "GitHub" },
+  { href: GITHUB_PROFILE_URL, label: "GitHub" },
   { href: "https://x.com", label: "X / Twitter" },
 ];
 
@@ -41,12 +44,12 @@ export default function Footer() {
             <ul className="mt-4 space-y-2">
               {QUICK_LINKS.map((link) => (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-sm text-slate-400 transition-colors hover:text-emerald-400"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

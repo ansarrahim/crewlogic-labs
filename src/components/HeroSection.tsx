@@ -2,7 +2,7 @@ import { ArrowRight, Calendar, MapPin, ShieldCheck } from "lucide-react";
 import { CEO, SITE } from "@/lib/data";
 
 const BADGES = [
-  { icon: ShieldCheck, label: `Led by ${CEO.name} (BS Software Eng)` },
+  { icon: ShieldCheck, label: `Led by Engr. ${CEO.name}` },
   { icon: MapPin, label: SITE.location },
   { icon: ShieldCheck, label: "Production-Grade Engineering" },
 ];
