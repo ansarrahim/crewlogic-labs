@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { AnimatePresence, motion } from "framer-motion";
 import { Menu, Terminal, X } from "lucide-react";
 import { SITE } from "@/lib/data";
 
@@ -44,7 +45,7 @@ export default function Navbar() {
         <div className="hidden md:block">
           <Link
             href="/#contact"
-            className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-[0_0_20px_rgba(16,185,129,0.35)] transition-colors hover:bg-emerald-400"
+            className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-[0_0_20px_rgba(16,185,129,0.35)] transition-[background-color,transform] active:scale-95 hover:bg-emerald-400"
           >
             <Terminal className="h-4 w-4" />
             Scope Project
@@ -54,37 +55,57 @@ export default function Navbar() {
         <button
           type="button"
           aria-label="Toggle navigation menu"
-          className="text-slate-300 md:hidden"
+          className="text-slate-300 transition-transform active:scale-90 md:hidden"
           onClick={() => setOpen((prev) => !prev)}
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
 
-      {open && (
-        <div className="border-t border-slate-800 bg-slate-950/95 px-4 pb-6 pt-2 md:hidden">
-          <nav className="flex flex-col gap-1">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="rounded-md px-2 py-2.5 text-sm font-medium text-slate-300 hover:bg-slate-900 hover:text-emerald-400"
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
+            className="overflow-hidden border-t border-slate-800 bg-slate-950/95 md:hidden"
+          >
+            <nav className="flex flex-col gap-1 px-4 pb-6 pt-2">
+              {NAV_LINKS.map((link, i) => (
+                <motion.div
+                  key={link.href}
+                  initial={{ opacity: 0, x: -8 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.18, ease: "easeOut", delay: i * 0.03 }}
+                >
+                  <Link
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className="block rounded-md px-2 py-2.5 text-sm font-medium text-slate-300 hover:bg-slate-900 hover:text-emerald-400"
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
+              ))}
+              <motion.div
+                initial={{ opacity: 0, x: -8 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.18, ease: "easeOut", delay: NAV_LINKS.length * 0.03 }}
               >
-                {link.label}
-              </Link>
-            ))}
-            <Link
-              href="/#contact"
-              onClick={() => setOpen(false)}
-              className="mt-2 inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-slate-950"
-            >
-              <Terminal className="h-4 w-4" />
-              Scope Project
-            </Link>
-          </nav>
-        </div>
-      )}
+                <Link
+                  href="/#contact"
+                  onClick={() => setOpen(false)}
+                  className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-slate-950 transition-transform active:scale-95"
+                >
+                  <Terminal className="h-4 w-4" />
+                  Scope Project
+                </Link>
+              </motion.div>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

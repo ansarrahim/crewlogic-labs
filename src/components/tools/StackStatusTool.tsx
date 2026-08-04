@@ -68,7 +68,7 @@ export default function StackStatusTool() {
         <button
           type="submit"
           disabled={isLoading || !url.trim()}
-          className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-slate-950 transition-colors hover:bg-emerald-400 disabled:cursor-not-allowed disabled:opacity-40"
+          className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-slate-950 transition-[background-color,transform] active:scale-[0.97] hover:bg-emerald-400 disabled:cursor-not-allowed disabled:opacity-40"
         >
           {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Gauge className="h-4 w-4" />}
           Check Status

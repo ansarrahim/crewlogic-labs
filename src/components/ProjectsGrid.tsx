@@ -1,5 +1,10 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { ExternalLink, FolderGit2, GitFork, History, Star } from "lucide-react";
 import type { GithubRepo } from "@/lib/github";
+
+const EASE_OUT = [0.23, 1, 0.32, 1] as const;
 
 function formatUpdated(dateString: string): string {
   return new Intl.DateTimeFormat("en-US", { month: "short", year: "numeric" }).format(
@@ -32,12 +37,18 @@ export default function ProjectsGrid({
 
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-      {repos.map((repo) => (
-        <a
+      {repos.map((repo, i) => (
+        <motion.a
           key={repo.id}
           href={repo.html_url}
           target="_blank"
           rel="noopener noreferrer"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.4, ease: EASE_OUT, delay: (i % 3) * 0.08 }}
+          whileHover={{ y: -3 }}
+          whileTap={{ scale: 0.99 }}
           className="group flex flex-col rounded-2xl border border-slate-800 bg-slate-900/50 p-6 transition-colors hover:border-emerald-500/40"
         >
           <div className="flex items-start justify-between gap-3">
@@ -87,7 +98,7 @@ export default function ProjectsGrid({
               {formatUpdated(repo.updated_at)}
             </span>
           </div>
-        </a>
+        </motion.a>
       ))}
     </div>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import { Contrast, Gauge, ShieldAlert, type LucideIcon } from "lucide-react";
 import AgentToolModal from "@/components/tools/AgentToolModal";
 import SentinelScanTool from "@/components/tools/SentinelScanTool";
@@ -58,19 +59,22 @@ export default function AgentToolsHost() {
     return () => window.removeEventListener(OPEN_AGENT_TOOL_EVENT, handler);
   }, []);
 
-  if (!activeAgentId) return null;
-
-  const config = TOOL_CONFIG[activeAgentId];
-  const ToolComponent = config.Component;
+  const config = activeAgentId ? TOOL_CONFIG[activeAgentId] : null;
+  const ToolComponent = config?.Component;
 
   return (
-    <AgentToolModal
-      icon={config.icon}
-      title={config.title}
-      subtitle={config.subtitle}
-      onClose={() => setActiveAgentId(null)}
-    >
-      <ToolComponent />
-    </AgentToolModal>
+    <AnimatePresence>
+      {config && ToolComponent && (
+        <AgentToolModal
+          key={activeAgentId}
+          icon={config.icon}
+          title={config.title}
+          subtitle={config.subtitle}
+          onClose={() => setActiveAgentId(null)}
+        >
+          <ToolComponent />
+        </AgentToolModal>
+      )}
+    </AnimatePresence>
   );
 }

@@ -3,6 +3,7 @@
 import { FormEvent, useState } from "react";
 import { Terminal } from "lucide-react";
 import { AGENTS, CEO, SITE } from "@/lib/data";
+import Reveal from "@/components/Reveal";
 
 type Line = {
   type: "input" | "output";
@@ -99,7 +100,7 @@ export default function CLITerminal() {
   return (
     <section id="terminal" className="px-4 py-24 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-4xl">
-        <div className="mx-auto mb-14 max-w-2xl text-center">
+        <Reveal className="mx-auto mb-14 max-w-2xl text-center">
           <span className="text-xs font-semibold uppercase tracking-widest text-cyan-400">
             Interactive Terminal
           </span>
@@ -111,7 +112,7 @@ export default function CLITerminal() {
             <code className="rounded bg-slate-800 px-1.5 py-0.5 text-emerald-400">ceo</code>, or{" "}
             <code className="rounded bg-slate-800 px-1.5 py-0.5 text-emerald-400">help</code>.
           </p>
-        </div>
+        </Reveal>
 
         <div className="overflow-hidden rounded-2xl border border-slate-800 bg-black shadow-[0_0_40px_rgba(16,185,129,0.1)]">
           <div className="flex items-center gap-2 border-b border-slate-800 bg-slate-900/60 px-4 py-3">
@@ -155,7 +156,7 @@ export default function CLITerminal() {
                 placeholder="type a command..."
                 className="flex-1 bg-transparent text-slate-100 outline-none placeholder:text-slate-600"
               />
-              <span className="h-4 w-2 animate-pulse bg-emerald-400" />
+              <span className="animate-cursor-blink h-4 w-2 bg-emerald-400" />
             </form>
           </div>
         </div>
@@ -166,7 +167,7 @@ export default function CLITerminal() {
               key={c}
               type="button"
               onClick={() => setInput(c)}
-              className="rounded-md border border-slate-800 bg-slate-900/60 px-3 py-1.5 font-mono text-xs text-slate-400 transition-colors hover:border-emerald-500/40 hover:text-emerald-400"
+              className="rounded-md border border-slate-800 bg-slate-900/60 px-3 py-1.5 font-mono text-xs text-slate-400 transition-[color,border-color,transform] active:scale-95 hover:border-emerald-500/40 hover:text-emerald-400"
             >
               {c}
             </button>

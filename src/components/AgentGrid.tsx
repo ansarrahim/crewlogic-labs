@@ -1,11 +1,15 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { CheckCircle2, Contrast, Gauge, MessageSquare, ScanSearch, ShieldAlert } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { AGENTS } from "@/lib/data";
 import { OPEN_NEXUS_CHAT_EVENT } from "@/components/NexusChatWidget";
 import { openAgentTool, type ToolAgentId } from "@/components/tools/AgentToolsHost";
 import UsageStatsBadge from "@/components/UsageStatsBadge";
+import Reveal from "@/components/Reveal";
+
+const EASE_OUT = [0.23, 1, 0.32, 1] as const;
 
 const TOOL_CTA: Record<ToolAgentId, { label: string; icon: LucideIcon }> = {
   "sentinel-sec": { label: "Run Security Scan (Live)", icon: ShieldAlert },
@@ -24,7 +28,7 @@ function ToolCtaButton({ toolId }: { toolId: ToolAgentId }) {
     <button
       type="button"
       onClick={() => openAgentTool(toolId)}
-      className="mt-6 inline-flex items-center justify-center gap-2 rounded-lg border border-emerald-500/40 bg-emerald-500/10 px-4 py-2.5 text-sm font-semibold text-emerald-400 transition-colors hover:bg-emerald-500/20"
+      className="mt-6 inline-flex items-center justify-center gap-2 rounded-lg border border-emerald-500/40 bg-emerald-500/10 px-4 py-2.5 text-sm font-semibold text-emerald-400 transition-[background-color,transform] active:scale-[0.97] hover:bg-emerald-500/20"
     >
       <Icon className="h-4 w-4" />
       {label}
@@ -36,7 +40,7 @@ export default function AgentGrid() {
   return (
     <section id="squad" className="px-4 py-24 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <div className="mx-auto mb-14 max-w-2xl text-center">
+        <Reveal className="mx-auto mb-14 max-w-2xl text-center">
           <span className="text-xs font-semibold uppercase tracking-widest text-cyan-400">
             Virtual Engineering Squad
           </span>
@@ -48,12 +52,17 @@ export default function AgentGrid() {
             supervised end-to-end by human leadership.
           </p>
           <UsageStatsBadge />
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {AGENTS.map((agent) => (
-            <div
+          {AGENTS.map((agent, i) => (
+            <motion.div
               key={agent.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.4, ease: EASE_OUT, delay: (i % 3) * 0.08 }}
+              whileHover={{ y: -3 }}
               className="group relative flex flex-col rounded-2xl border border-slate-800 bg-slate-900/50 p-6 transition-colors hover:border-emerald-500/40"
             >
               <div className="flex items-start justify-between">
@@ -101,7 +110,7 @@ export default function AgentGrid() {
                 <button
                   type="button"
                   onClick={() => window.dispatchEvent(new Event(OPEN_NEXUS_CHAT_EVENT))}
-                  className="mt-6 inline-flex items-center justify-center gap-2 rounded-lg border border-emerald-500/40 bg-emerald-500/10 px-4 py-2.5 text-sm font-semibold text-emerald-400 transition-colors hover:bg-emerald-500/20"
+                  className="mt-6 inline-flex items-center justify-center gap-2 rounded-lg border border-emerald-500/40 bg-emerald-500/10 px-4 py-2.5 text-sm font-semibold text-emerald-400 transition-[background-color,transform] active:scale-[0.97] hover:bg-emerald-500/20"
                 >
                   <MessageSquare className="h-4 w-4" />
                   Chat with NEXUS-AI (Live)
@@ -109,7 +118,7 @@ export default function AgentGrid() {
               ) : isToolAgent(agent.id) ? (
                 <ToolCtaButton toolId={agent.id} />
               ) : null}
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

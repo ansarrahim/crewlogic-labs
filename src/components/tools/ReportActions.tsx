@@ -22,7 +22,7 @@ export default function ReportActions({ filename, content }: { filename: string;
       <button
         type="button"
         onClick={handleCopy}
-        className="inline-flex items-center gap-1.5 rounded-lg border border-slate-700 bg-slate-900/60 px-3 py-1.5 text-xs font-medium text-slate-300 transition-colors hover:border-emerald-500/50 hover:text-emerald-400"
+        className="inline-flex items-center gap-1.5 rounded-lg border border-slate-700 bg-slate-900/60 px-3 py-1.5 text-xs font-medium text-slate-300 transition-[color,border-color,transform] active:scale-95 hover:border-emerald-500/50 hover:text-emerald-400"
       >
         {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
         {copied ? "Copied" : "Copy Report"}
@@ -30,7 +30,7 @@ export default function ReportActions({ filename, content }: { filename: string;
       <button
         type="button"
         onClick={() => downloadTextFile(filename, content)}
-        className="inline-flex items-center gap-1.5 rounded-lg border border-slate-700 bg-slate-900/60 px-3 py-1.5 text-xs font-medium text-slate-300 transition-colors hover:border-emerald-500/50 hover:text-emerald-400"
+        className="inline-flex items-center gap-1.5 rounded-lg border border-slate-700 bg-slate-900/60 px-3 py-1.5 text-xs font-medium text-slate-300 transition-[color,border-color,transform] active:scale-95 hover:border-emerald-500/50 hover:text-emerald-400"
       >
         <Download className="h-3.5 w-3.5" />
         Download

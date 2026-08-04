@@ -1,11 +1,17 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Award, GraduationCap, ShieldCheck, Sparkles } from "lucide-react";
 import { CEO } from "@/lib/data";
+import Reveal from "@/components/Reveal";
+
+const EASE_OUT = [0.23, 1, 0.32, 1] as const;
 
 export default function LeadershipSection() {
   return (
     <section id="leadership" className="px-4 py-24 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
-        <div className="mx-auto mb-14 max-w-2xl text-center">
+        <Reveal className="mx-auto mb-14 max-w-2xl text-center">
           <span className="text-xs font-semibold uppercase tracking-widest text-cyan-400">
             Human Leadership
           </span>
@@ -16,10 +22,10 @@ export default function LeadershipSection() {
             Every autonomous engineering decision is grounded in verified,
             human-led technical judgment.
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-5">
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-8 lg:col-span-2">
+          <Reveal className="rounded-2xl border border-slate-800 bg-slate-900/50 p-8 lg:col-span-2">
             <div className="flex items-center gap-4">
               <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-lg font-bold text-emerald-400">
                 MA
@@ -70,9 +76,12 @@ export default function LeadershipSection() {
                 ))}
               </ul>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="flex flex-col justify-center rounded-2xl border border-slate-800 bg-slate-900/50 p-8 lg:col-span-3">
+          <Reveal
+            delay={0.1}
+            className="flex flex-col justify-center rounded-2xl border border-slate-800 bg-slate-900/50 p-8 lg:col-span-3"
+          >
             <div className="mb-6 flex items-center gap-2">
               <Sparkles className="h-5 w-5 text-emerald-400" />
               <h3 className="text-lg font-semibold text-slate-100">
@@ -97,9 +106,12 @@ export default function LeadershipSection() {
                   </span>
                 </div>
                 <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-800">
-                  <div
+                  <motion.div
+                    initial={{ width: 0 }}
+                    whileInView={{ width: "70%" }}
+                    viewport={{ once: true, margin: "-60px" }}
+                    transition={{ duration: 0.8, ease: EASE_OUT, delay: 0.15 }}
                     className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-emerald-400 shadow-[0_0_12px_rgba(16,185,129,0.6)]"
-                    style={{ width: "70%" }}
                   />
                 </div>
                 <p className="mt-1.5 text-xs text-slate-500">
@@ -117,9 +129,12 @@ export default function LeadershipSection() {
                   </span>
                 </div>
                 <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-800">
-                  <div
+                  <motion.div
+                    initial={{ width: 0 }}
+                    whileInView={{ width: "30%" }}
+                    viewport={{ once: true, margin: "-60px" }}
+                    transition={{ duration: 0.8, ease: EASE_OUT, delay: 0.25 }}
                     className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-cyan-400 shadow-[0_0_12px_rgba(6,182,212,0.6)]"
-                    style={{ width: "30%" }}
                   />
                 </div>
                 <p className="mt-1.5 text-xs text-slate-500">
@@ -127,7 +142,7 @@ export default function LeadershipSection() {
                 </p>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>
