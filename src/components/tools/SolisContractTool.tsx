@@ -4,6 +4,9 @@ import { useState } from "react";
 import { ScanSearch } from "lucide-react";
 import { scanSolidity, type Finding } from "@/lib/solidity-scan";
 import FindingsList from "@/components/tools/FindingsList";
+import ReportActions from "@/components/tools/ReportActions";
+import { buildFindingsReport } from "@/lib/report";
+import { trackUsage } from "@/lib/track-usage-client";
 
 const SAMPLE = `pragma solidity ^0.8.0;
 
@@ -28,6 +31,7 @@ export default function SolisContractTool() {
 
   function handleScan() {
     setFindings(scanSolidity(code));
+    trackUsage("solis-33");
   }
 
   return (
@@ -66,7 +70,20 @@ export default function SolisContractTool() {
         </button>
       </div>
 
-      {findings && <FindingsList findings={findings} />}
+      {findings && (
+        <div className="space-y-3">
+          <div className="flex items-center justify-between">
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">
+              Results
+            </p>
+            <ReportActions
+              filename="solis-33-contract-report.txt"
+              content={buildFindingsReport("SOLIS-33 Contract Analysis", findings)}
+            />
+          </div>
+          <FindingsList findings={findings} />
+        </div>
+      )}
     </div>
   );
 }

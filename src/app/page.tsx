@@ -3,6 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import LeadershipSection from "@/components/LeadershipSection";
 import AgentGrid from "@/components/AgentGrid";
 import CaseStudies from "@/components/CaseStudies";
+import Testimonials from "@/components/Testimonials";
 import CLITerminal from "@/components/CLITerminal";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
@@ -18,6 +19,7 @@ export default function Home() {
         <LeadershipSection />
         <AgentGrid />
         <CaseStudies />
+        <Testimonials />
         <CLITerminal />
         <ContactSection />
       </main>

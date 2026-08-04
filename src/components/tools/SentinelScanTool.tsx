@@ -4,6 +4,9 @@ import { useState } from "react";
 import { ScanSearch } from "lucide-react";
 import { scanCode, type Finding } from "@/lib/security-scan";
 import FindingsList from "@/components/tools/FindingsList";
+import ReportActions from "@/components/tools/ReportActions";
+import { buildFindingsReport } from "@/lib/report";
+import { trackUsage } from "@/lib/track-usage-client";
 
 const SAMPLE = `const apiKey = "REPLACE_ME_supersecretvalue1234567890";
 
@@ -22,6 +25,7 @@ export default function SentinelScanTool() {
 
   function handleScan() {
     setFindings(scanCode(code));
+    trackUsage("sentinel-sec");
   }
 
   return (
@@ -60,7 +64,20 @@ export default function SentinelScanTool() {
         </button>
       </div>
 
-      {findings && <FindingsList findings={findings} />}
+      {findings && (
+        <div className="space-y-3">
+          <div className="flex items-center justify-between">
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">
+              Results
+            </p>
+            <ReportActions
+              filename="sentinel-sec-scan-report.txt"
+              content={buildFindingsReport("SENTINEL-SEC Security Scan", findings)}
+            />
+          </div>
+          <FindingsList findings={findings} />
+        </div>
+      )}
     </div>
   );
 }

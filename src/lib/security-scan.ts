@@ -68,6 +68,31 @@ const RULES: Rule[] = [
     severity: "info",
     message: "Security-related TODO left in code.",
   },
+  {
+    pattern: /createHash\(\s*['"](md5|sha1)['"]\s*\)/i,
+    severity: "medium",
+    message: "MD5/SHA-1 are broken for security purposes — use SHA-256 or better, or bcrypt/argon2 for passwords.",
+  },
+  {
+    pattern: /Math\.random\(\)[^;\n]*(token|session|password|secret|otp|reset)/i,
+    severity: "high",
+    message: "Math.random() is not cryptographically secure — use crypto.randomUUID() or crypto.getRandomValues() for tokens/secrets.",
+  },
+  {
+    pattern: /\b(readFile|readFileSync|createReadStream|sendFile)\s*\([^)]*\+/i,
+    severity: "high",
+    message: "Possible path traversal — building a file path from concatenated input lets an attacker read arbitrary files.",
+  },
+  {
+    pattern: /new Function\s*\(/,
+    severity: "high",
+    message: "new Function() executes arbitrary strings as code, same risk class as eval().",
+  },
+  {
+    pattern: /jwt\.(sign|verify)\([^)]*algorithms?\s*:\s*\[?['"]none['"]/i,
+    severity: "critical",
+    message: "JWT configured with the \"none\" algorithm — this allows forging unsigned tokens.",
+  },
 ];
 
 export function scanCode(code: string): Finding[] {

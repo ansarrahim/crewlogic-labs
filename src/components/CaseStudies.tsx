@@ -1,4 +1,5 @@
-import { Gauge } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Gauge } from "lucide-react";
 import { CASE_STUDIES } from "@/lib/data";
 
 export default function CaseStudies() {
@@ -20,9 +21,10 @@ export default function CaseStudies() {
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
           {CASE_STUDIES.map((project) => (
-            <div
+            <Link
               key={project.id}
-              className="flex flex-col rounded-2xl border border-slate-800 bg-slate-900/50 p-6 transition-colors hover:border-cyan-500/40"
+              href={`/case-studies/${project.id}`}
+              className="group flex flex-col rounded-2xl border border-slate-800 bg-slate-900/50 p-6 transition-colors hover:border-cyan-500/40"
             >
               <span className="text-xs font-semibold uppercase tracking-widest text-emerald-400">
                 {project.category}
@@ -45,11 +47,17 @@ export default function CaseStudies() {
                 ))}
               </div>
 
-              <div className="mt-5 flex items-center gap-2 border-t border-slate-800 pt-4 text-sm font-medium text-cyan-400">
-                <Gauge className="h-4 w-4" />
-                {project.metric}
+              <div className="mt-5 flex items-center justify-between border-t border-slate-800 pt-4">
+                <div className="flex items-center gap-2 text-sm font-medium text-cyan-400">
+                  <Gauge className="h-4 w-4" />
+                  {project.metric}
+                </div>
+                <span className="flex items-center gap-1 text-xs font-medium text-slate-500 transition-colors group-hover:text-emerald-400">
+                  Read case study
+                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

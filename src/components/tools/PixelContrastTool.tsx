@@ -1,8 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { CheckCircle2, XCircle } from "lucide-react";
 import { computeContrast, parseHexColor } from "@/lib/contrast";
+import ReportActions from "@/components/tools/ReportActions";
+import { buildContrastReport } from "@/lib/report";
+import { trackUsage } from "@/lib/track-usage-client";
 
 function PassBadge({ pass, label }: { pass: boolean; label: string }) {
   return (
@@ -22,10 +25,17 @@ function PassBadge({ pass, label }: { pass: boolean; label: string }) {
 export default function PixelContrastTool() {
   const [foreground, setForeground] = useState("#e2e8f0");
   const [background, setBackground] = useState("#0f172a");
+  const hasTrackedRef = useRef(false);
 
   const result = useMemo(() => computeContrast(foreground, background), [foreground, background]);
   const fgValid = parseHexColor(foreground) !== null;
   const bgValid = parseHexColor(background) !== null;
+
+  function trackFirstInteraction() {
+    if (hasTrackedRef.current) return;
+    hasTrackedRef.current = true;
+    trackUsage("pixel-ux");
+  }
 
   return (
     <div className="space-y-5">
@@ -43,13 +53,19 @@ export default function PixelContrastTool() {
             <input
               type="color"
               value={fgValid ? foreground : "#ffffff"}
-              onChange={(e) => setForeground(e.target.value)}
+              onChange={(e) => {
+                trackFirstInteraction();
+                setForeground(e.target.value);
+              }}
               className="h-10 w-12 shrink-0 cursor-pointer rounded-lg border border-slate-800 bg-transparent"
             />
             <input
               type="text"
               value={foreground}
-              onChange={(e) => setForeground(e.target.value)}
+              onChange={(e) => {
+                trackFirstInteraction();
+                setForeground(e.target.value);
+              }}
               className="w-full rounded-lg border border-slate-800 bg-black px-3 py-2 font-mono text-sm text-slate-100 outline-none focus:border-emerald-500/60"
             />
           </div>
@@ -63,13 +79,19 @@ export default function PixelContrastTool() {
             <input
               type="color"
               value={bgValid ? background : "#000000"}
-              onChange={(e) => setBackground(e.target.value)}
+              onChange={(e) => {
+                trackFirstInteraction();
+                setBackground(e.target.value);
+              }}
               className="h-10 w-12 shrink-0 cursor-pointer rounded-lg border border-slate-800 bg-transparent"
             />
             <input
               type="text"
               value={background}
-              onChange={(e) => setBackground(e.target.value)}
+              onChange={(e) => {
+                trackFirstInteraction();
+                setBackground(e.target.value);
+              }}
               className="w-full rounded-lg border border-slate-800 bg-black px-3 py-2 font-mono text-sm text-slate-100 outline-none focus:border-emerald-500/60"
             />
           </div>
@@ -97,6 +119,12 @@ export default function PixelContrastTool() {
             <PassBadge pass={result.normalAAA} label="AAA — Normal text" />
             <PassBadge pass={result.largeAA} label="AA — Large text" />
             <PassBadge pass={result.largeAAA} label="AAA — Large text" />
+          </div>
+          <div className="flex justify-end">
+            <ReportActions
+              filename="pixel-ux-contrast-report.txt"
+              content={buildContrastReport(foreground, background, result)}
+            />
           </div>
         </div>
       ) : (

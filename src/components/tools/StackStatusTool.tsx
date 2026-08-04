@@ -1,7 +1,9 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { AlertTriangle, CheckCircle2, Gauge, Loader2, Lock, Server } from "lucide-react";
+import { AlertTriangle, CheckCircle2, Gauge, Loader2, Lock, Server, ShieldCheck, XCircle } from "lucide-react";
+import ReportActions from "@/components/tools/ReportActions";
+import { buildStatusReport } from "@/lib/report";
 
 type StatusResult = {
   statusCode: number;
@@ -10,6 +12,7 @@ type StatusResult = {
   server: string | null;
   contentType: string | null;
   tls: { valid: boolean; issuer: string | null; validTo: string | null; daysRemaining: number | null } | null;
+  securityHeaders: { name: string; present: boolean }[];
 };
 
 export default function StackStatusTool() {
@@ -132,6 +135,35 @@ export default function StackStatusTool() {
                 <p className="text-slate-500">No TLS (http) or check unavailable</p>
               )}
             </div>
+          </div>
+
+          <div className="rounded-xl border border-slate-800 bg-slate-900/50 p-4 text-sm">
+            <p className="mb-3 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-slate-500">
+              <ShieldCheck className="h-3.5 w-3.5" />
+              Security Headers
+            </p>
+            <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-2">
+              {result.securityHeaders.map((h) => (
+                <div
+                  key={h.name}
+                  className={`flex items-center gap-2 text-xs ${h.present ? "text-emerald-400" : "text-slate-500"}`}
+                >
+                  {h.present ? (
+                    <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
+                  ) : (
+                    <XCircle className="h-3.5 w-3.5 shrink-0 text-slate-600" />
+                  )}
+                  <span className="font-mono">{h.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex justify-end">
+            <ReportActions
+              filename="stack-core-status-report.txt"
+              content={buildStatusReport(url.trim(), result)}
+            />
           </div>
         </div>
       )}

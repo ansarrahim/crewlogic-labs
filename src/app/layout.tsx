@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,10 +13,39 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const SITE_URL = "https://crewlogic-labs.vercel.app";
+const TITLE = "CrewLogic Labs — Autonomous AI Engineering. Human Architectural Rigor.";
+const DESCRIPTION =
+  "CrewLogic Labs is a high-end AI & Web3 software engineering agency led by Engr. Muhammad Ansar, powered by 5 live AI agents building Web3 dApps, backend microservices, and LLM-powered automation pipelines.";
+
 export const metadata: Metadata = {
-  title: "CrewLogic Labs — Autonomous AI Engineering. Human Architectural Rigor.",
-  description:
-    "CrewLogic Labs is a high-end AI & Web3 software engineering agency led by Muhammad Ansar, powered by an autonomous virtual workforce of 5 specialized AI engineers building Web3 dApps, backend microservices, and LLM-powered automation pipelines.",
+  metadataBase: new URL(SITE_URL),
+  title: { default: TITLE, template: "%s | CrewLogic Labs" },
+  description: DESCRIPTION,
+  keywords: [
+    "CrewLogic Labs",
+    "AI engineering agency",
+    "Web3 development",
+    "Next.js agency",
+    "Solidity development",
+    "AI agents",
+    "Muhammad Ansar",
+  ],
+  authors: [{ name: "Muhammad Ansar" }],
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: SITE_URL,
+    siteName: "CrewLogic Labs",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
@@ -30,6 +60,7 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col bg-slate-950 text-slate-100">
         {children}
+        <Analytics />
       </body>
     </html>
   );

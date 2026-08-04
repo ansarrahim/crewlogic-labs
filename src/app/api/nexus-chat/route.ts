@@ -2,6 +2,7 @@ import { GoogleGenAI } from "@google/genai";
 import { NextResponse } from "next/server";
 import { AGENTS, CASE_STUDIES, CEO, SITE } from "@/lib/data";
 import { isRateLimited } from "@/lib/rate-limit";
+import { incrementUsage } from "@/lib/usage-stats";
 
 export const runtime = "nodejs";
 
@@ -90,7 +91,7 @@ export async function POST(request: Request) {
   }
 
   try {
-    const response = await client.models.generateContent({
+    const streamResult = await client.models.generateContentStream({
       model: MODEL,
       contents: history.map((m) => ({
         role: m.role,
@@ -102,15 +103,26 @@ export async function POST(request: Request) {
       },
     });
 
-    const text = response.text;
-    if (!text) {
-      return NextResponse.json(
-        { error: "NEXUS-AI returned an empty response. Try rephrasing your message." },
-        { status: 502 }
-      );
-    }
+    const encoder = new TextEncoder();
+    const stream = new ReadableStream<Uint8Array>({
+      async start(controller) {
+        try {
+          for await (const chunk of streamResult) {
+            if (chunk.text) controller.enqueue(encoder.encode(chunk.text));
+          }
+        } catch (err) {
+          console.error("NEXUS-AI stream error:", err);
+        } finally {
+          controller.close();
+        }
+      },
+    });
 
-    return NextResponse.json({ text });
+    void incrementUsage("nexus-ai");
+
+    return new Response(stream, {
+      headers: { "Content-Type": "text/plain; charset=utf-8" },
+    });
   } catch (error) {
     console.error("NEXUS-AI chat error:", error);
     return NextResponse.json(

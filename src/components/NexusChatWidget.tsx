@@ -27,6 +27,7 @@ export default function NexusChatWidget() {
   const [messages, setMessages] = useState<ChatMessage[]>([GREETING]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [streamingId, setStreamingId] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -61,9 +62,8 @@ export default function NexusChatWidget() {
         body: JSON.stringify({ messages: payload }),
       });
 
-      const data = (await res.json()) as { text?: string; error?: string };
-
-      if (!res.ok || !data.text) {
+      if (!res.ok) {
+        const data = (await res.json().catch(() => ({}))) as { error?: string };
         setMessages((prev) => [
           ...prev,
           {
@@ -76,7 +76,42 @@ export default function NexusChatWidget() {
         return;
       }
 
-      setMessages((prev) => [...prev, { id: createId(), role: "model", text: data.text as string }]);
+      if (!res.body) {
+        setMessages((prev) => [
+          ...prev,
+          { id: createId(), role: "model", text: "NEXUS-AI returned no response — try again." },
+        ]);
+        return;
+      }
+
+      const modelMessageId = createId();
+      setMessages((prev) => [...prev, { id: modelMessageId, role: "model", text: "" }]);
+      setStreamingId(modelMessageId);
+      setIsLoading(false);
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let accumulated = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        accumulated += decoder.decode(value, { stream: true });
+        const textSoFar = accumulated;
+        setMessages((prev) =>
+          prev.map((m) => (m.id === modelMessageId ? { ...m, text: textSoFar } : m))
+        );
+      }
+
+      if (!accumulated) {
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === modelMessageId
+              ? { ...m, text: "NEXUS-AI returned an empty response. Try rephrasing.", isError: true }
+              : m
+          )
+        );
+      }
     } catch {
       setMessages((prev) => [
         ...prev,
@@ -89,6 +124,7 @@ export default function NexusChatWidget() {
       ]);
     } finally {
       setIsLoading(false);
+      setStreamingId(null);
     }
   }
 
@@ -140,7 +176,12 @@ export default function NexusChatWidget() {
                   }`}
                 >
                   {msg.isError && <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />}
-                  <span>{msg.text}</span>
+                  <span>
+                    {msg.text}
+                    {msg.id === streamingId && (
+                      <span className="ml-0.5 inline-block h-3.5 w-1.5 animate-pulse bg-emerald-400 align-middle" />
+                    )}
+                  </span>
                 </div>
               </div>
             ))}

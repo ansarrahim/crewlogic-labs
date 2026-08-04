@@ -127,6 +127,9 @@ export type CaseStudy = {
   description: string;
   stack: string[];
   metric: string;
+  problem: string;
+  approach: string[];
+  outcomes: string[];
 };
 
 export const CASE_STUDIES: CaseStudy[] = [
@@ -138,6 +141,18 @@ export const CASE_STUDIES: CaseStudy[] = [
       "A tamper-proof, on-chain credential verification platform issuing and validating certificates as cryptographically signed assets — eliminating forgery and manual verification overhead.",
     stack: ["Solidity", "Polygon", "Web3.js", "Next.js", "Node.js", "MongoDB"],
     metric: "100% on-chain integrity",
+    problem:
+      "Institutions issuing certificates (degrees, training completions, compliance credentials) rely on manual verification — PDFs, email confirmations, phone calls — that's slow and easy to forge.",
+    approach: [
+      "SOLIS-33 designs a Solidity contract that mints each certificate as a signed on-chain record on Polygon, keeping gas costs low for high issuance volume.",
+      "STACK-CORE builds the issuer dashboard and public verification portal in Next.js, with a Node.js API layer bridging MongoDB (metadata) and the chain (proof of authenticity).",
+      "SENTINEL-SEC audits the contract for reentrancy, access control, and upgrade-path risks before anything touches mainnet.",
+    ],
+    outcomes: [
+      "Any certificate can be verified in seconds by checking the on-chain record — no email or phone call needed.",
+      "Forged certificates are cryptographically impossible to pass verification.",
+      "Issuers keep a familiar dashboard while the trust layer runs on-chain underneath.",
+    ],
   },
   {
     id: "multi-agent-ai",
@@ -147,6 +162,18 @@ export const CASE_STUDIES: CaseStudy[] = [
       "An orchestrated fleet of LLM agents handling conversational support, task routing, and backend automation across multiple business workflows with minimal human intervention.",
     stack: ["OpenAI API", "Claude API", "Python", "LangChain"],
     metric: "24/7 autonomous processing",
+    problem:
+      "Support and operations teams spend most of their time on repetitive triage — routing tickets, answering the same questions, and re-keying data between systems.",
+    approach: [
+      "NEXUS-AI designs a LangChain-orchestrated pipeline where a router agent classifies each incoming request and hands it to a specialist agent (support, data-entry, or escalation).",
+      "Each specialist agent is grounded in the business's actual documentation via RAG, so answers stay accurate instead of hallucinating.",
+      "A FastAPI backend exposes the pipeline as an async service that existing tools (helpdesk, CRM) call over a simple webhook.",
+    ],
+    outcomes: [
+      "Routine requests get handled without a human in the loop, day or night.",
+      "Escalations reach a human with full context already attached, instead of starting cold.",
+      "The same architecture extends to new workflows by adding a specialist agent, not rebuilding the pipeline.",
+    ],
   },
   {
     id: "enterprise-portal",
@@ -156,6 +183,18 @@ export const CASE_STUDIES: CaseStudy[] = [
       "A production-grade internal portal built on server components and a microservice backend, engineered for high concurrency, schema-optimized data flow, and continuous deployment.",
     stack: ["Next.js", "Node.js", "TypeScript", "MongoDB", "Vercel"],
     metric: "99.9% uptime SLA",
+    problem:
+      "Growing teams outgrow spreadsheets and ad-hoc internal tools, but a full custom platform often takes months and becomes hard to maintain.",
+    approach: [
+      "STACK-CORE architects the portal on Next.js App Router with server components, keeping data-fetching close to the source and the client bundle small.",
+      "Backend logic is split into focused Node.js microservices, each with its own MongoDB schema optimized for its access pattern instead of one shared monolith schema.",
+      "SENTINEL-SEC wires up CI/CD with automated test suites so every deploy is verified before it reaches production.",
+    ],
+    outcomes: [
+      "The portal handles concurrent internal usage without the slowdowns of a monolithic legacy tool.",
+      "New microservices ship independently, without redeploying the whole platform.",
+      "Continuous deployment means fixes and features reach the team in hours, not release cycles.",
+    ],
   },
 ];
 
@@ -165,3 +204,15 @@ export const STACK_NEEDED_OPTIONS = [
   "Full-Stack Next.js",
   "Security Audit",
 ] as const;
+
+export type Testimonial = {
+  quote: string;
+  name: string;
+  role: string;
+  company: string;
+};
+
+// Intentionally empty — add real client testimonials here as they come in.
+// Do not populate with placeholder/fake names; the Testimonials component
+// renders an honest "coming soon" state when this array is empty.
+export const TESTIMONIALS: Testimonial[] = [];

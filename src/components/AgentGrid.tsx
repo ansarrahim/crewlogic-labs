@@ -5,6 +5,7 @@ import type { LucideIcon } from "lucide-react";
 import { AGENTS } from "@/lib/data";
 import { OPEN_NEXUS_CHAT_EVENT } from "@/components/NexusChatWidget";
 import { openAgentTool, type ToolAgentId } from "@/components/tools/AgentToolsHost";
+import UsageStatsBadge from "@/components/UsageStatsBadge";
 
 const TOOL_CTA: Record<ToolAgentId, { label: string; icon: LucideIcon }> = {
   "sentinel-sec": { label: "Run Security Scan (Live)", icon: ShieldAlert },
@@ -46,6 +47,7 @@ export default function AgentGrid() {
             Each agent operates as a dedicated engineering specialist,
             supervised end-to-end by human leadership.
           </p>
+          <UsageStatsBadge />
         </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">

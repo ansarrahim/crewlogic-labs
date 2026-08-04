@@ -34,6 +34,21 @@ const LINE_RULES: Rule[] = [
     severity: "medium",
     message: "Low-level .call() found — verify the return value is checked (require/if on success).",
   },
+  {
+    pattern: /\bnow\b/,
+    severity: "low",
+    message: "\"now\" is a deprecated alias for block.timestamp (removed in Solidity 0.7+) — use block.timestamp directly.",
+  },
+  {
+    pattern: /for\s*\([^)]*<\s*\w+\.length/,
+    severity: "medium",
+    message: "Loop bound by a dynamic array's length — if the array can grow unbounded, this can run out of gas (DoS).",
+  },
+  {
+    pattern: /\b\w+\s*\/\s*\w+\s*\*\s*\w+/,
+    severity: "low",
+    message: "Division before multiplication can lose precision in Solidity's integer math — reorder to multiply first.",
+  },
 ];
 
 const SENSITIVE_FN_NAME = /^(withdraw|mint|burn|setOwner|transferOwnership|pause|unpause|upgrade|selfdestruct)/i;
@@ -65,6 +80,14 @@ function lineOf(code: string, charIndex: number): number {
 export function scanSolidity(code: string): Finding[] {
   const findings: Finding[] = [];
   const lines = code.split("\n");
+
+  if (!/SPDX-License-Identifier/.test(code)) {
+    findings.push({
+      line: 1,
+      severity: "info",
+      message: "Missing SPDX-License-Identifier comment — the compiler will warn on this.",
+    });
+  }
 
   lines.forEach((line, index) => {
     for (const rule of LINE_RULES) {

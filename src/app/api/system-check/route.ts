@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { assertPublicHostname, checkTls } from "@/lib/system-check";
 import { isRateLimited } from "@/lib/rate-limit";
+import { incrementUsage } from "@/lib/usage-stats";
 
 export const runtime = "nodejs";
 
@@ -62,6 +63,17 @@ export async function POST(request: Request) {
     const responseTimeMs = Date.now() - start;
     const tlsInfo = target.protocol === "https:" ? await checkTls(target.hostname) : null;
 
+    const securityHeaders = [
+      "content-security-policy",
+      "strict-transport-security",
+      "x-frame-options",
+      "x-content-type-options",
+      "referrer-policy",
+      "permissions-policy",
+    ].map((name) => ({ name, present: res.headers.has(name) }));
+
+    void incrementUsage("stack-core");
+
     return NextResponse.json({
       statusCode: res.status,
       statusText: res.statusText,
@@ -69,6 +81,7 @@ export async function POST(request: Request) {
       server: res.headers.get("server"),
       contentType: res.headers.get("content-type"),
       tls: tlsInfo,
+      securityHeaders,
     });
   } catch (error) {
     console.error("STACK-CORE status check error:", error);
