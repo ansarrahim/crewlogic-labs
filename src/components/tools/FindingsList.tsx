@@ -33,7 +33,7 @@ export default function FindingsList({ findings }: { findings: Finding[] }) {
             <div>
               <div className="flex items-center gap-2 text-[11px] font-mono font-bold tracking-wide">
                 {style.label}
-                <span className="text-slate-500">line {finding.line}</span>
+                <span className="text-muted">line {finding.line}</span>
               </div>
               <p className="mt-0.5 leading-relaxed">{finding.message}</p>
             </div>

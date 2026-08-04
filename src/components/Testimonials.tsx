@@ -47,7 +47,7 @@ export default function Testimonials() {
                 </p>
                 <div className="mt-5 border-t border-slate-800 pt-4">
                   <p className="text-sm font-semibold text-slate-100">{t.name}</p>
-                  <p className="text-xs text-slate-500">
+                  <p className="text-xs text-muted">
                     {t.role}, {t.company}
                   </p>
                 </div>

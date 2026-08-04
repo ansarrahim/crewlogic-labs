@@ -37,7 +37,7 @@ export default async function CaseStudyPage({
   return (
     <div className="flex flex-1 flex-col bg-slate-950 font-sans">
       <Navbar />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <section className="px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl">
             <Link

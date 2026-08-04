@@ -42,7 +42,7 @@ export default function SentinelScanTool() {
         placeholder="Paste JavaScript / TypeScript code here..."
         rows={10}
         spellCheck={false}
-        className="w-full resize-none rounded-xl border border-slate-800 bg-black p-3 font-mono text-xs text-slate-200 outline-none placeholder:text-slate-600 focus:border-emerald-500/60"
+        className="w-full resize-none rounded-xl border border-slate-800 bg-black p-3 font-mono text-xs text-slate-200 outline-none placeholder:text-slate-600 focus:border-emerald-500/60 focus-visible:ring-2 focus-visible:ring-emerald-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
       />
 
       <div className="flex items-center gap-3">
@@ -58,7 +58,7 @@ export default function SentinelScanTool() {
         <button
           type="button"
           onClick={() => setCode(SAMPLE)}
-          className="text-xs text-slate-500 underline decoration-dotted underline-offset-4 hover:text-slate-300"
+          className="text-xs text-muted underline decoration-dotted underline-offset-4 hover:text-slate-300"
         >
           Load sample vulnerable code
         </button>
@@ -67,7 +67,7 @@ export default function SentinelScanTool() {
       {findings && (
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">
+            <p className="text-xs font-semibold uppercase tracking-widest text-muted">
               Results
             </p>
             <ReportActions

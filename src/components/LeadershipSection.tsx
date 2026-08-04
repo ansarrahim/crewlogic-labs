@@ -44,7 +44,7 @@ export default function LeadershipSection() {
             </div>
 
             <div className="mt-6">
-              <p className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-slate-500">
+              <p className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-muted">
                 <ShieldCheck className="h-3.5 w-3.5" />
                 Certifications
               </p>
@@ -62,7 +62,7 @@ export default function LeadershipSection() {
             </div>
 
             <div className="mt-6">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-slate-500">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-muted">
                 Core Specialties
               </p>
               <ul className="space-y-2">
@@ -114,7 +114,7 @@ export default function LeadershipSection() {
                     className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-emerald-400 shadow-[0_0_12px_rgba(16,185,129,0.6)]"
                   />
                 </div>
-                <p className="mt-1.5 text-xs text-slate-500">
+                <p className="mt-1.5 text-xs text-muted">
                   Executed by the CrewLogic Labs AI agent workforce
                 </p>
               </div>
@@ -137,7 +137,7 @@ export default function LeadershipSection() {
                     className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-cyan-400 shadow-[0_0_12px_rgba(6,182,212,0.6)]"
                   />
                 </div>
-                <p className="mt-1.5 text-xs text-slate-500">
+                <p className="mt-1.5 text-xs text-muted">
                   Owned directly by {CEO.name}, human-in-the-loop
                 </p>
               </div>

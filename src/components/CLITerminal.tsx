@@ -119,7 +119,7 @@ export default function CLITerminal() {
             <span className="h-3 w-3 rounded-full bg-red-500/70" />
             <span className="h-3 w-3 rounded-full bg-amber-500/70" />
             <span className="h-3 w-3 rounded-full bg-emerald-500/70" />
-            <span className="ml-3 flex items-center gap-1.5 font-mono text-xs text-slate-500">
+            <span className="ml-3 flex items-center gap-1.5 font-mono text-xs text-muted">
               <Terminal className="h-3.5 w-3.5" />
               crewlogic@labs:~
             </span>

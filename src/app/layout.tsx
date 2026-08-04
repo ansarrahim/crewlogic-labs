@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import MotionRoot from "@/components/MotionRoot";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -59,7 +60,15 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
     >
       <body className="flex min-h-full flex-col bg-slate-950 text-slate-100">
-        {children}
+        <a
+          href="#main-content"
+          className="fixed left-4 top-4 z-[100] -translate-y-20 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 transition-transform focus-visible:translate-y-0"
+        >
+          Skip to main content
+        </a>
+        <MotionRoot>
+          {children}
+        </MotionRoot>
         <Analytics />
       </body>
     </html>

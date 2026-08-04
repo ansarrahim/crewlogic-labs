@@ -65,7 +65,7 @@ export default function CaseStudies() {
                     <Gauge className="h-4 w-4" />
                     {project.metric}
                   </div>
-                  <span className="flex items-center gap-1 text-xs font-medium text-slate-500 transition-colors group-hover:text-emerald-400">
+                  <span className="flex items-center gap-1 text-xs font-medium text-muted transition-colors group-hover:text-emerald-400">
                     Read case study
                     <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
                   </span>

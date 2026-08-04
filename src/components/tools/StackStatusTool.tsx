@@ -63,7 +63,7 @@ export default function StackStatusTool() {
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           placeholder="example.com or https://example.com"
-          className="flex-1 rounded-lg border border-slate-800 bg-black px-3.5 py-2.5 text-sm text-slate-100 outline-none placeholder:text-slate-600 focus:border-emerald-500/60"
+          className="flex-1 rounded-lg border border-slate-800 bg-black px-3.5 py-2.5 text-sm text-slate-100 outline-none placeholder:text-slate-600 focus:border-emerald-500/60 focus-visible:ring-2 focus-visible:ring-emerald-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
         />
         <button
           type="submit"
@@ -104,16 +104,16 @@ export default function StackStatusTool() {
 
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             <div className="rounded-xl border border-slate-800 bg-slate-900/50 p-4 text-sm">
-              <p className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-slate-500">
+              <p className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted">
                 <Server className="h-3.5 w-3.5" />
                 Server
               </p>
               <p className="text-slate-300">{result.server ?? "Not disclosed"}</p>
-              <p className="mt-2 text-xs text-slate-500">{result.contentType ?? "Unknown content-type"}</p>
+              <p className="mt-2 text-xs text-muted">{result.contentType ?? "Unknown content-type"}</p>
             </div>
 
             <div className="rounded-xl border border-slate-800 bg-slate-900/50 p-4 text-sm">
-              <p className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-slate-500">
+              <p className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted">
                 <Lock className="h-3.5 w-3.5" />
                 TLS Certificate
               </p>
@@ -123,22 +123,22 @@ export default function StackStatusTool() {
                     {result.tls.valid ? "Valid" : "Not verified"}
                   </p>
                   {result.tls.issuer && (
-                    <p className="mt-1 text-xs text-slate-500">Issued by {result.tls.issuer}</p>
+                    <p className="mt-1 text-xs text-muted">Issued by {result.tls.issuer}</p>
                   )}
                   {result.tls.daysRemaining !== null && (
-                    <p className="mt-1 text-xs text-slate-500">
+                    <p className="mt-1 text-xs text-muted">
                       Expires in {result.tls.daysRemaining} days
                     </p>
                   )}
                 </>
               ) : (
-                <p className="text-slate-500">No TLS (http) or check unavailable</p>
+                <p className="text-muted">No TLS (http) or check unavailable</p>
               )}
             </div>
           </div>
 
           <div className="rounded-xl border border-slate-800 bg-slate-900/50 p-4 text-sm">
-            <p className="mb-3 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-slate-500">
+            <p className="mb-3 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted">
               <ShieldCheck className="h-3.5 w-3.5" />
               Security Headers
             </p>
@@ -146,12 +146,12 @@ export default function StackStatusTool() {
               {result.securityHeaders.map((h) => (
                 <div
                   key={h.name}
-                  className={`flex items-center gap-2 text-xs ${h.present ? "text-emerald-400" : "text-slate-500"}`}
+                  className={`flex items-center gap-2 text-xs ${h.present ? "text-emerald-400" : "text-muted"}`}
                 >
                   {h.present ? (
                     <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
                   ) : (
-                    <XCircle className="h-3.5 w-3.5 shrink-0 text-slate-600" />
+                    <XCircle className="h-3.5 w-3.5 shrink-0 text-slate-500" />
                   )}
                   <span className="font-mono">{h.name}</span>
                 </div>

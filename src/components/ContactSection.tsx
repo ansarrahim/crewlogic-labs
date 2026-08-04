@@ -115,7 +115,7 @@ export default function ContactSection() {
                         type="text"
                         required
                         placeholder="Your full name"
-                        className="w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3.5 py-2.5 text-sm text-slate-100 outline-none placeholder:text-slate-600 focus:border-emerald-500/60"
+                        className="w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3.5 py-2.5 text-sm text-slate-100 outline-none placeholder:text-slate-600 focus:border-emerald-500/60 focus-visible:ring-2 focus-visible:ring-emerald-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
                       />
                     </div>
                     <div>
@@ -131,7 +131,7 @@ export default function ContactSection() {
                         type="email"
                         required
                         placeholder="you@company.com"
-                        className="w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3.5 py-2.5 text-sm text-slate-100 outline-none placeholder:text-slate-600 focus:border-emerald-500/60"
+                        className="w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3.5 py-2.5 text-sm text-slate-100 outline-none placeholder:text-slate-600 focus:border-emerald-500/60 focus-visible:ring-2 focus-visible:ring-emerald-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
                       />
                     </div>
                   </div>
@@ -148,7 +148,7 @@ export default function ContactSection() {
                       name="stack"
                       required
                       defaultValue=""
-                      className="w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3.5 py-2.5 text-sm text-slate-100 outline-none focus:border-emerald-500/60"
+                      className="w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3.5 py-2.5 text-sm text-slate-100 outline-none focus:border-emerald-500/60 focus-visible:ring-2 focus-visible:ring-emerald-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
                     >
                       <option value="" disabled>
                         Select a domain
@@ -174,7 +174,7 @@ export default function ContactSection() {
                       required
                       rows={5}
                       placeholder="Tell us about your project, timeline, and goals..."
-                      className="w-full resize-none rounded-lg border border-slate-700 bg-slate-950/60 px-3.5 py-2.5 text-sm text-slate-100 outline-none placeholder:text-slate-600 focus:border-emerald-500/60"
+                      className="w-full resize-none rounded-lg border border-slate-700 bg-slate-950/60 px-3.5 py-2.5 text-sm text-slate-100 outline-none placeholder:text-slate-600 focus:border-emerald-500/60 focus-visible:ring-2 focus-visible:ring-emerald-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
                     />
                   </div>
 
@@ -219,7 +219,7 @@ export default function ContactSection() {
                 <Mail className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-xs uppercase tracking-wide text-slate-500">
+                <p className="text-xs uppercase tracking-wide text-muted">
                   Email
                 </p>
                 <p className="text-sm font-medium text-slate-100">
@@ -236,7 +236,7 @@ export default function ContactSection() {
                 <Phone className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-xs uppercase tracking-wide text-slate-500">
+                <p className="text-xs uppercase tracking-wide text-muted">
                   Phone
                 </p>
                 <p className="text-sm font-medium text-slate-100">
@@ -250,7 +250,7 @@ export default function ContactSection() {
                 <MapPin className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-xs uppercase tracking-wide text-slate-500">
+                <p className="text-xs uppercase tracking-wide text-muted">
                   Location
                 </p>
                 <p className="text-sm font-medium text-slate-100">

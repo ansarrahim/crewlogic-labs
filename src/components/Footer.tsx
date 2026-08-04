@@ -38,7 +38,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">
+            <p className="text-xs font-semibold uppercase tracking-widest text-muted">
               Quick Links
             </p>
             <ul className="mt-4 space-y-2">
@@ -56,7 +56,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">
+            <p className="text-xs font-semibold uppercase tracking-widest text-muted">
               Connect
             </p>
             <ul className="mt-4 space-y-2">
@@ -87,12 +87,12 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-slate-800 pt-6 sm:flex-row">
-          <p className="flex items-center gap-1.5 text-xs text-slate-500">
+          <p className="flex items-center gap-1.5 text-xs text-muted">
             <Terminal className="h-3.5 w-3.5" />
             &copy; {new Date().getFullYear()} {SITE.name}. All rights
             reserved.
           </p>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-muted">
             Human-led. Agent-powered. Built in {SITE.location}.
           </p>
         </div>

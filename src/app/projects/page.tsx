@@ -20,7 +20,7 @@ export default async function ProjectsPage() {
   return (
     <div className="flex flex-1 flex-col bg-slate-950 font-sans">
       <Navbar />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <section className="px-4 py-24 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <div className="mx-auto mb-14 max-w-2xl text-center">

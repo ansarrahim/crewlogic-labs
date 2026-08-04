@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, Terminal, X } from "lucide-react";
 import { SITE } from "@/lib/data";
@@ -15,8 +16,41 @@ const NAV_LINKS = [
   { href: "/#contact", label: "Contact" },
 ];
 
+const SECTION_IDS = ["leadership", "squad", "case-studies", "terminal", "contact"];
+
 export default function Navbar() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [observedSection, setObservedSection] = useState<string | null>(null);
+  const activeSection = pathname === "/" ? observedSection : null;
+
+  // Scroll-spy: highlight whichever homepage section is currently in view,
+  // so the nav always answers "where am I?" — not just "where can I go?"
+  useEffect(() => {
+    if (pathname !== "/") return;
+
+    const sections = SECTION_IDS.map((id) => document.getElementById(id)).filter(
+      (el): el is HTMLElement => el !== null
+    );
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const mostVisible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (mostVisible) setObservedSection(mostVisible.target.id);
+      },
+      { rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, [pathname]);
+
+  function isActive(href: string) {
+    return href.startsWith("/#") && href.slice(2) === activeSection;
+  }
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/80 backdrop-blur-md">
@@ -35,7 +69,10 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-slate-400 transition-colors hover:text-emerald-400"
+              aria-current={isActive(link.href) ? "true" : undefined}
+              className={`text-sm font-medium transition-colors hover:text-emerald-400 ${
+                isActive(link.href) ? "text-emerald-400" : "text-slate-400"
+              }`}
             >
               {link.label}
             </Link>
@@ -55,7 +92,7 @@ export default function Navbar() {
         <button
           type="button"
           aria-label="Toggle navigation menu"
-          className="text-slate-300 transition-transform active:scale-90 md:hidden"
+          className="-m-2 p-2 text-slate-300 transition-transform active:scale-90 md:hidden"
           onClick={() => setOpen((prev) => !prev)}
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -82,7 +119,10 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className="block rounded-md px-2 py-2.5 text-sm font-medium text-slate-300 hover:bg-slate-900 hover:text-emerald-400"
+                    aria-current={isActive(link.href) ? "true" : undefined}
+                    className={`block rounded-md px-2 py-2.5 text-sm font-medium hover:bg-slate-900 hover:text-emerald-400 ${
+                      isActive(link.href) ? "bg-slate-900 text-emerald-400" : "text-slate-300"
+                    }`}
                   >
                     {link.label}
                   </Link>

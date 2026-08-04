@@ -165,7 +165,7 @@ export default function NexusChatWidget() {
                 type="button"
                 aria-label="Close chat"
                 onClick={() => setIsOpen(false)}
-                className="text-slate-500 transition-colors active:scale-90 hover:text-slate-200"
+                className="-m-2 p-2 text-muted transition-colors active:scale-90 hover:text-slate-200"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -223,7 +223,7 @@ export default function NexusChatWidget() {
                 placeholder="Ask NEXUS-AI something..."
                 maxLength={2000}
                 disabled={isLoading}
-                className="flex-1 rounded-lg border border-slate-800 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none placeholder:text-slate-600 focus:border-emerald-500/60 disabled:opacity-60"
+                className="flex-1 rounded-lg border border-slate-800 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none placeholder:text-slate-600 focus:border-emerald-500/60 focus-visible:ring-2 focus-visible:ring-emerald-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 disabled:opacity-60"
               />
               <button
                 type="submit"

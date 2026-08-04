@@ -58,7 +58,7 @@ export default function ProjectsGrid({
               </div>
               <h3 className="font-mono text-sm font-bold text-slate-100">{repo.name}</h3>
             </div>
-            <ExternalLink className="h-4 w-4 shrink-0 text-slate-600 transition-colors group-hover:text-emerald-400" />
+            <ExternalLink className="h-4 w-4 shrink-0 text-slate-500 transition-colors group-hover:text-emerald-400" />
           </div>
 
           <p className="mt-4 flex-1 text-sm leading-relaxed text-slate-400">
@@ -78,7 +78,7 @@ export default function ProjectsGrid({
             </div>
           )}
 
-          <div className="mt-5 flex items-center gap-4 border-t border-slate-800 pt-4 text-xs text-slate-500">
+          <div className="mt-5 flex items-center gap-4 border-t border-slate-800 pt-4 text-xs text-muted">
             {repo.language && (
               <span className="flex items-center gap-1.5">
                 <span className="h-2 w-2 rounded-full bg-cyan-400" />

@@ -66,7 +66,7 @@ export default function AgentToolModal({
             type="button"
             aria-label="Close"
             onClick={onClose}
-            className="text-slate-500 transition-colors active:scale-90 hover:text-slate-200"
+            className="-m-2 p-2 text-muted transition-colors active:scale-90 hover:text-slate-200"
           >
             <X className="h-5 w-5" />
           </button>

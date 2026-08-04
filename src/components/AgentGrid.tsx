@@ -82,7 +82,7 @@ export default function AgentGrid() {
                 {agent.name}
               </h3>
               <p className="text-sm font-medium text-cyan-400">{agent.role}</p>
-              <p className="mt-2 text-xs uppercase tracking-wide text-slate-500">
+              <p className="mt-2 text-xs uppercase tracking-wide text-muted">
                 {agent.domain}
               </p>
 

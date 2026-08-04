@@ -10,6 +10,10 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  /* Same visual weight as slate-500, but lightened just enough to clear
+     WCAG AA (4.5:1) on our #020617 background — slate-500 itself only
+     hits 4.24:1 there. */
+  --color-muted: #6b7b92;
 }
 
 body {

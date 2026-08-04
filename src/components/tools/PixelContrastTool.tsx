@@ -66,7 +66,7 @@ export default function PixelContrastTool() {
                 trackFirstInteraction();
                 setForeground(e.target.value);
               }}
-              className="w-full rounded-lg border border-slate-800 bg-black px-3 py-2 font-mono text-sm text-slate-100 outline-none focus:border-emerald-500/60"
+              className="w-full rounded-lg border border-slate-800 bg-black px-3 py-2 font-mono text-sm text-slate-100 outline-none focus:border-emerald-500/60 focus-visible:ring-2 focus-visible:ring-emerald-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
             />
           </div>
         </div>
@@ -92,7 +92,7 @@ export default function PixelContrastTool() {
                 trackFirstInteraction();
                 setBackground(e.target.value);
               }}
-              className="w-full rounded-lg border border-slate-800 bg-black px-3 py-2 font-mono text-sm text-slate-100 outline-none focus:border-emerald-500/60"
+              className="w-full rounded-lg border border-slate-800 bg-black px-3 py-2 font-mono text-sm text-slate-100 outline-none focus:border-emerald-500/60 focus-visible:ring-2 focus-visible:ring-emerald-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
             />
           </div>
         </div>
@@ -112,7 +112,7 @@ export default function PixelContrastTool() {
         <div className="space-y-3">
           <div className="rounded-xl border border-slate-800 bg-slate-900/50 p-4 text-center">
             <p className="text-3xl font-bold text-slate-100">{result.ratio.toFixed(2)}:1</p>
-            <p className="text-xs text-slate-500">contrast ratio</p>
+            <p className="text-xs text-muted">contrast ratio</p>
           </div>
           <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
             <PassBadge pass={result.normalAA} label="AA — Normal text" />
