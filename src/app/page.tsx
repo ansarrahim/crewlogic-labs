@@ -7,6 +7,7 @@ import CLITerminal from "@/components/CLITerminal";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import NexusChatWidget from "@/components/NexusChatWidget";
+import AgentToolsHost from "@/components/tools/AgentToolsHost";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       </main>
       <Footer />
       <NexusChatWidget />
+      <AgentToolsHost />
     </div>
   );
 }
