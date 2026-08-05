@@ -7,7 +7,7 @@ export const runtime = "nodejs";
 
 const MAX_FIELD_LENGTH = 200;
 const MAX_DETAILS_LENGTH = 4000;
-const FROM_ADDRESS = process.env.CONTACT_FROM_EMAIL ?? "CrewLogic Labs <onboarding@resend.dev>";
+const FROM_ADDRESS = process.env.CONTACT_FROM_EMAIL?.trim() || "CrewLogic Labs <onboarding@resend.dev>";
 
 function getClientIdentifier(request: Request): string {
   const forwardedFor = request.headers.get("x-forwarded-for");
@@ -74,14 +74,16 @@ export async function POST(request: Request) {
     );
   }
 
+  const safeName = name.replace(/[\r\n]+/g, " ").trim();
+
   try {
     const resend = new Resend(apiKey);
     const { error } = await resend.emails.send({
       from: FROM_ADDRESS,
       to: SITE.email,
       replyTo: email,
-      subject: `New project inquiry from ${name} — ${stack}`,
-      text: `Name: ${name}\nEmail: ${email}\nStack needed: ${stack}\n\nDetails:\n${details}`,
+      subject: `New project inquiry from ${safeName} — ${stack}`,
+      text: `Name: ${safeName}\nEmail: ${email}\nStack needed: ${stack}\n\nDetails:\n${details}`,
     });
 
     if (error) {
