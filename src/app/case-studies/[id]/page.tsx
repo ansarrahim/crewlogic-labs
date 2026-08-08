@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, CheckCircle2, Gauge, Layers } from "lucide-react";
+import { ArrowLeft, CheckCircle2, ExternalLink, Gauge, Layers } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import NexusChatWidget from "@/components/NexusChatWidget";
@@ -67,9 +67,22 @@ export default async function CaseStudyPage({
               ))}
             </div>
 
-            <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-sm font-medium text-emerald-400">
-              <Gauge className="h-4 w-4" />
-              {study.metric}
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-sm font-medium text-emerald-400">
+                <Gauge className="h-4 w-4" />
+                {study.metric}
+              </div>
+              {study.liveUrl && (
+                <a
+                  href={study.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm font-medium text-cyan-300 transition-colors hover:border-cyan-400/50 hover:text-cyan-200"
+                >
+                  <ExternalLink className="h-4 w-4" />
+                  View Live Demo
+                </a>
+              )}
             </div>
 
             <div className="mt-12 border-t border-slate-800 pt-10">

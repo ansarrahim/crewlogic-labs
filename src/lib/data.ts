@@ -130,9 +130,32 @@ export type CaseStudy = {
   problem: string;
   approach: string[];
   outcomes: string[];
+  liveUrl?: string;
 };
 
 export const CASE_STUDIES: CaseStudy[] = [
+  {
+    id: "pulsequeue",
+    title: "PulseQueue — Live Distributed Job Queue Platform",
+    category: "Backend / Distributed Systems",
+    description:
+      "A real durable job queue you can watch work — submit a job and see it flow queued, processing, retried with exponential backoff, or permanently dead-lettered, live.",
+    stack: ["Next.js", "TypeScript", "Upstash QStash", "Upstash Redis", "Vercel"],
+    metric: "Real retries, real DLQ",
+    problem:
+      "Most portfolio demos fake distributed-systems behavior with client-side timers. That doesn't prove anything about how someone reasons about queues, retries, backoff, or failure recovery — the things that actually break in production backend systems.",
+    approach: [
+      "STACK-CORE architects the queue on Upstash QStash — a genuinely durable HTTP message queue — instead of simulating retry logic client-side, so backoff and delivery guarantees are real, not scripted.",
+      "A 'Chaos Mode' toggle makes the worker endpoint intentionally fail on a random subset of jobs, letting QStash's own retry engine react exactly as it would to a real outage.",
+      "SENTINEL-SEC hardens the worker callback with QStash signature verification and idempotent job-state updates, so a forged or duplicated delivery can't corrupt job state.",
+    ],
+    outcomes: [
+      "Visitors watch a real message queue retry, back off, and dead-letter a job in real time — not a mocked animation.",
+      "A dead-letter queue panel reads directly from QStash's own DLQ API, with one-click replay.",
+      "The architecture (durable queue + stateless worker + idempotent callback) is the same shape used by production job systems at scale.",
+    ],
+    liveUrl: "https://pulsequeue-chi.vercel.app",
+  },
   {
     id: "cert-verify",
     title: "Immutable Blockchain Certificate Verification System",
@@ -141,6 +164,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       "A tamper-proof, on-chain credential verification platform issuing and validating certificates as cryptographically signed assets — eliminating forgery and manual verification overhead.",
     stack: ["Solidity", "Polygon", "Web3.js", "Next.js", "Node.js", "MongoDB"],
     metric: "100% on-chain integrity",
+    liveUrl: "https://certiproof-orcin.vercel.app",
     problem:
       "Institutions issuing certificates (degrees, training completions, compliance credentials) rely on manual verification — PDFs, email confirmations, phone calls — that's slow and easy to forge.",
     approach: [
