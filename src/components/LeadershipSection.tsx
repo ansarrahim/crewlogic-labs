@@ -39,10 +39,6 @@ export default function LeadershipSection() {
               </div>
             </div>
 
-            <p className="mt-6 border-l-2 border-emerald-500/40 pl-4 text-sm italic leading-relaxed text-slate-300">
-              &ldquo;{CEO.bio}&rdquo;
-            </p>
-
             <div className="mt-6 flex items-center gap-4">
               <a
                 href={CEO.linkedinUrl}

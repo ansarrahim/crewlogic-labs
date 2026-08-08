@@ -18,7 +18,6 @@ export const SITE = {
 export const CEO = {
   name: "Muhammad Ansar",
   title: "CEO & Lead Systems Architect",
-  bio: "I design and direct every project on this site — CrewLogic Labs, CertiProof, and PulseQueue — working hands-on with AI coding tools as a force multiplier, from architecture through production deployment.",
   linkedinUrl: "https://www.linkedin.com/in/muhammad-ansar-402641178",
   education: "B.S. in Software Engineering, University of Malakand, Pakistan",
   specialties: [
