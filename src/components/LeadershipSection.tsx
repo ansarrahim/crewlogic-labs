@@ -116,8 +116,8 @@ export default function LeadershipSection() {
             </div>
             <p className="mb-8 text-sm leading-relaxed text-slate-400">
               I run a hybrid delivery model — AI tooling accelerates
-              implementation at machine speed, while every architectural
-              decision, security review, and line that ships is mine.
+              implementation at machine speed, while I direct the
+              architecture, review every change, and decide what ships.
             </p>
 
             <div className="space-y-6">
