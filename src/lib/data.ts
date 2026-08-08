@@ -18,6 +18,8 @@ export const SITE = {
 export const CEO = {
   name: "Muhammad Ansar",
   title: "CEO & Lead Systems Architect",
+  bio: "I personally architect and ship every project on this site. CrewLogic Labs, CertiProof, and PulseQueue aren't agency output or contractor work — they're systems I designed, built, and deployed myself, end to end.",
+  linkedinUrl: "https://www.linkedin.com/in/muhammad-ansar-402641178",
   education: "B.S. in Software Engineering, University of Malakand, Pakistan",
   specialties: [
     "Full-Stack Web Architecture (Next.js / Node.js)",

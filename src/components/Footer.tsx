@@ -13,9 +13,8 @@ const QUICK_LINKS = [
 ];
 
 const SOCIALS = [
-  { href: "https://linkedin.com", label: "LinkedIn" },
+  { href: "https://www.linkedin.com/in/muhammad-ansar-402641178", label: "LinkedIn" },
   { href: GITHUB_PROFILE_URL, label: "GitHub" },
-  { href: "https://x.com", label: "X / Twitter" },
 ];
 
 export default function Footer() {

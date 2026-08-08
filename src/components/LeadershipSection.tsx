@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award, GraduationCap, ShieldCheck, Sparkles } from "lucide-react";
+import { Award, ExternalLink, FolderGit2, GraduationCap, ShieldCheck, Sparkles } from "lucide-react";
 import { CEO } from "@/lib/data";
+import { GITHUB_PROFILE_URL } from "@/lib/github";
 import Reveal from "@/components/Reveal";
 
 const EASE_OUT = [0.23, 1, 0.32, 1] as const;
@@ -36,6 +37,31 @@ export default function LeadershipSection() {
                 </h3>
                 <p className="text-sm text-cyan-400">{CEO.title}</p>
               </div>
+            </div>
+
+            <p className="mt-6 border-l-2 border-emerald-500/40 pl-4 text-sm italic leading-relaxed text-slate-300">
+              &ldquo;{CEO.bio}&rdquo;
+            </p>
+
+            <div className="mt-6 flex items-center gap-4">
+              <a
+                href={CEO.linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-xs font-medium text-slate-400 transition-colors hover:text-cyan-400"
+              >
+                <ExternalLink className="h-3.5 w-3.5" />
+                LinkedIn
+              </a>
+              <a
+                href={GITHUB_PROFILE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-xs font-medium text-slate-400 transition-colors hover:text-cyan-400"
+              >
+                <FolderGit2 className="h-3.5 w-3.5" />
+                GitHub
+              </a>
             </div>
 
             <div className="mt-6 flex items-start gap-3 text-sm text-slate-400">
@@ -89,10 +115,9 @@ export default function LeadershipSection() {
               </h3>
             </div>
             <p className="mb-8 text-sm leading-relaxed text-slate-400">
-              CrewLogic Labs operates on a hybrid delivery model — autonomous
-              AI agents execute the bulk of implementation work at machine
-              speed, while human architectural rigor governs every critical
-              decision before it ships.
+              I run a hybrid delivery model — AI tooling accelerates
+              implementation at machine speed, while every architectural
+              decision, security review, and line that ships is mine.
             </p>
 
             <div className="space-y-6">
@@ -115,7 +140,7 @@ export default function LeadershipSection() {
                   />
                 </div>
                 <p className="mt-1.5 text-xs text-muted">
-                  Executed by the CrewLogic Labs AI agent workforce
+                  AI-accelerated implementation, directed and reviewed by me line-by-line
                 </p>
               </div>
 
