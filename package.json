@@ -11,8 +11,8 @@
   "dependencies": {
     "@google/genai": "^2.15.0",
     "@sentry/nextjs": "^10.69.0",
+    "@upstash/redis": "^1.38.2",
     "@vercel/analytics": "^2.0.1",
-    "@vercel/kv": "^3.0.0",
     "clsx": "^2.1.1",
     "framer-motion": "^12.43.0",
     "lucide-react": "^1.28.0",

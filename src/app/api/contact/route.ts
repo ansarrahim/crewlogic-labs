@@ -2,6 +2,7 @@ import { Resend } from "resend";
 import { NextResponse } from "next/server";
 import { SITE, STACK_NEEDED_OPTIONS } from "@/lib/data";
 import { isRateLimited } from "@/lib/rate-limit";
+import { recordLead } from "@/lib/leads";
 
 export const runtime = "nodejs";
 
@@ -62,6 +63,10 @@ export async function POST(request: Request) {
   if (!STACK_NEEDED_OPTIONS.includes(stack as (typeof STACK_NEEDED_OPTIONS)[number])) {
     return NextResponse.json({ error: "Please choose a valid stack option." }, { status: 400 });
   }
+
+  // Count this as a lead as soon as it's a validated real submission, so a
+  // real inquiry is still counted even if email delivery below fails.
+  await recordLead();
 
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
