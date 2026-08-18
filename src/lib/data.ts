@@ -136,6 +136,28 @@ export type CaseStudy = {
 
 export const CASE_STUDIES: CaseStudy[] = [
   {
+    id: "codewrapped",
+    title: "CodeWrapped — Shareable GitHub Year-in-Review",
+    category: "Growth / Product Engineering",
+    description:
+      "Enter any GitHub username and get an animated, shareable wrap of their coding year — and because the share link's own preview image is generated per-user, the growth loop is built into the URL itself.",
+    stack: ["Next.js", "TypeScript", "GitHub GraphQL API", "Upstash Redis", "Framer Motion"],
+    metric: "The link is the share",
+    problem:
+      "A technically impressive tool doesn't guarantee a visit — it has to give a stranger a reason to click and, ideally, a reason to repost. Most portfolio pieces optimize for 'is this well engineered,' not 'does anyone actually want this.'",
+    approach: [
+      "PIXEL-UX designs a Spotify-Wrapped-style slide sequence — big numbers, bold gradients, story-style progress bars — built around instant personal payoff rather than a dashboard of stats.",
+      "STACK-CORE pulls every number from GitHub's real GraphQL contribution data and caches results in Redis, so repeat and popular lookups are instant without burning API quota.",
+      "The result page's Open Graph image is generated per-username at request time, so pasting the link into X, LinkedIn, or Discord shows that person's actual card inline — the share loop lives in the URL, not a download button.",
+    ],
+    outcomes: [
+      "A 'coder personality' label (Weekend Warrior, The Specialist, Consistency Machine) is derived from real thresholds on the same data — never arbitrary or decorative.",
+      "Sharing the link is the distribution mechanism: no separate export step, no 'download and repost' friction.",
+      "Zero-activity or nonexistent usernames get an honest empty/error state instead of a fabricated result.",
+    ],
+    liveUrl: "https://codewrapped-amber.vercel.app",
+  },
+  {
     id: "pulsequeue",
     title: "PulseQueue — Live Distributed Job Queue Platform",
     category: "Backend / Distributed Systems",
