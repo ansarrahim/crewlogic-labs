@@ -114,7 +114,7 @@ export default function CLITerminal() {
           </p>
         </Reveal>
 
-        <div className="overflow-hidden rounded-2xl border border-slate-800 bg-black shadow-[0_0_40px_rgba(16,185,129,0.1)]">
+        <div className="overflow-hidden rounded-2xl border border-slate-800 bg-black shadow-[0_0_40px_rgba(184,147,90,0.1)]">
           <div className="flex items-center gap-2 border-b border-slate-800 bg-slate-900/60 px-4 py-3">
             <span className="h-3 w-3 rounded-full bg-red-500/70" />
             <span className="h-3 w-3 rounded-full bg-amber-500/70" />

@@ -56,7 +56,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2">
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-emerald-500/30 bg-emerald-500/10 font-mono text-sm font-bold text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.35)]">
+          <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-emerald-500/30 bg-emerald-500/10 font-mono text-sm font-bold text-emerald-400 shadow-[0_0_15px_rgba(184,147,90,0.35)]">
             {"</>"}
           </span>
           <span className="text-lg font-semibold tracking-tight text-slate-100">
@@ -82,7 +82,7 @@ export default function Navbar() {
         <div className="hidden md:block">
           <Link
             href="/#contact"
-            className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-[0_0_20px_rgba(16,185,129,0.35)] transition-[background-color,transform] active:scale-95 hover:bg-emerald-400"
+            className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-[0_0_20px_rgba(184,147,90,0.35)] transition-[background-color,transform] active:scale-95 hover:bg-emerald-400"
           >
             <Terminal className="h-4 w-4" />
             Scope Project

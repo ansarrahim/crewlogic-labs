@@ -30,7 +30,7 @@ export default function LeadsSparkline({ data }: { data: DailyCount[] }) {
       <path
         d={buildPath(values, max)}
         fill="none"
-        stroke="#34d399"
+        stroke="#b8935a"
         strokeWidth={2}
         strokeLinecap="round"
         strokeLinejoin="round"

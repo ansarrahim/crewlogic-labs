@@ -44,7 +44,7 @@ export default function AgentToolModal({
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.96 }}
         transition={{ duration: 0.2, ease: EASE_OUT }}
-        className="relative flex max-h-[85vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 shadow-[0_0_60px_rgba(16,185,129,0.15)]"
+        className="relative flex max-h-[85vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 shadow-[0_0_60px_rgba(184,147,90,0.15)]"
       >
         <div className="flex items-center justify-between border-b border-slate-800 bg-slate-900/80 px-5 py-4">
           <div className="flex items-center gap-3">

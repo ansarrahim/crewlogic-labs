@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award, ExternalLink, FolderGit2, GraduationCap, ShieldCheck, Sparkles } from "lucide-react";
+import { ExternalLink, FolderGit2, GraduationCap, ShieldCheck, Sparkles } from "lucide-react";
 import { CEO } from "@/lib/data";
 import { GITHUB_PROFILE_URL } from "@/lib/github";
 import Reveal from "@/components/Reveal";
@@ -66,17 +66,13 @@ export default function LeadershipSection() {
             </div>
 
             <div className="mt-6">
-              <p className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-muted">
+              <p className="mb-1 flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-muted">
                 <ShieldCheck className="h-3.5 w-3.5" />
                 Certifications
               </p>
-              <ul className="space-y-2">
+              <ul className="divide-y divide-slate-800 border-t border-slate-800">
                 {CEO.certifications.map((cert) => (
-                  <li
-                    key={cert}
-                    className="flex items-center gap-2 text-sm text-slate-300"
-                  >
-                    <Award className="h-3.5 w-3.5 shrink-0 text-cyan-400" />
+                  <li key={cert} className="py-2.5 text-sm text-slate-300">
                     {cert}
                   </li>
                 ))}
@@ -84,15 +80,12 @@ export default function LeadershipSection() {
             </div>
 
             <div className="mt-6">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-muted">
+              <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-muted">
                 Core Specialties
               </p>
-              <ul className="space-y-2">
+              <ul className="divide-y divide-slate-800 border-t border-slate-800">
                 {CEO.specialties.map((spec) => (
-                  <li
-                    key={spec}
-                    className="text-sm text-slate-300 before:mr-2 before:text-emerald-400 before:content-['▹']"
-                  >
+                  <li key={spec} className="py-2.5 text-sm text-slate-300">
                     {spec}
                   </li>
                 ))}
@@ -132,7 +125,7 @@ export default function LeadershipSection() {
                     whileInView={{ width: "70%" }}
                     viewport={{ once: true, margin: "-60px" }}
                     transition={{ duration: 0.8, ease: EASE_OUT, delay: 0.15 }}
-                    className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-emerald-400 shadow-[0_0_12px_rgba(16,185,129,0.6)]"
+                    className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-emerald-400 shadow-[0_0_12px_rgba(184,147,90,0.6)]"
                   />
                 </div>
                 <p className="mt-1.5 text-xs text-muted">
@@ -155,7 +148,7 @@ export default function LeadershipSection() {
                     whileInView={{ width: "30%" }}
                     viewport={{ once: true, margin: "-60px" }}
                     transition={{ duration: 0.8, ease: EASE_OUT, delay: 0.25 }}
-                    className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-cyan-400 shadow-[0_0_12px_rgba(6,182,212,0.6)]"
+                    className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-cyan-400 shadow-[0_0_12px_rgba(184,147,90,0.6)]"
                   />
                 </div>
                 <p className="mt-1.5 text-xs text-muted">

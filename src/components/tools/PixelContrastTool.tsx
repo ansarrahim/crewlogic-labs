@@ -23,8 +23,8 @@ function PassBadge({ pass, label }: { pass: boolean; label: string }) {
 }
 
 export default function PixelContrastTool() {
-  const [foreground, setForeground] = useState("#e2e8f0");
-  const [background, setBackground] = useState("#0f172a");
+  const [foreground, setForeground] = useState("#e7dfc7");
+  const [background, setBackground] = useState("#141c16");
   const hasTrackedRef = useRef(false);
 
   const result = useMemo(() => computeContrast(foreground, background), [foreground, background]);

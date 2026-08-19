@@ -13,7 +13,7 @@ export default function AppleIcon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#020617",
+          background: "#0d130f",
         }}
       >
         <span
@@ -22,7 +22,7 @@ export default function AppleIcon() {
             fontSize: 80,
             fontWeight: 700,
             fontFamily: "monospace",
-            color: "#34d399",
+            color: "#b8935a",
           }}
         >
           {"</>"}

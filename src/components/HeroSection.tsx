@@ -25,7 +25,7 @@ export default function HeroSection() {
         className="pointer-events-none absolute inset-0 -z-10"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 20% 15%, rgba(16,185,129,0.16), transparent 45%), radial-gradient(circle at 80% 10%, rgba(6,182,212,0.14), transparent 40%)",
+            "radial-gradient(circle at 20% 15%, rgba(184,147,90,0.16), transparent 45%), radial-gradient(circle at 80% 10%, rgba(184,147,90,0.14), transparent 40%)",
         }}
       />
       <div
@@ -96,7 +96,7 @@ export default function HeroSection() {
         >
           <a
             href="#squad"
-            className="group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-500 px-6 py-3 text-sm font-semibold text-slate-950 shadow-[0_0_25px_rgba(16,185,129,0.4)] transition-[background-color,transform] active:scale-[0.97] hover:bg-emerald-400 sm:w-auto"
+            className="group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-500 px-6 py-3 text-sm font-semibold text-slate-950 shadow-[0_0_25px_rgba(184,147,90,0.4)] transition-[background-color,transform] active:scale-[0.97] hover:bg-emerald-400 sm:w-auto"
           >
             Explore Virtual Squad
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

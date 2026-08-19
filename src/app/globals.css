@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #020617;
-  --foreground: #f1f5f9;
+  --background: #0d130f;
+  --foreground: #e7dfc7;
 }
 
 @theme inline {
@@ -10,10 +10,39 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  /* Same visual weight as slate-500, but lightened just enough to clear
-     WCAG AA (4.5:1) on our #020617 background — slate-500 itself only
-     hits 4.24:1 there. */
-  --color-muted: #6b7b92;
+  --font-serif: var(--font-fraunces);
+  /* Same visual weight as slate-400, verified 7.1:1 on our #0d130f
+     background (WCAG AAA for normal text). */
+  --color-muted: #a89f86;
+
+  /* --- Ledger identity ---------------------------------------------
+     The site's entire dark theme is built on Tailwind's built-in
+     `slate` (neutrals) and `emerald`/`cyan` (accent) scales. Redefining
+     those scales here re-themes every existing bg-slate-950,
+     text-emerald-400, border-cyan-500/30, etc. across the whole site
+     with no component edits — this is the "Ledger" identity: ink
+     ground, warm parchment text, one gold accent (emerald and cyan
+     collapse to the same gold rather than competing hues). Semantic
+     colors (amber/rose/red — warnings, errors) are untouched. */
+  --color-slate-50: #f7f4ea;
+  --color-slate-100: #efe9d6;
+  --color-slate-200: #e7dfc7;
+  --color-slate-300: #d4c9a8;
+  --color-slate-400: #a89f86;
+  --color-slate-500: #7c7560;
+  --color-slate-600: #5a5544;
+  --color-slate-700: #3d3a2f;
+  --color-slate-800: #262920;
+  --color-slate-900: #141c16;
+  --color-slate-950: #0d130f;
+
+  --color-emerald-300: #d9bd8a;
+  --color-emerald-400: #b8935a;
+  --color-emerald-500: #c9a05f;
+  --color-cyan-200: #d9bd8a;
+  --color-cyan-300: #d9bd8a;
+  --color-cyan-400: #b8935a;
+  --color-cyan-500: #c9a05f;
 }
 
 body {
@@ -21,9 +50,15 @@ body {
   color: var(--foreground);
 }
 
+h1,
+h2,
+h3 {
+  font-family: var(--font-serif), Georgia, serif;
+}
+
 ::selection {
-  background: rgba(16, 185, 129, 0.3);
-  color: #f1f5f9;
+  background: rgba(184, 147, 90, 0.3);
+  color: #e7dfc7;
 }
 
 ::-webkit-scrollbar {
@@ -32,16 +67,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #020617;
+  background: #0d130f;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #262920;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #3d3a2f;
 }
 
 @keyframes cursor-blink {

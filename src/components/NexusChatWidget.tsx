@@ -141,7 +141,7 @@ export default function NexusChatWidget() {
             exit={{ opacity: 0, scale: 0.97, y: 4 }}
             transition={{ duration: 0.2, ease: EASE_OUT }}
             style={{ transformOrigin: "bottom right" }}
-            className="flex h-[32rem] max-h-[75vh] w-96 max-w-[calc(100vw-2.5rem)] flex-col overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 shadow-[0_0_50px_rgba(16,185,129,0.15)]"
+            className="flex h-[32rem] max-h-[75vh] w-96 max-w-[calc(100vw-2.5rem)] flex-col overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 shadow-[0_0_50px_rgba(184,147,90,0.15)]"
           >
             <div className="flex items-center justify-between border-b border-slate-800 bg-slate-900/80 px-4 py-3">
               <div className="flex items-center gap-2.5">
@@ -249,7 +249,7 @@ export default function NexusChatWidget() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.15, ease: EASE_OUT }}
-            className="flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500 px-5 py-3 text-sm font-semibold text-slate-950 shadow-[0_0_30px_rgba(16,185,129,0.45)]"
+            className="flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500 px-5 py-3 text-sm font-semibold text-slate-950 shadow-[0_0_30px_rgba(184,147,90,0.45)]"
           >
             <Sparkles className="h-4 w-4" />
             Chat with NEXUS-AI

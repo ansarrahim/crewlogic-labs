@@ -13,9 +13,9 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#020617",
+          background: "#0d130f",
           borderRadius: 7,
-          border: "1px solid rgba(16,185,129,0.4)",
+          border: "1px solid rgba(184,147,90,0.4)",
         }}
       >
         <span
@@ -24,7 +24,7 @@ export default function Icon() {
             fontSize: 15,
             fontWeight: 700,
             fontFamily: "monospace",
-            color: "#34d399",
+            color: "#b8935a",
           }}
         >
           {"</>"}
