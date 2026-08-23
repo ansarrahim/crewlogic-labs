@@ -136,6 +136,28 @@ export type CaseStudy = {
 
 export const CASE_STUDIES: CaseStudy[] = [
   {
+    id: "framekit",
+    title: "Framekit — Metered Image API with Real Billing",
+    category: "Product / SaaS Engineering",
+    description:
+      "A real subscription product: sign up, get an API key, call an endpoint, get back a rendered PNG card. Free and Pro tiers, real Stripe Checkout, real webhooks, real usage metering — not a static pricing page bolted onto a demo.",
+    stack: ["Next.js", "TypeScript", "Postgres (Neon + Drizzle)", "Upstash Redis", "Stripe"],
+    metric: "A real paying-customer lifecycle",
+    problem:
+      "Every other project here proves engineering depth, but none of them prove I can ship something a stranger would actually subscribe to and pay for — accounts, metered access, and a subscription that upgrades and downgrades correctly, not just a checkout button that goes nowhere.",
+    approach: [
+      "STACK-CORE splits state deliberately: Postgres (Neon + Drizzle) is the system of record for users and API keys, while Redis handles sessions and usage counters — the same hybrid production billing systems actually use, not infra for its own sake.",
+      "API keys are hashed at rest and shown once at creation, matching real key-management practice, and every request is checked against a live monthly quota before it's allowed to render.",
+      "SENTINEL-SEC wires Stripe Checkout and the Customer Portal to a signature-verified webhook handler, so subscribing and cancelling both flow through the same real event pipeline Stripe sends in production.",
+    ],
+    outcomes: [
+      "Verified the entire lifecycle live: real payment with Stripe's test card, webhook-driven upgrade to Pro (100 → 5,000 renders/mo), then cancellation through the real Customer Portal, webhook-driven downgrade back to Free.",
+      "Three card templates (OG image, stat card, quote card) render server-side via next/og — no headless browser, no design tool in the loop.",
+      "Runs in Stripe test mode on purpose: this is a portfolio piece, not a live business, so no real charges — but every part of the billing pipeline is real.",
+    ],
+    liveUrl: "https://framekit-mauve.vercel.app",
+  },
+  {
     id: "codewrapped",
     title: "CodeWrapped — Shareable GitHub Year-in-Review",
     category: "Growth / Product Engineering",
