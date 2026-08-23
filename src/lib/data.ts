@@ -24,6 +24,7 @@ export const CEO = {
     "Full-Stack Web Architecture (Next.js / Node.js)",
     "Web3 & Smart Contracts (Solidity / Web3.js)",
     "AI Systems Integration (OpenAI / Claude APIs, Python Automation)",
+    "Workflow Automation & Integrations (n8n, Docker, REST API Orchestration)",
   ],
   certifications: [
     "Meta Python Professional",
