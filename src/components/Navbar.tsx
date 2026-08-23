@@ -13,6 +13,7 @@ const NAV_LINKS = [
   { href: "/#case-studies", label: "Case Studies" },
   { href: "/#terminal", label: "Terminal" },
   { href: "/projects", label: "Projects" },
+  { href: "/automations", label: "Automations" },
   { href: "/#contact", label: "Contact" },
 ];
 

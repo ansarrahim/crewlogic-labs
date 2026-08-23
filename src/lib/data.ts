@@ -285,3 +285,62 @@ export type Testimonial = {
 // Do not populate with placeholder/fake names; the Testimonials component
 // renders an honest "coming soon" state when this array is empty.
 export const TESTIMONIALS: Testimonial[] = [];
+
+export type AutomationTemplate = {
+  id: string;
+  title: string;
+  tagline: string;
+  description: string;
+  stack: string[];
+  price: string;
+  setupTime: string;
+  features: string[];
+};
+
+export const AUTOMATION_TEMPLATES: AutomationTemplate[] = [
+  {
+    id: "ai-lead-autoresponder",
+    title: "AI Lead Auto-Responder",
+    tagline: "Every inbound lead gets a real reply in seconds — day or night.",
+    description:
+      "A webhook-triggered n8n workflow: a lead comes in from your contact form, an AI model drafts a warm, on-brand reply, and it's sent automatically — before your team even sees the notification.",
+    stack: ["n8n", "Gemini AI", "Resend"],
+    price: "$149",
+    setupTime: "~10 min setup",
+    features: [
+      "Drops into any form or CRM that can call a webhook",
+      "AI-drafted reply — not a canned template, actually reads the lead's message",
+      "Full workflow JSON + step-by-step setup guide, yours to keep and modify",
+    ],
+  },
+  {
+    id: "review-sentiment-alert",
+    title: "Review Sentiment Alert",
+    tagline: "Know about a bad review the moment it lands, not weeks later.",
+    description:
+      "A new customer review comes in, AI classifies it positive, neutral, or negative and summarizes the core complaint. Negative reviews trigger an instant alert email so you can respond before it becomes a public problem.",
+    stack: ["n8n", "Gemini AI", "Resend"],
+    price: "$179",
+    setupTime: "~10 min setup",
+    features: [
+      "Works with any review source that can send a webhook (Google, Yelp, in-house forms)",
+      "AI sentiment classification plus a one-line summary of what went wrong",
+      "Only pings you on negative reviews — no alert fatigue on the good ones",
+    ],
+  },
+  {
+    id: "new-order-sync",
+    title: "New Order Sync",
+    tagline: "One order, three things done automatically — logged, confirmed, flagged if it's a big one.",
+    description:
+      "A new order hits the webhook, gets validated and enriched, logged to your Airtable base as a system of record, and the customer gets a confirmation email. Orders above a threshold you set also trigger a VIP alert to your team.",
+    stack: ["n8n", "Airtable", "Resend"],
+    price: "$199",
+    setupTime: "~15 min setup",
+    features: [
+      "Airtable as a lightweight CRM/inventory log — no separate database needed",
+      "Configurable VIP threshold alerts your team to high-value orders instantly",
+      "Built-in validation catches malformed orders before they hit your records",
+    ],
+  },
+];
