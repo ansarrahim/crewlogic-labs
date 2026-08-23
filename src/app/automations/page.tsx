@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Bot, MessageSquareWarning, ShoppingCart } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -55,6 +56,44 @@ export default function AutomationsPage() {
             </div>
 
             <AutomationTemplates />
+
+            <Reveal className="mx-auto mt-20 max-w-4xl">
+              <span className="mx-auto block text-center text-xs font-semibold uppercase tracking-widest text-cyan-400">
+                Proof, Not Promises
+              </span>
+              <h2 className="mt-3 text-center text-2xl font-bold tracking-tight text-slate-100">
+                Watch Them Actually Run
+              </h2>
+              <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-slate-400">
+                Real executions against a self-hosted n8n instance — live Gemini calls, live
+                Resend sends, live Airtable writes. No node in these recordings is faked or
+                pre-scripted.
+              </p>
+              <div className="mt-8 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50">
+                <video
+                  className="w-full"
+                  src="/automations/demo.mp4"
+                  poster="/automations/poster.jpg"
+                  controls
+                  playsInline
+                  muted
+                  loop
+                  preload="metadata"
+                />
+              </div>
+              <div className="mt-6 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50 p-4">
+                <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-emerald-400">
+                  Real Airtable Write — New Order Sync
+                </p>
+                <Image
+                  src="/automations/airtable-proof.png"
+                  alt="n8n execution detail showing a real record created in Airtable, with a real record ID and order fields"
+                  width={1440}
+                  height={900}
+                  className="w-full rounded-lg border border-slate-800"
+                />
+              </div>
+            </Reveal>
 
             <Reveal className="mx-auto mt-20 max-w-4xl">
               <h2 className="text-center text-2xl font-bold tracking-tight text-slate-100">
