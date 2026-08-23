@@ -137,6 +137,28 @@ export type CaseStudy = {
 
 export const CASE_STUDIES: CaseStudy[] = [
   {
+    id: "lead-score-api",
+    title: "Lead Score API — a Trained Model, Not a Prompt",
+    category: "Data Science / Machine Learning",
+    description:
+      "Scores inbound leads by conversion likelihood in milliseconds, trained on ~9,200 real leads with measured accuracy — the first project here written in Python instead of TypeScript.",
+    stack: ["Python", "FastAPI", "scikit-learn", "pandas", "Vercel"],
+    metric: "82.2% accuracy, 0.888 ROC-AUC",
+    problem:
+      "Everything else here calls an AI API per request — great for unstructured tasks like drafting a reply, wasteful for a decision made thousands of times a day like \"is this lead worth a callback.\" That's a training problem, not a prompting problem.",
+    approach: [
+      "NEXUS-AI trains a gradient boosting classifier on a real public lead-conversion dataset (~9,200 leads from an online education company's marketing campaigns), deliberately excluding any column a sales rep would only fill in after contact so nothing leaks into the training signal.",
+      "SENTINEL-SEC evaluates it against a logistic regression baseline on a held-out test split before shipping either one, so the reported accuracy is measured, not asserted.",
+      "STACK-CORE serves it through FastAPI on Vercel's Python runtime — a genuinely different backend stack from the other five projects, proving the Python/ML toolchain independently of the Next.js one.",
+    ],
+    outcomes: [
+      "82.2% accuracy and a 0.888 ROC-AUC on a real held-out test set — both reproducible by running the training script fresh, not hand-picked from a lucky run.",
+      "Scores a lead in milliseconds with zero per-request API cost, versus the latency and price of an LLM call for the same yes/no decision.",
+      "Pairs directly with the n8n AI Lead Auto-Responder: score first, then only spend an AI-drafted reply on the leads actually worth one.",
+    ],
+    liveUrl: "https://lead-score-api-three.vercel.app",
+  },
+  {
     id: "framekit",
     title: "Framekit — Metered Image API with Real Billing",
     category: "Product / SaaS Engineering",
