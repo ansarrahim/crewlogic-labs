@@ -62,6 +62,13 @@ export default function AutomationTemplates() {
               {template.setupTime}
             </div>
           </div>
+
+          <a
+            href={`/api/checkout?template=${template.id}`}
+            className="mt-4 inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-slate-950 transition-colors hover:bg-emerald-400"
+          >
+            Buy Now — {template.price}
+          </a>
         </motion.div>
       ))}
     </div>

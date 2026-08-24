@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Bot, MessageSquareWarning, ShoppingCart } from "lucide-react";
+import { Bot, CheckCircle2, MessageSquareWarning, ShoppingCart, XCircle } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import NexusChatWidget from "@/components/NexusChatWidget";
 import AutomationTemplates from "@/components/AutomationTemplates";
 import Reveal from "@/components/Reveal";
-import { SITE } from "@/lib/data";
+import { AUTOMATION_TEMPLATES, SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Automation Templates — CrewLogic Labs",
@@ -33,13 +33,35 @@ const HOW_IT_WORKS = [
   },
 ];
 
-export default function AutomationsPage() {
+export default async function AutomationsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ purchased?: string; checkout_error?: string }>;
+}) {
+  const { purchased, checkout_error: checkoutError } = await searchParams;
+  const purchasedTemplate = AUTOMATION_TEMPLATES.find((t) => t.id === purchased);
+
   return (
     <div className="flex flex-1 flex-col bg-slate-950 font-sans">
       <Navbar />
       <main id="main-content" className="flex-1">
         <section className="px-4 py-24 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-7xl">
+            {purchasedTemplate && (
+              <div className="mx-auto mb-10 flex max-w-2xl items-start gap-3 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4 text-sm text-emerald-300">
+                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" />
+                <p>
+                  You&apos;re in — check your inbox for {purchasedTemplate.title}. The workflow
+                  JSON and setup guide are on their way.
+                </p>
+              </div>
+            )}
+            {checkoutError && (
+              <div className="mx-auto mb-10 flex max-w-2xl items-start gap-3 rounded-2xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-300">
+                <XCircle className="mt-0.5 h-4 w-4 shrink-0" />
+                <p>Checkout couldn&apos;t start. Please try again, or email us directly below.</p>
+              </div>
+            )}
             <div className="mx-auto mb-14 max-w-2xl text-center">
               <span className="text-xs font-semibold uppercase tracking-widest text-cyan-400">
                 Automation Templates

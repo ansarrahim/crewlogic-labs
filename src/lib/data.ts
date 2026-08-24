@@ -316,6 +316,7 @@ export type AutomationTemplate = {
   description: string;
   stack: string[];
   price: string;
+  priceCents: number;
   setupTime: string;
   features: string[];
 };
@@ -329,6 +330,7 @@ export const AUTOMATION_TEMPLATES: AutomationTemplate[] = [
       "A webhook-triggered n8n workflow: a lead comes in from your contact form, an AI model drafts a warm, on-brand reply, and it's sent automatically — before your team even sees the notification.",
     stack: ["n8n", "Gemini AI", "Resend"],
     price: "$149",
+    priceCents: 14900,
     setupTime: "~10 min setup",
     features: [
       "Drops into any form or CRM that can call a webhook",
@@ -344,6 +346,7 @@ export const AUTOMATION_TEMPLATES: AutomationTemplate[] = [
       "A new customer review comes in, AI classifies it positive, neutral, or negative and summarizes the core complaint. Negative reviews trigger an instant alert email so you can respond before it becomes a public problem.",
     stack: ["n8n", "Gemini AI", "Resend"],
     price: "$179",
+    priceCents: 17900,
     setupTime: "~10 min setup",
     features: [
       "Works with any review source that can send a webhook (Google, Yelp, in-house forms)",
@@ -359,6 +362,7 @@ export const AUTOMATION_TEMPLATES: AutomationTemplate[] = [
       "A new order hits the webhook, gets validated and enriched, logged to your Airtable base as a system of record, and the customer gets a confirmation email. Orders above a threshold you set also trigger a VIP alert to your team.",
     stack: ["n8n", "Airtable", "Resend"],
     price: "$199",
+    priceCents: 19900,
     setupTime: "~15 min setup",
     features: [
       "Airtable as a lightweight CRM/inventory log — no separate database needed",
