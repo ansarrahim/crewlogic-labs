@@ -137,6 +137,28 @@ export type CaseStudy = {
 
 export const CASE_STUDIES: CaseStudy[] = [
   {
+    id: "contract-auditor",
+    title: "Contract Auditor — Real Static Analysis, Not AI Guessing",
+    category: "Blockchain / Security / AI",
+    description:
+      "A smart contract security tool that runs Slither — the same static analyzer used across the industry — against real Solidity code, then has Gemini triage every finding and surface what pattern-matching alone can't catch. Every result is labeled by its real source.",
+    stack: ["Python", "FastAPI", "Slither", "solc", "Gemini", "Vercel"],
+    metric: "Tested live against a real deployed contract",
+    problem:
+      "Asking an LLM to \"review this code for bugs\" produces confident-sounding output that can miss real issues or hallucinate ones. A useful security tool needs a deterministic foundation the AI layer works on top of, not instead of.",
+    approach: [
+      "SENTINEL-SEC runs Slither's 100+ real detectors against the contract's actual compiled AST — no EVM execution ever happens, nothing submitted is run.",
+      "NEXUS-AI triages each Slither finding specifically (confirm or dismiss, with reasoning) rather than free-reviewing the code from scratch, keeping the AI grounded in real tool output.",
+      "STACK-CORE bundles a real solc binary directly in the deployment after discovering Vercel's sandbox silently blocks solc's runtime download — diagnosed by isolating subprocess, import, and network steps one at a time rather than guessing.",
+    ],
+    outcomes: [
+      "Tested live against CertiProof's actual deployed CertificateRegistry.sol: Slither flagged one finding, Gemini correctly identified it as a false positive with accurate reasoning about why.",
+      "Gemini surfaced two real findings Slither's pattern-based detectors can't see — including a genuine best-practice gap (single-step ownership transfer) that real auditors flag routinely.",
+      "Every finding in the response is traceable to its actual source — the AI layer never silently relabels a real static-analysis result.",
+    ],
+    liveUrl: "https://contract-auditor-five.vercel.app",
+  },
+  {
     id: "lead-score-api",
     title: "Lead Score API — a Trained Model, Not a Prompt",
     category: "Data Science / Machine Learning",
