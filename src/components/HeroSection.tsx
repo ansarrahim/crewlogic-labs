@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar, MapPin, ShieldCheck } from "lucide-react";
-import { CEO, SITE } from "@/lib/data";
+import { AVAILABILITY, CEO, SITE } from "@/lib/data";
 
 const BADGES = [
   { icon: ShieldCheck, label: `Led by Engr. ${CEO.name}` },
@@ -38,13 +38,33 @@ export default function HeroSection() {
           initial={fadeUp.initial}
           animate={fadeUp.animate}
           transition={{ duration: 0.5, ease: EASE_OUT }}
-          className="mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-medium tracking-wide text-emerald-400"
+          className="mb-6 flex flex-wrap items-center justify-center gap-2"
         >
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-          </span>
-          {SITE.tagline}
+          <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-medium tracking-wide text-emerald-400">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+            </span>
+            {SITE.tagline}
+          </div>
+
+          <div
+            className={`inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-medium tracking-wide ${
+              AVAILABILITY.open
+                ? "border-cyan-500/30 bg-cyan-500/10 text-cyan-400"
+                : "border-slate-700 bg-slate-900/60 text-slate-400"
+            }`}
+          >
+            <span className="relative flex h-2 w-2">
+              {AVAILABILITY.open && (
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75" />
+              )}
+              <span
+                className={`relative inline-flex h-2 w-2 rounded-full ${AVAILABILITY.open ? "bg-cyan-500" : "bg-slate-500"}`}
+              />
+            </span>
+            {AVAILABILITY.open ? AVAILABILITY.label : AVAILABILITY.closedLabel}
+          </div>
         </motion.div>
 
         <motion.h1

@@ -15,6 +15,14 @@ export const SITE = {
   location: "Islamabad, Pakistan",
 };
 
+// Flip `open` to false when the project queue is full — the hero badge
+// reflects this immediately, no other changes needed.
+export const AVAILABILITY = {
+  open: true,
+  label: "Currently booking new projects",
+  closedLabel: "Booked through next opening — inquiries still welcome",
+};
+
 export const CEO = {
   name: "Muhammad Ansar",
   title: "CEO & Lead Systems Architect",
