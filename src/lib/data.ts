@@ -145,6 +145,28 @@ export type CaseStudy = {
 
 export const CASE_STUDIES: CaseStudy[] = [
   {
+    id: "chain-escrow",
+    title: "Chain Escrow — Engineered, Self-Audited, Deployed",
+    category: "Blockchain / Smart Contract Engineering",
+    description:
+      "An on-chain ERC-20 escrow: a buyer's funds sit in the contract until confirmed delivery, a voluntary seller refund, or an arbiter-resolved dispute with an arbitrary split — built to prove smart contract engineering specifically, not just another Web3 app wrapped around a contract.",
+    stack: ["Solidity", "Hardhat", "OpenZeppelin", "Ethers.js", "Sepolia"],
+    metric: "34 tests, 3 real self-audit passes, live on-chain",
+    problem:
+      "Freelancing without a platform's built-in payment protection means trusting a stranger with money on the honor system. Escrow is the standard fix — but most portfolio 'smart contract' projects are a copy-pasted ERC-20 with no real architecture, testing rigor, or security process behind them.",
+    approach: [
+      "SOLIS-33 designs the escrow state machine around OpenZeppelin's SafeERC20/ReentrancyGuard/Pausable for every fund-moving path — a deliberate departure from this portfolio's other contract, which never custodies funds and can safely hand-roll its own logic.",
+      "SENTINEL-SEC runs the contract through this portfolio's own Contract Auditor three times over the build, fixing what it actually found each time: a scoped pause mechanism that can stop new escrows but never trap funds already open, and a rescue function that's structurally incapable of touching money owed to an open escrow.",
+      "STACK-CORE writes a purpose-built malicious ERC-20 to prove the reentrancy guard specifically (not an incidental state check) blocks a reentrant call, plus a 200+ iteration randomized property sweep after finding Hardhat 3's native fuzz-test support needs forge-std, which isn't available as an npm package.",
+    ],
+    outcomes: [
+      "Zero unresolved High/Medium findings across three real Slither + Gemini audit passes — every finding either fixed in the contract or explicitly documented as an accepted, deliberate design tradeoff.",
+      "Deployed and source-verified on Ethereum Sepolia after every Polygon Amoy testnet faucet failed for unrelated reasons (broken OAuth, a mainnet-balance gate, a dead page) — both real lifecycle paths (create→confirm and create→dispute→resolve) proven end-to-end with real, on-chain transactions, not simulated.",
+      "Real gas costs read from actual transaction receipts, not estimated — createEscrow runs ~185k gas, confirmDelivery ~96k, documented in full in the README.",
+    ],
+    liveUrl: "https://eth-sepolia.blockscout.com/address/0x57cc9e329Ca233AEe1c0A00C2622E644B4295D6E#code",
+  },
+  {
     id: "contract-auditor",
     title: "Contract Auditor — Real Static Analysis, Not AI Guessing",
     category: "Blockchain / Security / AI",
