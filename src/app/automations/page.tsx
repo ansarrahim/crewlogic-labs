@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Bot, CheckCircle2, MessageSquareWarning, ShoppingCart, XCircle } from "lucide-react";
+import { ArrowRight, Bot, CheckCircle2, MessageSquareWarning, ShoppingCart, XCircle } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import NexusChatWidget from "@/components/NexusChatWidget";
@@ -75,6 +75,34 @@ export default async function AutomationsPage({
                 built and verified live against real AI, email, and database APIs before it was
                 listed here.
               </p>
+            </div>
+
+            <div className="mx-auto mb-14 max-w-4xl rounded-2xl border border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 via-slate-900/50 to-slate-900/50 p-6 sm:p-8">
+              <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/40 bg-emerald-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-emerald-400">
+                    Free — For Now
+                  </span>
+                  <h2 className="mt-3 text-xl font-bold text-slate-100 sm:text-2xl">
+                    n8n Agent Engineering — a real, hands-on course
+                  </h2>
+                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-400">
+                    Prompt engineering and debugging specifically for n8n&apos;s AI Agent nodes —
+                    22 lessons, graded quizzes, locked module progression, and a full swipe file
+                    of real system prompts and workflow templates. Built from real bugs, not
+                    hypothetical ones.
+                  </p>
+                </div>
+                <a
+                  href="https://claude.ai/code/artifact/9a5d8e1e-efca-4089-a316-95e07fc68ff7"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-emerald-500 px-5 py-3 text-sm font-semibold text-slate-950 transition-colors hover:bg-emerald-400"
+                >
+                  Start the Course
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+              </div>
             </div>
 
             <AutomationTemplates />
