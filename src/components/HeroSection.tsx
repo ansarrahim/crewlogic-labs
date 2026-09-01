@@ -73,11 +73,11 @@ export default function HeroSection() {
           transition={{ duration: 0.5, ease: EASE_OUT, delay: 0.06 }}
           className="mx-auto max-w-4xl text-4xl font-bold leading-tight tracking-tight text-slate-100 sm:text-5xl lg:text-6xl"
         >
-          Engineering Enterprise Systems with{" "}
+          AI Automation Consulting for Small Businesses,{" "}
           <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-            Human Leadership
-          </span>{" "}
-          &amp; Autonomous AI Crews.
+            Built by Engineers Who Ship
+          </span>
+          .
         </motion.h1>
 
         <motion.p
@@ -86,9 +86,11 @@ export default function HeroSection() {
           transition={{ duration: 0.5, ease: EASE_OUT, delay: 0.12 }}
           className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg"
         >
-          We architect Web3 dApps, complex backend microservices, and
-          LLM-powered automation pipelines. Software engineering standards
-          backed by virtual AI specialists.
+          We design and build real n8n automations — missed-call text-backs,
+          support triage, lead auto-replies — tested against live APIs, not
+          handed over as a template to figure out. The same engineering
+          discipline that shipped production Web3 systems and live SaaS
+          products, now aimed at the busywork costing you customers.
         </motion.p>
 
         <motion.div
@@ -115,10 +117,10 @@ export default function HeroSection() {
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <a
-            href="#squad"
+            href="/automations"
             className="group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-500 px-6 py-3 text-sm font-semibold text-slate-950 shadow-[0_0_25px_rgba(184,147,90,0.4)] transition-[background-color,transform] active:scale-[0.97] hover:bg-emerald-400 sm:w-auto"
           >
-            Explore Virtual Squad
+            Browse Automations
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
           <a
@@ -126,7 +128,7 @@ export default function HeroSection() {
             className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-slate-700 bg-slate-900/60 px-6 py-3 text-sm font-semibold text-slate-100 transition-[color,border-color,transform] active:scale-[0.97] hover:border-cyan-500/50 hover:text-cyan-400 sm:w-auto"
           >
             <Calendar className="h-4 w-4" />
-            Schedule Tech Consultation
+            Schedule a Consult
           </a>
         </motion.div>
       </div>

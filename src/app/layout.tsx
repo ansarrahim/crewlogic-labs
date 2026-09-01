@@ -22,9 +22,9 @@ const fraunces = Fraunces({
 });
 
 const SITE_URL = "https://crewlogic-labs.vercel.app";
-const TITLE = "CrewLogic Labs — Autonomous AI Engineering. Human Architectural Rigor.";
+const TITLE = "CrewLogic Labs — AI Automation & Consulting for Small Businesses";
 const DESCRIPTION =
-  "CrewLogic Labs is a high-end AI & Web3 software engineering agency led by Engr. Muhammad Ansar, powered by 5 live AI agents building Web3 dApps, backend microservices, and LLM-powered automation pipelines.";
+  "CrewLogic Labs is an AI automation and consulting agency led by Engr. Muhammad Ansar, building real n8n workflows and AI-powered systems for small businesses — backed by production Web3, backend, and full-stack engineering experience.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -32,7 +32,10 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
   keywords: [
     "CrewLogic Labs",
-    "AI engineering agency",
+    "AI automation agency",
+    "AI consulting",
+    "n8n automation",
+    "small business automation",
     "Web3 development",
     "Next.js agency",
     "Solidity development",

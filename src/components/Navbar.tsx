@@ -8,12 +8,12 @@ import { Menu, Terminal, X } from "lucide-react";
 import { SITE } from "@/lib/data";
 
 const NAV_LINKS = [
-  { href: "/#leadership", label: "Leadership" },
-  { href: "/#squad", label: "Squad" },
+  { href: "/automations", label: "Automations" },
   { href: "/#case-studies", label: "Case Studies" },
+  { href: "/#squad", label: "Squad" },
+  { href: "/#leadership", label: "Leadership" },
   { href: "/#terminal", label: "Terminal" },
   { href: "/projects", label: "Projects" },
-  { href: "/automations", label: "Automations" },
   { href: "/#contact", label: "Contact" },
 ];
 
@@ -86,7 +86,7 @@ export default function Navbar() {
             className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-[0_0_20px_rgba(184,147,90,0.35)] transition-[background-color,transform] active:scale-95 hover:bg-emerald-400"
           >
             <Terminal className="h-4 w-4" />
-            Scope Project
+            Book a Consult
           </Link>
         </div>
 

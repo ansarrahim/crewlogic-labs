@@ -9,7 +9,7 @@ import {
 
 export const SITE = {
   name: "CrewLogic Labs",
-  tagline: "Autonomous AI Engineering. Human Architectural Rigor.",
+  tagline: "AI Automation & Consulting for Small Businesses.",
   email: "ansarrahim789@gmail.com",
   phone: "+92 343 1722842",
   location: "Islamabad, Pakistan",
