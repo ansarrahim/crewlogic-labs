@@ -422,4 +422,36 @@ export const AUTOMATION_TEMPLATES: AutomationTemplate[] = [
       "Built-in validation catches malformed orders before they hit your records",
     ],
   },
+  {
+    id: "missed-call-textback",
+    title: "Missed-Call Text-Back",
+    tagline: "A ringing phone nobody answers is a lead walking away — this catches it in seconds.",
+    description:
+      "A missed call comes in, an AI-drafted text goes out automatically apologizing and asking what the caller needs — before they've even hung up on the idea of calling you back. Built and tested with the text-send step standing in as email for the demo, since it needs a buyer's own SMS account to go live; swapping in real Twilio/Vonage is a one-node change.",
+    stack: ["n8n", "Gemini AI", "Twilio-ready"],
+    price: "$149",
+    priceCents: 14900,
+    setupTime: "~10 min setup, plus your own SMS provider account",
+    features: [
+      "Payload shaped to match a real Twilio Voice callback — drop-in ready once you have SMS credentials",
+      "AI-drafted reply — reads like a real person, not a canned auto-text",
+      "Full workflow JSON + setup guide, including exactly how to swap in real SMS sending",
+    ],
+  },
+  {
+    id: "support-triage-faq",
+    title: "Support Triage + FAQ Auto-Answer",
+    tagline: "Answers the questions you've answered a hundred times — flags the ones that actually need you.",
+    description:
+      "An incoming support question gets checked against your FAQ. If it's covered, a grounded reply goes out automatically — never invented, never off-script. If it's not covered (a complaint, a billing dispute, anything ambiguous), it skips answering entirely and alerts a human with a summary instead of guessing.",
+    stack: ["n8n", "Gemini AI", "Resend"],
+    price: "$179",
+    priceCents: 17900,
+    setupTime: "~10 min setup",
+    features: [
+      "Never answers from outside your FAQ — an unanswerable question escalates instead of guessing",
+      "FAQ lives as plain, easy-to-edit text in the workflow — swap for Airtable/Notion if you want to self-edit",
+      "Every escalation includes an AI-written summary, not just the raw customer message",
+    ],
+  },
 ];
