@@ -4,6 +4,7 @@ import HowItWorks from "@/components/HowItWorks";
 import LeadershipSection from "@/components/LeadershipSection";
 import AgentGrid from "@/components/AgentGrid";
 import CaseStudies from "@/components/CaseStudies";
+import EngineeringServices from "@/components/EngineeringServices";
 import Testimonials from "@/components/Testimonials";
 import CLITerminal from "@/components/CLITerminal";
 import ContactSection from "@/components/ContactSection";
@@ -21,6 +22,7 @@ export default function Home() {
         <LeadershipSection />
         <AgentGrid />
         <CaseStudies />
+        <EngineeringServices />
         <Testimonials />
         <CLITerminal />
         <ContactSection />

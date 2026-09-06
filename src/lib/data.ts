@@ -465,3 +465,69 @@ export const AUTOMATION_TEMPLATES: AutomationTemplate[] = [
     ],
   },
 ];
+
+export type EngineeringService = {
+  id: string;
+  title: string;
+  tagline: string;
+  description: string;
+  stack: string[];
+  startingPrice: string;
+  scopeNote: string;
+  features: string[];
+  stackNeededValue: (typeof STACK_NEEDED_OPTIONS)[number];
+};
+
+export const ENGINEERING_SERVICES: EngineeringService[] = [
+  {
+    id: "smart-contract-development",
+    title: "Smart Contract Development",
+    tagline: "A production-grade contract, not a copy-pasted template.",
+    description:
+      "Custom Solidity systems — escrow, token issuance, on-chain verification, or your own contract logic — built on OpenZeppelin's audited primitives with a real automated test suite, the same process proven on Chain Escrow (34 tests, 3 self-audit passes, live on Sepolia).",
+    stack: ["Solidity", "Hardhat", "OpenZeppelin", "Ethers.js"],
+    startingPrice: "$1,800",
+    scopeNote:
+      "Starting scope: a single-contract system with a full test suite. Multi-contract protocols and DeFi systems scope higher — quoted after a scope call.",
+    features: [
+      "Full Hardhat test suite, not just a happy-path demo",
+      "Built on OpenZeppelin's audited primitives wherever funds or access control are involved",
+      "Deployed and source-verified on a public testnet before mainnet",
+    ],
+    stackNeededValue: "Web3 / Solidity",
+  },
+  {
+    id: "security-audit",
+    title: "Smart Contract Security Audit",
+    tagline: "Real static analysis plus AI-assisted triage — every finding traced to its source.",
+    description:
+      "The same two-layer process behind the Contract Auditor tool: Slither's real detectors run against your compiled contract, then each finding is triaged and explained — confirmed, dismissed, or flagged as a genuine best-practice gap — with a written report.",
+    stack: ["Slither", "Solidity", "Gemini-assisted triage"],
+    startingPrice: "$900",
+    scopeNote:
+      "Starting scope: a single contract under ~300 lines. Multi-contract protocols and upgradeable proxies scope higher — quoted after reviewing your repo.",
+    features: [
+      "Full Slither static-analysis pass plus manual review of access control and fund-moving paths",
+      "Written report — every finding labeled Critical/High/Medium/Low, traced to its real source",
+      "One re-check pass included after you fix what's found",
+    ],
+    stackNeededValue: "Security Audit",
+  },
+  {
+    id: "custom-fullstack-build",
+    title: "Custom Full-Stack Build",
+    tagline: "A real production system, not a static site with a form bolted on.",
+    description:
+      "Next.js/TypeScript builds with the same patterns behind Framekit's metered billing (real Stripe webhooks, hashed API keys, live usage quotas) and PulseQueue's durable backend work — for a SaaS MVP, an internal ops tool, or a custom system off-the-shelf software doesn't cover.",
+    stack: ["Next.js", "TypeScript", "Postgres / Node.js", "Stripe"],
+    startingPrice: "$2,500",
+    scopeNote:
+      "Starting scope: a single core flow (one dashboard, one billing integration, one data pipeline). Multi-role platforms scope higher — quoted after a scope call.",
+    features: [
+      "Server-rendered Next.js App Router, not a client-side SPA bolted onto an API",
+      "Real integrations wired to signature-verified webhooks — not stubbed",
+      "Deployed on Vercel with CI on every push",
+    ],
+    stackNeededValue: "Full-Stack Next.js",
+  },
+];
