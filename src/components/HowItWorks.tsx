@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Code2, PackageCheck, PhoneCall } from "lucide-react";
 import Reveal from "@/components/Reveal";
@@ -64,19 +65,34 @@ export default function HowItWorks() {
 
         <Reveal
           delay={0.24}
-          className="mt-10 flex flex-col items-center justify-center gap-4 rounded-2xl border border-slate-800 bg-slate-900/30 p-6 text-center sm:flex-row sm:justify-between sm:text-left"
+          className="mt-10 grid grid-cols-1 gap-6 rounded-2xl border border-slate-800 bg-slate-900/30 p-6 lg:grid-cols-5 lg:items-center"
         >
-          <p className="text-sm text-slate-400">
-            5 automations already built this way — tested live against real
-            Gemini, Resend, and Airtable calls before they were listed.
-          </p>
-          <Link
-            href="/automations"
-            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg border border-slate-700 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition-[color,border-color,transform] active:scale-[0.97] hover:border-emerald-500/50 hover:text-emerald-400"
-          >
-            See one run
-            <ArrowRight className="h-4 w-4" />
-          </Link>
+          <div className="lg:col-span-2">
+            <p className="text-sm text-slate-400">
+              5 automations already built this way — tested live against
+              real Gemini, Resend, and Airtable calls before they were
+              listed.
+            </p>
+            <Link
+              href="/automations"
+              className="mt-4 inline-flex shrink-0 items-center justify-center gap-2 rounded-lg border border-slate-700 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition-[color,border-color,transform] active:scale-[0.97] hover:border-emerald-500/50 hover:text-emerald-400"
+            >
+              See one run
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+          <div className="overflow-hidden rounded-xl border border-slate-800 bg-slate-950/40 p-3 lg:col-span-3">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-emerald-400">
+              Real n8n Canvas — Missed-Call Text-Back
+            </p>
+            <Image
+              src="/proof/n8n-missed-call-canvas.png"
+              alt="Real n8n workflow canvas: Missed Call Webhook, Parse Call Event, Draft Text-Back via Gemini, Build Message, Send Text-Back via Resend, Respond"
+              width={1600}
+              height={1000}
+              className="w-full rounded-lg border border-slate-800"
+            />
+          </div>
         </Reveal>
       </div>
     </section>

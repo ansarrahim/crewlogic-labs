@@ -144,6 +144,18 @@ export default async function AutomationsPage({
                   className="w-full rounded-lg border border-slate-800"
                 />
               </div>
+              <div className="mt-6 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50 p-4">
+                <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-emerald-400">
+                  Real n8n Canvas — Support Triage + FAQ Auto-Answer
+                </p>
+                <Image
+                  src="/proof/n8n-faq-triage-canvas.png"
+                  alt="Real n8n workflow canvas: Support Webhook, Load FAQ + Context, Triage via Gemini, Parse Triage, Answerable branch, Send Answer or Send Escalation via Resend"
+                  width={1600}
+                  height={1000}
+                  className="w-full rounded-lg border border-slate-800"
+                />
+              </div>
             </Reveal>
 
             <Reveal className="mx-auto mt-20 max-w-4xl">
