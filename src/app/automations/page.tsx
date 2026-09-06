@@ -12,7 +12,7 @@ import { AUTOMATION_TEMPLATES, SITE } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Automation Templates — CrewLogic Labs",
   description:
-    "Ready-to-deploy n8n workflow templates for lead response, review monitoring, and order sync — real automations, tested live, not diagrams.",
+    "Ready-to-deploy n8n workflow templates for lead response, review monitoring, order sync, missed-call text-back, and support triage — real automations, tested live, not diagrams.",
 };
 
 const HOW_IT_WORKS = [
@@ -70,10 +70,11 @@ export default async function AutomationsPage({
                 n8n Workflows Built to Run, Not Just Demo
               </h1>
               <p className="mt-4 text-slate-400">
-                Three self-contained automations for small and local businesses — an AI lead
-                responder, a review sentiment alert, and an order sync pipeline. Each one was
-                built and verified live against real AI, email, and database APIs before it was
-                listed here.
+                Five self-contained automations for small and local businesses — an AI lead
+                responder, a review sentiment alert, an order sync pipeline, a missed-call
+                text-back, and a support triage + FAQ auto-answer. Each one was built and
+                verified live against real AI, email, and database APIs before it was listed
+                here.
               </p>
             </div>
 

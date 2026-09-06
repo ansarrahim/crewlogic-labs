@@ -20,8 +20,8 @@ export default function CaseStudies() {
             Systems We&apos;ve Engineered
           </h2>
           <p className="mt-4 text-slate-400">
-            A sample of production-grade delivery across AI, Web3, and
-            enterprise full-stack domains.
+            The engineering depth behind the automations — production-grade
+            delivery across AI, Web3, and full-stack systems.
           </p>
         </Reveal>
 
