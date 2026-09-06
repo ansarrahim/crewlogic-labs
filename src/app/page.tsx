@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import HowItWorks from "@/components/HowItWorks";
 import LeadershipSection from "@/components/LeadershipSection";
 import AgentGrid from "@/components/AgentGrid";
 import CaseStudies from "@/components/CaseStudies";
@@ -16,6 +17,7 @@ export default function Home() {
       <Navbar />
       <main id="main-content" className="flex-1">
         <HeroSection />
+        <HowItWorks />
         <LeadershipSection />
         <AgentGrid />
         <CaseStudies />
