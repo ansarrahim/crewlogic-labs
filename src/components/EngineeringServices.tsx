@@ -10,7 +10,7 @@ const EASE_OUT = [0.23, 1, 0.32, 1] as const;
 
 export default function EngineeringServices() {
   return (
-    <section id="custom-engineering" className="px-4 py-24 sm:px-6 lg:px-8">
+    <section id="custom-engineering" className="bg-slate-900/20 px-4 py-24 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <Reveal className="mx-auto mb-14 max-w-2xl text-center">
           <span className="text-xs font-semibold uppercase tracking-widest text-indigo-400">

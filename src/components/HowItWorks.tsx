@@ -1,5 +1,6 @@
 "use client";
 
+import { Fragment } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Code2, PackageCheck, PhoneCall } from "lucide-react";
@@ -25,7 +26,7 @@ const STEPS = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="px-4 py-24 sm:px-6 lg:px-8">
+    <section id="how-it-works" className="bg-slate-900/20 px-4 py-24 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <Reveal className="mx-auto mb-14 max-w-2xl text-center">
           <span className="text-xs font-semibold uppercase tracking-widest text-cyan-400">
@@ -40,26 +41,32 @@ export default function HowItWorks() {
           </p>
         </Reveal>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="flex flex-col gap-10 md:flex-row md:items-start md:gap-2">
           {STEPS.map((step, i) => (
-            <Reveal
-              key={step.title}
-              delay={i * 0.08}
-              className="relative rounded-2xl border border-slate-800 bg-slate-900/50 p-6"
-            >
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-400">
-                <step.icon className="h-5 w-5" />
-              </div>
-              <span className="absolute right-6 top-6 font-mono text-xs font-semibold text-muted">
-                0{i + 1}
-              </span>
-              <h3 className="mt-5 text-base font-semibold text-slate-100">
-                {step.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-400">
-                {step.body}
-              </p>
-            </Reveal>
+            <Fragment key={step.title}>
+              <Reveal
+                delay={i * 0.1}
+                className="flex flex-1 flex-col items-center text-center md:items-start md:text-left"
+              >
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-emerald-500/40 bg-emerald-500/10 text-emerald-400">
+                  <step.icon className="h-6 w-6" />
+                </div>
+                <span className="mt-4 font-mono text-xs font-semibold tracking-widest text-muted">
+                  STEP 0{i + 1}
+                </span>
+                <h3 className="mt-1.5 text-base font-semibold text-slate-100">
+                  {step.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-400">
+                  {step.body}
+                </p>
+              </Reveal>
+              {i < STEPS.length - 1 && (
+                <div className="hidden shrink-0 items-center justify-center pt-5 md:flex">
+                  <ArrowRight className="h-5 w-5 text-slate-700" />
+                </div>
+              )}
+            </Fragment>
           ))}
         </div>
 
