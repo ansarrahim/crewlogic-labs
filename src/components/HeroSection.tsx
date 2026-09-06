@@ -10,6 +10,13 @@ const BADGES = [
   { icon: ShieldCheck, label: "Production-Grade Engineering" },
 ];
 
+const STATS = [
+  { value: "5", label: "Automations shipped & tested live", color: "text-emerald-400" },
+  { value: "9", label: "Real case studies, zero mockups", color: "text-indigo-300" },
+  { value: "82.2%", label: "Real ML model accuracy", color: "text-sky-400" },
+  { value: "100%", label: "Tested against real APIs", color: "text-amber-400" },
+];
+
 const EASE_OUT = [0.23, 1, 0.32, 1] as const;
 
 const fadeUp = {
@@ -124,6 +131,22 @@ export default function HeroSection() {
             <Calendar className="h-4 w-4" />
             Schedule a Consult
           </a>
+        </motion.div>
+
+        <motion.div
+          initial={fadeUp.initial}
+          animate={fadeUp.animate}
+          transition={{ duration: 0.5, ease: EASE_OUT, delay: 0.3 }}
+          className="mx-auto mt-16 grid max-w-3xl grid-cols-2 gap-x-6 gap-y-8 border-t border-slate-800 pt-10 sm:grid-cols-4"
+        >
+          {STATS.map((stat) => (
+            <div key={stat.label}>
+              <div className={`text-3xl font-bold tracking-tight sm:text-4xl ${stat.color}`}>
+                {stat.value}
+              </div>
+              <p className="mt-1.5 text-xs leading-snug text-slate-400">{stat.label}</p>
+            </div>
+          ))}
         </motion.div>
       </div>
     </section>

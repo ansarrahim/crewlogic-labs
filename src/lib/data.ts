@@ -50,6 +50,7 @@ export type Agent = {
   capabilities: string[];
   status: string;
   icon: LucideIcon;
+  accent: "emerald" | "indigo" | "sky" | "rose" | "amber";
 };
 
 export const AGENTS: Agent[] = [
@@ -67,6 +68,7 @@ export const AGENTS: Agent[] = [
     ],
     status: "ONLINE • 24/7 Processing Engine",
     icon: Bot,
+    accent: "emerald",
   },
   {
     id: "solis-33",
@@ -82,6 +84,7 @@ export const AGENTS: Agent[] = [
     ],
     status: "ONLINE • On-Chain Audit Ready",
     icon: Network,
+    accent: "indigo",
   },
   {
     id: "stack-core",
@@ -97,6 +100,7 @@ export const AGENTS: Agent[] = [
     ],
     status: "ONLINE • 99.9% Uptime SLA",
     icon: Layers,
+    accent: "sky",
   },
   {
     id: "pixel-ux",
@@ -112,6 +116,7 @@ export const AGENTS: Agent[] = [
     ],
     status: "ONLINE • Active Design Tokens",
     icon: Cpu,
+    accent: "rose",
   },
   {
     id: "sentinel-sec",
@@ -127,6 +132,7 @@ export const AGENTS: Agent[] = [
     ],
     status: "ONLINE • Zero Vulnerability Enforcement",
     icon: ShieldCheck,
+    accent: "amber",
   },
 ];
 
