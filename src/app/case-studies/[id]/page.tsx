@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import NexusChatWidget from "@/components/NexusChatWidget";
 import { CASE_STUDIES } from "@/lib/data";
+import { TRACK_META } from "@/lib/trackStyles";
 
 export async function generateStaticParams() {
   return CASE_STUDIES.map((study) => ({ id: study.id }));
@@ -33,6 +34,7 @@ export default async function CaseStudyPage({
   const { id } = await params;
   const study = CASE_STUDIES.find((s) => s.id === id);
   if (!study) notFound();
+  const meta = TRACK_META[study.track];
 
   return (
     <div className="flex flex-1 flex-col bg-slate-950 font-sans">
@@ -48,7 +50,7 @@ export default async function CaseStudyPage({
               Back to case studies
             </Link>
 
-            <span className="mt-8 block text-xs font-semibold uppercase tracking-widest text-cyan-400">
+            <span className={`mt-8 block text-xs font-semibold uppercase tracking-widest ${meta.eyebrow}`}>
               {study.category}
             </span>
             <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-100 sm:text-4xl">
@@ -68,7 +70,9 @@ export default async function CaseStudyPage({
             </div>
 
             <div className="mt-6 flex flex-wrap items-center gap-3">
-              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-sm font-medium text-emerald-400">
+              <div
+                className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium ${meta.metricBadge} ${meta.metricText}`}
+              >
                 <Gauge className="h-4 w-4" />
                 {study.metric}
               </div>
@@ -77,7 +81,7 @@ export default async function CaseStudyPage({
                   href={study.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm font-medium text-cyan-300 transition-colors hover:border-cyan-400/50 hover:text-cyan-200"
+                  className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors ${meta.liveBadge} ${meta.liveText}`}
                 >
                   <ExternalLink className="h-4 w-4" />
                   View Live Demo

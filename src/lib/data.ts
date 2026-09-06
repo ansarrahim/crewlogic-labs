@@ -134,6 +134,7 @@ export type CaseStudy = {
   id: string;
   title: string;
   category: string;
+  track: "automation" | "engineering";
   description: string;
   stack: string[];
   metric: string;
@@ -148,6 +149,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     id: "chain-escrow",
     title: "Chain Escrow — Engineered, Self-Audited, Deployed",
     category: "Blockchain / Smart Contract Engineering",
+    track: "engineering",
     description:
       "An on-chain ERC-20 escrow: a buyer's funds sit in the contract until confirmed delivery, a voluntary seller refund, or an arbiter-resolved dispute with an arbitrary split — built to prove smart contract engineering specifically, not just another Web3 app wrapped around a contract.",
     stack: ["Solidity", "Hardhat", "OpenZeppelin", "Ethers.js", "Sepolia"],
@@ -170,6 +172,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     id: "contract-auditor",
     title: "Contract Auditor — Real Static Analysis, Not AI Guessing",
     category: "Blockchain / Security / AI",
+    track: "engineering",
     description:
       "A smart contract security tool that runs Slither — the same static analyzer used across the industry — against real Solidity code, then has Gemini triage every finding and surface what pattern-matching alone can't catch. Every result is labeled by its real source.",
     stack: ["Python", "FastAPI", "Slither", "solc", "Gemini", "Vercel"],
@@ -192,6 +195,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     id: "lead-score-api",
     title: "Lead Score API — a Trained Model, Not a Prompt",
     category: "Data Science / Machine Learning",
+    track: "automation",
     description:
       "Scores inbound leads by conversion likelihood in milliseconds, trained on ~9,200 real leads with measured accuracy — the first project here written in Python instead of TypeScript.",
     stack: ["Python", "FastAPI", "scikit-learn", "pandas", "Vercel"],
@@ -214,6 +218,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     id: "framekit",
     title: "Framekit — Metered Image API with Real Billing",
     category: "Product / SaaS Engineering",
+    track: "engineering",
     description:
       "A real subscription product: sign up, get an API key, call an endpoint, get back a rendered PNG card. Free and Pro tiers, real Stripe Checkout, real webhooks, real usage metering — not a static pricing page bolted onto a demo.",
     stack: ["Next.js", "TypeScript", "Postgres (Neon + Drizzle)", "Upstash Redis", "Stripe"],
@@ -236,6 +241,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     id: "codewrapped",
     title: "CodeWrapped — Shareable GitHub Year-in-Review",
     category: "Growth / Product Engineering",
+    track: "engineering",
     description:
       "Enter any GitHub username and get an animated, shareable wrap of their coding year — and because the share link's own preview image is generated per-user, the growth loop is built into the URL itself.",
     stack: ["Next.js", "TypeScript", "GitHub GraphQL API", "Upstash Redis", "Framer Motion"],
@@ -258,6 +264,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     id: "pulsequeue",
     title: "PulseQueue — Live Distributed Job Queue Platform",
     category: "Backend / Distributed Systems",
+    track: "engineering",
     description:
       "A real durable job queue you can watch work — submit a job and see it flow queued, processing, retried with exponential backoff, or permanently dead-lettered, live.",
     stack: ["Next.js", "TypeScript", "Upstash QStash", "Upstash Redis", "Vercel"],
@@ -279,7 +286,8 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     id: "cert-verify",
     title: "Immutable Blockchain Certificate Verification System",
-    category: "Web3 / Blockchain",
+    category: "Blockchain / Credential Verification",
+    track: "engineering",
     description:
       "A tamper-proof, on-chain credential verification platform issuing and validating certificates as cryptographically signed assets — eliminating forgery and manual verification overhead.",
     stack: ["Solidity", "Polygon", "Web3.js", "Next.js", "Node.js", "MongoDB"],
@@ -302,6 +310,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     id: "multi-agent-ai",
     title: "Multi-Agent Conversational AI & Workflow Automation Engine",
     category: "AI / Automation",
+    track: "automation",
     description:
       "An orchestrated fleet of LLM agents handling conversational support, task routing, and backend automation across multiple business workflows with minimal human intervention.",
     stack: ["OpenAI API", "Claude API", "Python", "LangChain"],
@@ -323,6 +332,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     id: "enterprise-portal",
     title: "Scalable Next.js / Node.js Enterprise Microservice Portal",
     category: "Full-Stack Architecture",
+    track: "engineering",
     description:
       "A production-grade internal portal built on server components and a microservice backend, engineered for high concurrency, schema-optimized data flow, and continuous deployment.",
     stack: ["Next.js", "Node.js", "TypeScript", "MongoDB", "Vercel"],
