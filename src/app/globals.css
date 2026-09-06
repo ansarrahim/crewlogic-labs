@@ -43,6 +43,19 @@
   --color-cyan-300: #d9bd8a;
   --color-cyan-400: #b8935a;
   --color-cyan-500: #c9a05f;
+
+  /* --- Circuit accent (Custom Engineering) ---------------------------
+     A second, genuinely distinct accent reserved for blockchain/
+     full-stack "Custom Engineering" content only (the engineering
+     case-study tab, its case-study detail pages, and the
+     EngineeringServices pricing cards) — never blended into the
+     Automation-track gold. `indigo` is unused elsewhere in this
+     codebase, so redefining it is safe the same way emerald/cyan
+     were. Cool violet-indigo against the warm gold Ledger identity;
+     contrast-checked against #0d130f (WCAG AA+ for all three steps). */
+  --color-indigo-300: #c9c7f7;
+  --color-indigo-400: #9795e6;
+  --color-indigo-500: #8983e8;
 }
 
 body {
@@ -98,5 +111,33 @@ h3 {
   .animate-cursor-blink {
     animation: none;
     opacity: 1;
+  }
+}
+
+@keyframes hero-drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-120px, -80px, 0);
+  }
+}
+
+.hero-constellation {
+  position: absolute;
+  inset: -10%;
+  width: 120%;
+  height: 120%;
+  background-image:
+    radial-gradient(rgba(184, 147, 90, 0.35) 1px, transparent 1.5px),
+    radial-gradient(rgba(184, 147, 90, 0.18) 1px, transparent 1.5px);
+  background-size: 140px 140px, 90px 90px;
+  background-position: 0 0, 45px 45px;
+  animation: hero-drift 60s linear infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-constellation {
+    animation: none;
   }
 }

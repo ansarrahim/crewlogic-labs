@@ -28,10 +28,7 @@ export default function HeroSection() {
             "radial-gradient(circle at 20% 15%, rgba(184,147,90,0.16), transparent 45%), radial-gradient(circle at 80% 10%, rgba(184,147,90,0.14), transparent 40%)",
         }}
       />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(rgba(148,163,184,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.05)_1px,transparent_1px)] bg-[size:64px_64px]"
-      />
+      <div aria-hidden className="hero-constellation pointer-events-none -z-10" />
 
       <div className="mx-auto max-w-5xl text-center">
         <motion.div
@@ -73,11 +70,8 @@ export default function HeroSection() {
           transition={{ duration: 0.5, ease: EASE_OUT, delay: 0.06 }}
           className="mx-auto max-w-4xl text-4xl font-bold leading-tight tracking-tight text-slate-100 sm:text-5xl lg:text-6xl"
         >
-          AI Automation Consulting for Small Businesses,{" "}
-          <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-            Built by Engineers Who Ship
-          </span>
-          .
+          AI Automation Consulting for Small Businesses, Built by Engineers
+          Who <span className="text-emerald-400">Ship</span>.
         </motion.h1>
 
         <motion.p
