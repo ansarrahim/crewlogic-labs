@@ -5,6 +5,7 @@ import LeadershipSection from "@/components/LeadershipSection";
 import CaseStudies from "@/components/CaseStudies";
 import Testimonials from "@/components/Testimonials";
 import CLITerminal from "@/components/CLITerminal";
+import FreeAuditSection from "@/components/FreeAuditSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import NexusChatWidget from "@/components/NexusChatWidget";
@@ -20,6 +21,7 @@ export default function Home() {
         <CaseStudies track="automation" />
         <Testimonials />
         <CLITerminal />
+        <FreeAuditSection />
         <ContactSection />
       </main>
       <Footer />
