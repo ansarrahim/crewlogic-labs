@@ -136,8 +136,36 @@ export default function HeroSection() {
         <motion.div
           initial={fadeUp.initial}
           animate={fadeUp.animate}
+          transition={{ duration: 0.5, ease: EASE_OUT, delay: 0.27 }}
+          className="mx-auto mt-14 flex max-w-xs flex-col items-center"
+        >
+          <span className="mb-3 rounded-full border border-slate-700 bg-slate-900/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-muted">
+            Example — Missed-Call Text-Back
+          </span>
+          <div className="w-full overflow-hidden rounded-[2rem] border-4 border-slate-800 bg-slate-950 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)]">
+            <div className="flex items-center justify-between border-b border-slate-800 bg-slate-900/70 px-4 py-2.5">
+              <span className="text-xs font-semibold text-slate-300">Messages</span>
+              <span className="text-[10px] text-muted">9:41</span>
+            </div>
+            <div className="flex flex-col gap-2 p-4 text-left">
+              <div className="self-start rounded-2xl rounded-bl-sm bg-slate-800 px-3 py-2 text-xs text-slate-300">
+                Missed call from customer — 2:14 PM
+              </div>
+              <div className="self-end rounded-2xl rounded-br-sm bg-emerald-500 px-3 py-2 text-xs font-medium text-slate-950">
+                Hey! Sorry we missed your call — what can we help with? Someone will call you right back shortly.
+              </div>
+              <span className="mt-0.5 self-end text-[10px] text-muted">
+                AI-drafted &amp; sent automatically · 8 sec later
+              </span>
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={fadeUp.initial}
+          animate={fadeUp.animate}
           transition={{ duration: 0.5, ease: EASE_OUT, delay: 0.3 }}
-          className="mx-auto mt-16 grid max-w-3xl grid-cols-2 gap-x-6 gap-y-8 border-t border-slate-800 pt-10 sm:grid-cols-4"
+          className="mx-auto mt-14 grid max-w-3xl grid-cols-2 gap-x-6 gap-y-8 border-t border-slate-800 pt-10 sm:grid-cols-4"
         >
           {STATS.map((stat) => (
             <div key={stat.label}>
