@@ -43,7 +43,7 @@ export default async function CaseStudyPage({
         <section className="px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl">
             <Link
-              href="/#case-studies"
+              href={study.track === "automation" ? "/#case-studies" : "/engineering#case-studies"}
               className="inline-flex items-center gap-1.5 text-sm text-slate-400 transition-colors hover:text-emerald-400"
             >
               <ArrowLeft className="h-4 w-4" />

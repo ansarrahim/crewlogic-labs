@@ -10,14 +10,14 @@ import { SITE } from "@/lib/data";
 const NAV_LINKS = [
   { href: "/automations", label: "Automations" },
   { href: "/#case-studies", label: "Case Studies" },
-  { href: "/#squad", label: "Squad" },
+  { href: "/engineering", label: "Engineering" },
   { href: "/#leadership", label: "Leadership" },
   { href: "/#terminal", label: "Terminal" },
   { href: "/projects", label: "Projects" },
   { href: "/#contact", label: "Contact" },
 ];
 
-const SECTION_IDS = ["leadership", "squad", "case-studies", "terminal", "contact"];
+const SECTION_IDS = ["leadership", "case-studies", "terminal", "contact"];
 
 export default function Navbar() {
   const pathname = usePathname();

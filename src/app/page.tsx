@@ -2,15 +2,12 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import HowItWorks from "@/components/HowItWorks";
 import LeadershipSection from "@/components/LeadershipSection";
-import AgentGrid from "@/components/AgentGrid";
 import CaseStudies from "@/components/CaseStudies";
-import EngineeringServices from "@/components/EngineeringServices";
 import Testimonials from "@/components/Testimonials";
 import CLITerminal from "@/components/CLITerminal";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import NexusChatWidget from "@/components/NexusChatWidget";
-import AgentToolsHost from "@/components/tools/AgentToolsHost";
 
 export default function Home() {
   return (
@@ -20,16 +17,13 @@ export default function Home() {
         <HeroSection />
         <HowItWorks />
         <LeadershipSection />
-        <AgentGrid />
-        <CaseStudies />
-        <EngineeringServices />
+        <CaseStudies track="automation" />
         <Testimonials />
         <CLITerminal />
         <ContactSection />
       </main>
       <Footer />
       <NexusChatWidget />
-      <AgentToolsHost />
     </div>
   );
 }
