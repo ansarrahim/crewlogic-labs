@@ -472,6 +472,125 @@ export const AUTOMATION_TEMPLATES: AutomationTemplate[] = [
   },
 ];
 
+export type BlogPost = {
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  readTime: string;
+  sections: { heading: string; paragraphs: string[] }[];
+};
+
+export const BLOG_POSTS: BlogPost[] = [
+  {
+    slug: "missed-call-textback-lessons",
+    title: "What Actually Breaks When You Build a Missed-Call Text-Back Automation",
+    excerpt:
+      "Building this one looked simple on paper — webhook, AI draft, send. Here's what actually went wrong, and why a working demo isn't automatically a shippable product.",
+    date: "2026-08-25",
+    readTime: "4 min read",
+    sections: [
+      {
+        heading: "The plan looked simple",
+        paragraphs: [
+          "A missed call comes in, an AI model drafts a short, warm text apologizing and asking what the caller needs, and it goes out automatically. Three or four nodes in n8n: a webhook, a code node to parse the payload, an HTTP request to Gemini, another request to send the message. On paper, an afternoon of work.",
+        ],
+      },
+      {
+        heading: "The actual blocker wasn't code",
+        paragraphs: [
+          "The workflow itself came together fast. What didn't come together was getting a real phone number to actually send a text from. Twilio blocks trial signups entirely in Pakistan. Vonage's trial was technically reachable, but a usable number came with a real cost attached before a single message could go out.",
+          "Neither of those is a coding problem. No amount of clever n8n work fixes a regional signup restriction or a provider's pricing page.",
+        ],
+      },
+      {
+        heading: "The honest fix",
+        paragraphs: [
+          "Rather than fake an SMS send or block the whole project on a provider issue, the workflow got built for real end to end — the webhook is shaped exactly like a genuine Twilio Voice status callback, so a buyer with their own SMS credentials swaps in the real send step as a single node change, nothing else about the logic moves.",
+          "The demo version sends the drafted message as an email instead, with the subject line explicitly labeled so nobody mistakes it for a live text. Tested that way, end to end, with a real AI-drafted reply landing in an inbox in seconds.",
+        ],
+      },
+      {
+        heading: "The lesson",
+        paragraphs: [
+          "A workflow's trigger shape and its drafting logic are almost always the actual engineering work. The delivery channel at the very end is frequently just one swappable node. Don't let a missing API key or a blocked signup form stop you from building — and proving — the 90% of the automation that's actually hard.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "support-triage-grounding",
+    title: "Why the Support Triage Bot Never Free-Writes an Answer",
+    excerpt:
+      "It would've been easier to let Gemini answer any support question that came in. Here's why that's the wrong call, and what \"grounded\" actually means inside a working n8n workflow.",
+    date: "2026-08-26",
+    readTime: "3 min read",
+    sections: [
+      {
+        heading: "The tempting shortcut",
+        paragraphs: [
+          "Wire a webhook straight into an AI node, hand it the customer's message, let it answer. It works immediately, it feels impressive in a demo, and it's the fastest possible thing to build.",
+        ],
+      },
+      {
+        heading: "Why that's a liability, not a feature",
+        paragraphs: [
+          "An AI model that's allowed to answer anything will eventually invent a policy, a price, or a promise that was never actually true. For a bot speaking on behalf of a real business, that's not a minor inconvenience — it's the business's name attached to something it never said.",
+        ],
+      },
+      {
+        heading: "The actual design",
+        paragraphs: [
+          "The FAQ this workflow answers from lives as a plain array of question/answer pairs directly in the workflow. The prompt tells Gemini explicitly to answer only from that list, nothing else, and to return strict JSON with an `answerable` boolean rather than free-form prose.",
+          "If the question isn't covered — a billing dispute, a complaint, anything ambiguous — the workflow doesn't attempt an answer at all. It escalates to a human with an AI-written summary of what the customer actually needs instead.",
+        ],
+      },
+      {
+        heading: "The result",
+        paragraphs: [
+          "Tested against a real pricing question, it answered correctly, grounded word-for-word in the actual FAQ text. Tested against a real billing complaint, it correctly refused to guess and escalated with an accurate summary instead of a made-up answer.",
+          "The measure of a good support automation isn't how much it can answer. It's how reliably it knows what it can't.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "http-request-vs-ai-agent-node",
+    title: "n8n's HTTP Request Node vs the AI Agent Node: Why We Picked the Boring One",
+    excerpt:
+      "n8n ships a purpose-built AI Agent node for exactly this kind of work. Every automation in this catalog uses a plain HTTP Request node instead. Here's the actual tradeoff.",
+    date: "2026-08-27",
+    readTime: "4 min read",
+    sections: [
+      {
+        heading: "What the AI Agent node promises",
+        paragraphs: [
+          "n8n's AI Agent node bundles LangChain-style tool calling, memory, and multi-step chains directly into the visual editor. It's the node built specifically for wiring an LLM into a workflow, and it looks like the obvious choice.",
+        ],
+      },
+      {
+        heading: "What went wrong with it in practice",
+        paragraphs: [
+          "Earlier builds in this catalog started with that node and hit real, hard-to-diagnose bugs and inconsistent behavior — the kind that cost real build time before the decision got made to abandon it partway through in favor of something simpler.",
+        ],
+      },
+      {
+        heading: "The simpler version",
+        paragraphs: [
+          "Every template here instead uses a plain HTTP Request node, authenticated with a saved credential, posting directly to the model provider's REST endpoint with a JSON body built from an expression. The response gets parsed downstream in a dedicated Code node.",
+          "It's more explicit configuration than the Agent node needs. In exchange, every part of it — the exact request sent, the exact response received — shows up in n8n's own execution log, inspectable and debuggable without guessing what a higher-level abstraction did internally.",
+        ],
+      },
+      {
+        heading: "When we'd reach for the fancier node anyway",
+        paragraphs: [
+          "Multi-step agentic reasoning with an actual tool-calling loop — a model deciding to call one tool, read the result, then call another — is a real use case the Agent node is built for. Every automation in this catalog is a single-shot AI call: draft a reply, classify a review, triage a question. For that shape of problem, the Agent node's extra complexity bought nothing.",
+        ],
+      },
+    ],
+  },
+];
+
 export type Industry = {
   slug: string;
   name: string;
