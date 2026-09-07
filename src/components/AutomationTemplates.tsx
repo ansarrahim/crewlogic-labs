@@ -6,10 +6,14 @@ import { AUTOMATION_TEMPLATES } from "@/lib/data";
 
 const EASE_OUT = [0.23, 1, 0.32, 1] as const;
 
-export default function AutomationTemplates() {
+export default function AutomationTemplates({ templateIds }: { templateIds?: string[] } = {}) {
+  const templates = templateIds
+    ? AUTOMATION_TEMPLATES.filter((t) => templateIds.includes(t.id))
+    : AUTOMATION_TEMPLATES;
+
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-      {AUTOMATION_TEMPLATES.map((template, i) => (
+      {templates.map((template, i) => (
         <motion.div
           key={template.id}
           initial={{ opacity: 0, y: 20 }}

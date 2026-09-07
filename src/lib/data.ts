@@ -472,6 +472,58 @@ export const AUTOMATION_TEMPLATES: AutomationTemplate[] = [
   },
 ];
 
+export type Industry = {
+  slug: string;
+  name: string;
+  eyebrow: string;
+  headline: string;
+  intro: string;
+  painPoints: string[];
+  templateIds: string[];
+};
+
+export const INDUSTRIES: Industry[] = [
+  {
+    slug: "local-services",
+    name: "Salons, Contractors & Clinics",
+    eyebrow: "For Salons, Contractors & Clinics",
+    headline: "Every Missed Call Is a Customer Choosing Someone Else",
+    intro:
+      "When you're with a client or on a job, the phone still rings — and whoever's calling has three other options a search away. These two automations catch that moment.",
+    painPoints: [
+      "You're mid-appointment or on-site when the phone rings, and it goes to voicemail nobody checks until end of day.",
+      "A bad review sits online for days before anyone on your team even sees it, let alone responds.",
+    ],
+    templateIds: ["missed-call-textback", "review-sentiment-alert"],
+  },
+  {
+    slug: "local-retail",
+    name: "Local Retail & E-Commerce",
+    eyebrow: "For Local Retail & E-Commerce",
+    headline: "Orders Come In Faster Than Your Team Can Log Them",
+    intro:
+      "Every order and every lead is a small window of attention — miss it and the next competitor's tab is already open. These automations close that window.",
+    painPoints: [
+      "Every new order means someone manually copying details into a spreadsheet or CRM before it can actually get fulfilled.",
+      "A lead fills out your contact form at 11pm and doesn't hear anything back until the next afternoon.",
+    ],
+    templateIds: ["new-order-sync", "ai-lead-autoresponder"],
+  },
+  {
+    slug: "agencies-consultants",
+    name: "Agencies & Consultants",
+    eyebrow: "For Agencies & Consultants",
+    headline: "You're Answering the Same Client Questions on Repeat",
+    intro:
+      "Billable time is the whole business — every hour spent re-explaining pricing or chasing a cold lead is an hour not spent on the work clients actually pay for.",
+    painPoints: [
+      "Support questions eat hours a week that should go to billable work — the same handful of questions, every week.",
+      "A promising lead goes cold because nobody replied fast enough while you were heads-down on a deliverable.",
+    ],
+    templateIds: ["support-triage-faq", "ai-lead-autoresponder"],
+  },
+];
+
 export type EngineeringService = {
   id: string;
   title: string;

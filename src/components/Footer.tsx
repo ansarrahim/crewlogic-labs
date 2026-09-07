@@ -5,6 +5,7 @@ import { GITHUB_PROFILE_URL } from "@/lib/github";
 
 const QUICK_LINKS = [
   { href: "/automations", label: "Automations" },
+  { href: "/industries", label: "Industries" },
   { href: "/#case-studies", label: "Case Studies" },
   { href: "/engineering", label: "Engineering" },
   { href: "/#leadership", label: "Leadership" },
