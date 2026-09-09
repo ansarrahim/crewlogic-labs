@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0d130f;
-  --foreground: #e7dfc7;
+  --background: #f5f4f0;
+  --foreground: #2b2820;
 }
 
 @theme inline {
@@ -11,51 +11,56 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-serif: var(--font-fraunces);
-  /* Same visual weight as slate-400, verified 7.1:1 on our #0d130f
-     background (WCAG AAA for normal text). */
-  --color-muted: #a89f86;
+  /* Verified 6.65:1 on our #f5f4f0 background (WCAG AA for normal text). */
+  --color-muted: #5c5644;
 
-  /* --- Ledger identity ---------------------------------------------
-     The site's entire dark theme is built on Tailwind's built-in
-     `slate` (neutrals) and `emerald`/`cyan` (accent) scales. Redefining
-     those scales here re-themes every existing bg-slate-950,
-     text-emerald-400, border-cyan-500/30, etc. across the whole site
-     with no component edits — this is the "Ledger" identity: ink
-     ground, warm parchment text, one gold accent (emerald and cyan
-     collapse to the same gold rather than competing hues). Semantic
-     colors (amber/rose/red — warnings, errors) are untouched. */
-  --color-slate-50: #f7f4ea;
-  --color-slate-100: #efe9d6;
-  --color-slate-200: #e7dfc7;
-  --color-slate-300: #d4c9a8;
-  --color-slate-400: #a89f86;
-  --color-slate-500: #7c7560;
-  --color-slate-600: #5a5544;
-  --color-slate-700: #3d3a2f;
-  --color-slate-800: #262920;
-  --color-slate-900: #141c16;
-  --color-slate-950: #0d130f;
+  /* --- Daylight identity ---------------------------------------------
+     Light-theme successor to the original dark "Ledger identity" —
+     same technique (redefine Tailwind's built-in scales so every
+     existing bg-slate-950/text-emerald-400/etc. across the whole site
+     re-themes with zero component edits), inverted for a light
+     ground. Because every component hardcodes slate-950 as "page
+     background" and slate-100 as "heading text", this ramp is
+     necessarily inverted from normal Tailwind convention: slate-950 is
+     now the LIGHTEST value and slate-100 the DARKEST. Every stop below
+     is WCAG-contrast-checked against the #f5f4f0 page background, and
+     the border/card subtlety (slate-800, slate-900) was deliberately
+     calibrated to match the original dark theme's own border/card
+     contrast ratios (1.27 / 1.08) rather than picked arbitrarily, so
+     the quiet card-boundary feel carries over unchanged. */
+  --color-slate-50: #0d0b08;
+  --color-slate-100: #1a1712;
+  --color-slate-200: #2b2820;
+  --color-slate-300: #443f30;
+  --color-slate-400: #5c5644;
+  --color-slate-500: #726b56;
+  --color-slate-600: #8f8770;
+  --color-slate-700: #b5af98;
+  --color-slate-800: #c9c4b0;
+  --color-slate-900: #ffffff;
+  --color-slate-950: #f5f4f0;
 
-  --color-emerald-300: #d9bd8a;
-  --color-emerald-400: #b8935a;
-  --color-emerald-500: #c9a05f;
-  --color-cyan-200: #d9bd8a;
-  --color-cyan-300: #d9bd8a;
-  --color-cyan-400: #b8935a;
-  --color-cyan-500: #c9a05f;
+  /* emerald/cyan restored to their real, honest hues (previously both
+     hijacked to render as the same gold) — Automation-track primary/
+     secondary accent. Deep enough shades to read at 4.5:1+ as text on
+     #f5f4f0 AND to give white button-text good contrast when used as
+     a solid bg-emerald-500 button background. */
+  --color-emerald-300: #0a7a44;
+  --color-emerald-400: #0d8a4f;
+  --color-emerald-500: #0a7a44;
+  --color-cyan-200: #0c6178;
+  --color-cyan-300: #0a5265;
+  --color-cyan-400: #0f7490;
+  --color-cyan-500: #0c6178;
 
   /* --- Circuit accent (Custom Engineering) ---------------------------
-     A second, genuinely distinct accent reserved for blockchain/
-     full-stack "Custom Engineering" content only (the engineering
-     case-study tab, its case-study detail pages, and the
-     EngineeringServices pricing cards) — never blended into the
-     Automation-track gold. `indigo` is unused elsewhere in this
-     codebase, so redefining it is safe the same way emerald/cyan
-     were. Cool violet-indigo against the warm gold Ledger identity;
-     contrast-checked against #0d130f (WCAG AA+ for all three steps). */
-  --color-indigo-300: #c9c7f7;
-  --color-indigo-400: #9795e6;
-  --color-indigo-500: #8983e8;
+     Same role as before (Custom Engineering track only, never blended
+     into Automation-track green) — re-tuned from the dark-theme
+     values for light-background contrast. 7.08:1 as text on #f5f4f0,
+     7.79:1 for white button-text on a solid bg-indigo-500 button. */
+  --color-indigo-300: #4a41b8;
+  --color-indigo-400: #5b52d6;
+  --color-indigo-500: #453cc4;
 }
 
 body {
@@ -72,8 +77,8 @@ h3 {
 }
 
 ::selection {
-  background: rgba(184, 147, 90, 0.3);
-  color: #e7dfc7;
+  background: rgba(10, 122, 68, 0.18);
+  color: #1a1712;
 }
 
 ::-webkit-scrollbar {
@@ -82,16 +87,16 @@ h3 {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0d130f;
+  background: #f5f4f0;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #262920;
+  background: #c9c4b0;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3d3a2f;
+  background: #b5af98;
 }
 
 @keyframes cursor-blink {

@@ -125,7 +125,7 @@ export default function LeadershipSection() {
                     whileInView={{ width: "70%" }}
                     viewport={{ once: true, margin: "-60px" }}
                     transition={{ duration: 0.8, ease: EASE_OUT, delay: 0.15 }}
-                    className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-emerald-400 shadow-[0_0_12px_rgba(184,147,90,0.6)]"
+                    className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-emerald-400"
                   />
                 </div>
                 <p className="mt-1.5 text-xs text-muted">
@@ -148,7 +148,7 @@ export default function LeadershipSection() {
                     whileInView={{ width: "30%" }}
                     viewport={{ once: true, margin: "-60px" }}
                     transition={{ duration: 0.8, ease: EASE_OUT, delay: 0.25 }}
-                    className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-cyan-400 shadow-[0_0_12px_rgba(184,147,90,0.6)]"
+                    className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-cyan-400"
                   />
                 </div>
                 <p className="mt-1.5 text-xs text-muted">

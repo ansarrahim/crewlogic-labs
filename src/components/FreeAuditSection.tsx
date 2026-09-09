@@ -50,7 +50,7 @@ export default function FreeAuditSection() {
         <div className="mt-8 flex justify-center">
           <Link
             href="/#contact"
-            className="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-500 px-6 py-3 text-sm font-semibold text-slate-950 shadow-[0_0_25px_rgba(184,147,90,0.4)] transition-[background-color,transform] active:scale-[0.97] hover:bg-emerald-400"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-500 px-6 py-3 text-sm font-semibold text-slate-950 transition-[background-color,transform] active:scale-[0.97] hover:bg-emerald-400"
           >
             Get My Free Audit
           </Link>
