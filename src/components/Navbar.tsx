@@ -23,6 +23,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [observedSection, setObservedSection] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);
   const activeSection = pathname === "/" ? observedSection : null;
 
   // Scroll-spy: highlight whichever homepage section is currently in view,
@@ -49,15 +50,35 @@ export default function Navbar() {
     return () => observer.disconnect();
   }, [pathname]);
 
+  // The floating pill sits over page content rather than a solid bar, so it
+  // gets a slight elevation lift once the page has scrolled — otherwise it
+  // reads as floating over nothing at the very top of the page.
+  useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 16);
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   function isActive(href: string) {
     return href.startsWith("/#") && href.slice(2) === activeSection;
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-4 z-50 px-4 sm:px-6 lg:px-8">
+      <motion.div
+        animate={{
+          boxShadow: scrolled
+            ? "0 12px 32px -8px rgba(26,23,18,0.18)"
+            : "0 2px 10px -4px rgba(26,23,18,0.08)",
+        }}
+        transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
+        className="mx-auto flex h-16 max-w-6xl items-center justify-between rounded-full border border-slate-800 bg-slate-900/95 px-4 backdrop-blur-md sm:px-6"
+      >
         <Link href="/" className="flex items-center gap-2">
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-emerald-500/30 bg-emerald-500/10 font-mono text-sm font-bold text-emerald-400">
+          <span className="flex h-9 w-9 items-center justify-center rounded-full border border-emerald-500/30 bg-emerald-500/10 font-mono text-sm font-bold text-emerald-400">
             {"</>"}
           </span>
           <span className="text-lg font-semibold tracking-tight text-slate-100">
@@ -65,7 +86,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-7 md:flex">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
@@ -83,7 +104,7 @@ export default function Navbar() {
         <div className="hidden md:block">
           <Link
             href="/#contact"
-            className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 transition-[background-color,transform] active:scale-95 hover:bg-emerald-400"
+            className="inline-flex items-center gap-2 rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 transition-[background-color,transform] active:scale-95 hover:bg-emerald-400"
           >
             <Terminal className="h-4 w-4" />
             Book a Consult
@@ -98,18 +119,18 @@ export default function Navbar() {
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
-      </div>
+      </motion.div>
 
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
-            className="overflow-hidden border-t border-slate-800 bg-slate-950/95 md:hidden"
+            initial={{ opacity: 0, y: -8, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -8, scale: 0.98 }}
+            transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
+            className="mx-auto mt-2 max-w-6xl overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/95 shadow-lg backdrop-blur-md md:hidden"
           >
-            <nav className="flex flex-col gap-1 px-4 pb-6 pt-2">
+            <nav className="flex flex-col gap-1 px-4 py-3">
               {NAV_LINKS.map((link, i) => (
                 <motion.div
                   key={link.href}
@@ -121,8 +142,8 @@ export default function Navbar() {
                     href={link.href}
                     onClick={() => setOpen(false)}
                     aria-current={isActive(link.href) ? "true" : undefined}
-                    className={`block rounded-md px-2 py-2.5 text-sm font-medium hover:bg-slate-900 hover:text-emerald-400 ${
-                      isActive(link.href) ? "bg-slate-900 text-emerald-400" : "text-slate-300"
+                    className={`block rounded-full px-3 py-2.5 text-sm font-medium hover:bg-slate-800 hover:text-emerald-400 ${
+                      isActive(link.href) ? "bg-slate-800 text-emerald-400" : "text-slate-300"
                     }`}
                   >
                     {link.label}
@@ -137,7 +158,7 @@ export default function Navbar() {
                 <Link
                   href="/#contact"
                   onClick={() => setOpen(false)}
-                  className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-slate-950 transition-transform active:scale-95"
+                  className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-slate-950 transition-transform active:scale-95"
                 >
                   <Terminal className="h-4 w-4" />
                   Scope Project
