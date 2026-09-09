@@ -121,30 +121,3 @@ h3 {
   }
 }
 
-@keyframes hero-drift {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(-120px, -80px, 0);
-  }
-}
-
-.hero-constellation {
-  position: absolute;
-  inset: -10%;
-  width: 120%;
-  height: 120%;
-  background-image:
-    radial-gradient(rgba(184, 147, 90, 0.35) 1px, transparent 1.5px),
-    radial-gradient(rgba(184, 147, 90, 0.18) 1px, transparent 1.5px);
-  background-size: 140px 140px, 90px 90px;
-  background-position: 0 0, 45px 45px;
-  animation: hero-drift 60s linear infinite alternate;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-constellation {
-    animation: none;
-  }
-}

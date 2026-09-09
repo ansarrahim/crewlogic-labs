@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar, MapPin, ShieldCheck } from "lucide-react";
 import { AVAILABILITY, CEO, SITE } from "@/lib/data";
+import HeroIllustration from "@/components/HeroIllustration";
 
 const BADGES = [
   { icon: ShieldCheck, label: `Led by Engr. ${CEO.name}` },
@@ -26,18 +27,12 @@ const fadeUp = {
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden px-4 pb-24 pt-20 sm:px-6 sm:pt-28 lg:px-8">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 20% 15%, rgba(184,147,90,0.16), transparent 45%), radial-gradient(circle at 80% 10%, rgba(184,147,90,0.14), transparent 40%)",
-        }}
-      />
-      <div aria-hidden className="hero-constellation pointer-events-none -z-10" />
+    <section className="relative overflow-hidden pb-24 sm:pb-28">
+      <div className="relative bg-emerald-500 px-4 pb-14 pt-8 sm:px-6 sm:pb-16 sm:pt-10 lg:px-8">
+        <HeroIllustration />
+      </div>
 
-      <div className="mx-auto max-w-5xl text-center">
+      <div className="mx-auto max-w-5xl px-4 pt-16 text-center sm:px-6 sm:pt-20 lg:px-8">
         <motion.div
           initial={fadeUp.initial}
           animate={fadeUp.animate}
@@ -119,7 +114,7 @@ export default function HeroSection() {
         >
           <a
             href="/automations"
-            className="group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-500 px-6 py-3 text-sm font-semibold text-slate-950 shadow-[0_0_25px_rgba(184,147,90,0.4)] transition-[background-color,transform] active:scale-[0.97] hover:bg-emerald-400 sm:w-auto"
+            className="group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-500 px-6 py-3 text-sm font-semibold text-slate-950 transition-[background-color,transform] active:scale-[0.97] hover:bg-emerald-400 sm:w-auto"
           >
             Browse Automations
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
