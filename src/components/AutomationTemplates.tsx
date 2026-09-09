@@ -21,7 +21,7 @@ export default function AutomationTemplates({ templateIds }: { templateIds?: str
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.4, ease: EASE_OUT, delay: i * 0.08 }}
           whileHover={{ y: -3 }}
-          className="flex h-full flex-col rounded-2xl border border-slate-800 bg-slate-900/50 p-6 transition-[border-color] hover:border-emerald-500/40"
+          className="flex h-full flex-col rounded-2xl border border-slate-800 bg-slate-900 p-6 shadow-sm transition-[border-color] hover:border-emerald-500/40"
         >
           <span className="text-xs font-semibold uppercase tracking-widest text-cyan-400">
             n8n Workflow Template

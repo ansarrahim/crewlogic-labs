@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import HowItWorks from "@/components/HowItWorks";
+import AutomationShowcase from "@/components/AutomationShowcase";
 import LeadershipSection from "@/components/LeadershipSection";
 import CaseStudies from "@/components/CaseStudies";
 import Testimonials from "@/components/Testimonials";
@@ -17,6 +18,7 @@ export default function Home() {
       <main id="main-content" className="flex-1">
         <HeroSection />
         <HowItWorks />
+        <AutomationShowcase />
         <LeadershipSection />
         <CaseStudies track="automation" />
         <Testimonials />
