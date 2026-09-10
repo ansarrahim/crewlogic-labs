@@ -2,7 +2,6 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import HowItWorks from "@/components/HowItWorks";
 import AutomationShowcase from "@/components/AutomationShowcase";
-import LeadershipSection from "@/components/LeadershipSection";
 import CaseStudies from "@/components/CaseStudies";
 import Testimonials from "@/components/Testimonials";
 import CLITerminal from "@/components/CLITerminal";
@@ -19,7 +18,6 @@ export default function Home() {
         <HeroSection />
         <HowItWorks />
         <AutomationShowcase />
-        <LeadershipSection />
         <CaseStudies track="automation" />
         <Testimonials />
         <CLITerminal />

@@ -9,7 +9,6 @@ const QUICK_LINKS = [
   { href: "/blog", label: "Blog" },
   { href: "/#case-studies", label: "Case Studies" },
   { href: "/engineering", label: "Engineering" },
-  { href: "/#leadership", label: "Leadership" },
   { href: "/#terminal", label: "Terminal" },
   { href: "/projects", label: "Projects" },
   { href: "/#contact", label: "Contact" },
