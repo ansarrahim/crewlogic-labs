@@ -19,7 +19,7 @@ export const SITE = {
 // reflects this immediately, no other changes needed.
 export const AVAILABILITY = {
   open: true,
-  label: "Currently booking new projects",
+  label: "2 spots left this month",
   closedLabel: "Booked through next opening — inquiries still welcome",
 };
 

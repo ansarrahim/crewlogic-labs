@@ -5,6 +5,7 @@ import NexusChatWidget from "@/components/NexusChatWidget";
 import AgentToolsHost from "@/components/tools/AgentToolsHost";
 import AgentGrid from "@/components/AgentGrid";
 import CaseStudies from "@/components/CaseStudies";
+import BuildCadence from "@/components/BuildCadence";
 import EngineeringServices from "@/components/EngineeringServices";
 
 export const metadata: Metadata = {
@@ -35,6 +36,7 @@ export default function EngineeringPage() {
         </section>
         <AgentGrid />
         <CaseStudies track="engineering" />
+        <BuildCadence />
         <EngineeringServices />
       </main>
       <Footer />
