@@ -3,8 +3,6 @@ import HeroSection from "@/components/HeroSection";
 import HowItWorks from "@/components/HowItWorks";
 import AutomationShowcase from "@/components/AutomationShowcase";
 import CaseStudies from "@/components/CaseStudies";
-import Testimonials from "@/components/Testimonials";
-import CLITerminal from "@/components/CLITerminal";
 import FreeAuditSection from "@/components/FreeAuditSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
@@ -19,8 +17,6 @@ export default function Home() {
         <HowItWorks />
         <AutomationShowcase />
         <CaseStudies track="automation" />
-        <Testimonials />
-        <CLITerminal />
         <FreeAuditSection />
         <ContactSection />
       </main>

@@ -11,12 +11,11 @@ const NAV_LINKS = [
   { href: "/automations", label: "Automations" },
   { href: "/#case-studies", label: "Case Studies" },
   { href: "/engineering", label: "Engineering" },
-  { href: "/#terminal", label: "Terminal" },
   { href: "/projects", label: "Projects" },
   { href: "/#contact", label: "Contact" },
 ];
 
-const SECTION_IDS = ["case-studies", "terminal", "contact"];
+const SECTION_IDS = ["case-studies", "contact"];
 
 export default function Navbar() {
   const pathname = usePathname();

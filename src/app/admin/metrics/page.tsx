@@ -81,7 +81,7 @@ export default async function AdminMetricsPage() {
             )}
           </MetricCard>
 
-          <MetricCard title="Agent Usage" icon={Sparkles} href="/#terminal" linkLabel="View live tools">
+          <MetricCard title="Agent Usage" icon={Sparkles} href="/engineering#squad" linkLabel="View live tools">
             {usage ? (
               <>
                 <p className="font-mono text-3xl font-bold text-cyan-400">{usage.thisMonth}</p>

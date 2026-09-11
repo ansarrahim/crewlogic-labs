@@ -365,18 +365,6 @@ export const STACK_NEEDED_OPTIONS = [
   "Security Audit",
 ] as const;
 
-export type Testimonial = {
-  quote: string;
-  name: string;
-  role: string;
-  company: string;
-};
-
-// Intentionally empty — add real client testimonials here as they come in.
-// Do not populate with placeholder/fake names; the Testimonials component
-// renders an honest "coming soon" state when this array is empty.
-export const TESTIMONIALS: Testimonial[] = [];
-
 export type AutomationTemplate = {
   id: string;
   title: string;
