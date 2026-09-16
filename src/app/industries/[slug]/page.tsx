@@ -51,7 +51,10 @@ export default async function IndustryPage({
             </Link>
 
             <Reveal className="mt-8 text-center">
-              <span className="text-xs font-semibold uppercase tracking-widest text-emerald-400">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-400">
+                <industry.icon className="h-6 w-6" />
+              </div>
+              <span className="mt-4 block text-xs font-semibold uppercase tracking-widest text-emerald-400">
                 {industry.eyebrow}
               </span>
               <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-100 sm:text-4xl">

@@ -2,7 +2,9 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import HowItWorks from "@/components/HowItWorks";
 import AutomationShowcase from "@/components/AutomationShowcase";
+import ByDepartment from "@/components/ByDepartment";
 import CaseStudies from "@/components/CaseStudies";
+import OurStack from "@/components/OurStack";
 import FreeAuditSection from "@/components/FreeAuditSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
@@ -16,7 +18,9 @@ export default function Home() {
         <HeroSection />
         <HowItWorks />
         <AutomationShowcase />
+        <ByDepartment />
         <CaseStudies track="automation" />
+        <OurStack />
         <FreeAuditSection />
         <ContactSection />
       </main>

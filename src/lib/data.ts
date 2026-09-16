@@ -1,10 +1,16 @@
 import type { LucideIcon } from "lucide-react";
 import {
   Bot,
+  Briefcase,
+  Code2,
   Cpu,
+  Home,
   Layers,
   Network,
   ShieldCheck,
+  ShoppingCart,
+  UtensilsCrossed,
+  Wrench,
 } from "lucide-react";
 
 export const SITE = {
@@ -582,6 +588,7 @@ export const BLOG_POSTS: BlogPost[] = [
 export type Industry = {
   slug: string;
   name: string;
+  icon: LucideIcon;
   eyebrow: string;
   headline: string;
   intro: string;
@@ -593,6 +600,7 @@ export const INDUSTRIES: Industry[] = [
   {
     slug: "local-services",
     name: "Salons, Contractors & Clinics",
+    icon: Wrench,
     eyebrow: "For Salons, Contractors & Clinics",
     headline: "Every Missed Call Is a Customer Choosing Someone Else",
     intro:
@@ -606,6 +614,7 @@ export const INDUSTRIES: Industry[] = [
   {
     slug: "local-retail",
     name: "Local Retail & E-Commerce",
+    icon: ShoppingCart,
     eyebrow: "For Local Retail & E-Commerce",
     headline: "Orders Come In Faster Than Your Team Can Log Them",
     intro:
@@ -619,6 +628,7 @@ export const INDUSTRIES: Industry[] = [
   {
     slug: "agencies-consultants",
     name: "Agencies & Consultants",
+    icon: Briefcase,
     eyebrow: "For Agencies & Consultants",
     headline: "You're Answering the Same Client Questions on Repeat",
     intro:
@@ -628,6 +638,48 @@ export const INDUSTRIES: Industry[] = [
       "A promising lead goes cold because nobody replied fast enough while you were heads-down on a deliverable.",
     ],
     templateIds: ["support-triage-faq", "ai-lead-autoresponder"],
+  },
+  {
+    slug: "real-estate",
+    name: "Real Estate Agents",
+    icon: Home,
+    eyebrow: "For Real Estate Agents",
+    headline: "A Lead Goes Cold the Moment You're Stuck in a Showing",
+    intro:
+      "Real estate runs on speed — the agent who replies first usually wins the client. These automations make sure a showing never costs you a lead.",
+    painPoints: [
+      "You're mid-showing when a hot lead calls, and by the time you're free, they've already called the next agent on the list.",
+      "A website inquiry comes in at night and doesn't get a reply until you're back at your desk the next morning.",
+    ],
+    templateIds: ["missed-call-textback", "ai-lead-autoresponder"],
+  },
+  {
+    slug: "restaurants-hospitality",
+    name: "Restaurants & Hospitality",
+    icon: UtensilsCrossed,
+    eyebrow: "For Restaurants & Hospitality",
+    headline: "One Bad Review Sits There Longer Than It Should",
+    intro:
+      "Between service and the phone ringing during a rush, there's no time to watch every channel — these automations watch it for you.",
+    painPoints: [
+      "The phone rings during dinner rush and goes unanswered, and that reservation just books somewhere else instead.",
+      "A one-star review posts on a Friday night and nobody sees it until Monday, by which point it's already cost you a weekend of bookings.",
+    ],
+    templateIds: ["missed-call-textback", "review-sentiment-alert"],
+  },
+  {
+    slug: "saas-software",
+    name: "SaaS & Software Companies",
+    icon: Code2,
+    eyebrow: "For SaaS & Software Companies",
+    headline: "Support Tickets and Reviews Pile Up Faster Than One Person Can Watch",
+    intro:
+      "Early-stage software teams are small by design — these automations cover the repetitive parts so the team stays small on purpose, not by accident.",
+    painPoints: [
+      "The same handful of setup/billing questions land in support again and again, each one needing a human to type the same answer.",
+      "A new G2 or Capterra review goes up and nobody on the team notices until a prospect mentions it on a sales call.",
+    ],
+    templateIds: ["support-triage-faq", "review-sentiment-alert"],
   },
 ];
 
