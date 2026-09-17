@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { Bug, LogOut, Sparkles, Users } from "lucide-react";
+import { Bug, DollarSign, LogOut, Sparkles, Users } from "lucide-react";
 import { getLeadsDaily } from "@/lib/leads";
 import { getErrorCountLast24h, getSentryProjectUrl } from "@/lib/sentry-metrics";
 import { getUsageThisAndLastMonth } from "@/lib/usage-stats";
+import { getStripeRevenueThisMonth } from "@/lib/stripe-metrics";
 import MetricCard from "@/components/admin/MetricCard";
 import NotConnected from "@/components/admin/NotConnected";
 import LeadsSparkline from "@/components/admin/LeadsSparkline";
+import RevenueSparkline from "@/components/admin/RevenueSparkline";
 
 export const metadata: Metadata = {
   title: "Admin · Metrics",
@@ -15,10 +17,11 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function AdminMetricsPage() {
-  const [leadsDaily, errorCount, usage] = await Promise.all([
+  const [leadsDaily, errorCount, usage, revenue] = await Promise.all([
     getLeadsDaily(30),
     getErrorCountLast24h(),
     getUsageThisAndLastMonth(),
+    getStripeRevenueThisMonth(),
   ]);
 
   const sentryUrl = getSentryProjectUrl();
@@ -46,7 +49,7 @@ export default async function AdminMetricsPage() {
           </form>
         </div>
 
-        <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <MetricCard title="Leads" icon={Users}>
             {leadsDaily ? (
               <>
@@ -91,6 +94,24 @@ export default async function AdminMetricsPage() {
               </>
             ) : (
               <NotConnected message="Not connected — set UPSTASH_REDIS_REST_URL / UPSTASH_REDIS_REST_TOKEN." />
+            )}
+          </MetricCard>
+
+          <MetricCard title="Revenue (MTD)" icon={DollarSign}>
+            {revenue ? (
+              <>
+                <p className="font-mono text-3xl font-bold text-emerald-400">
+                  ${(revenue.revenueCents / 100).toFixed(2)}
+                </p>
+                <p className="mt-1 text-xs text-slate-500">
+                  {revenue.paidCount} paid checkout{revenue.paidCount === 1 ? "" : "s"} this month
+                </p>
+                <div className="mt-4">
+                  <RevenueSparkline dailyCents={revenue.dailyCents} />
+                </div>
+              </>
+            ) : (
+              <NotConnected message="Not connected — set STRIPE_SECRET_KEY." />
             )}
           </MetricCard>
         </div>
