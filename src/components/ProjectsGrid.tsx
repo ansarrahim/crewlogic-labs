@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink, FolderGit2, GitFork, History, Star } from "lucide-react";
 import type { GithubRepo } from "@/lib/github";
@@ -35,9 +36,57 @@ export default function ProjectsGrid({
     );
   }
 
+  return <FilterableGrid repos={repos} />;
+}
+
+function FilterableGrid({ repos }: { repos: GithubRepo[] }) {
+  const languages = useMemo(() => {
+    const unique = new Set(repos.map((r) => r.language).filter((l): l is string => Boolean(l)));
+    return Array.from(unique).sort();
+  }, [repos]);
+
+  const [active, setActive] = useState<string | "all">("all");
+  const filtered = active === "all" ? repos : repos.filter((r) => r.language === active);
+
   return (
-    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-      {repos.map((repo, i) => (
+    <div>
+      {languages.length > 1 && (
+        <div className="mb-8 flex flex-wrap justify-center gap-1.5">
+          <button
+            type="button"
+            aria-pressed={active === "all"}
+            onClick={() => setActive("all")}
+            className={`rounded-full border px-3.5 py-1.5 text-xs font-semibold transition-colors ${
+              active === "all"
+                ? "border-emerald-500/40 bg-emerald-500/10 text-emerald-400"
+                : "border-slate-800 bg-slate-900/60 text-slate-400 hover:text-slate-200"
+            }`}
+          >
+            All ({repos.length})
+          </button>
+          {languages.map((lang) => {
+            const count = repos.filter((r) => r.language === lang).length;
+            return (
+              <button
+                key={lang}
+                type="button"
+                aria-pressed={active === lang}
+                onClick={() => setActive(lang)}
+                className={`rounded-full border px-3.5 py-1.5 text-xs font-semibold transition-colors ${
+                  active === lang
+                    ? "border-emerald-500/40 bg-emerald-500/10 text-emerald-400"
+                    : "border-slate-800 bg-slate-900/60 text-slate-400 hover:text-slate-200"
+                }`}
+              >
+                {lang} ({count})
+              </button>
+            );
+          })}
+        </div>
+      )}
+
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {filtered.map((repo, i) => (
         <motion.a
           key={repo.id}
           href={repo.html_url}
@@ -100,6 +149,7 @@ export default function ProjectsGrid({
           </div>
         </motion.a>
       ))}
+      </div>
     </div>
   );
 }
