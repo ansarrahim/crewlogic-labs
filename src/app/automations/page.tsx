@@ -13,6 +13,37 @@ export const metadata: Metadata = {
   title: "Automation Templates — CrewLogic Labs",
   description:
     "Ready-to-deploy n8n workflow templates for lead response, review monitoring, order sync, missed-call text-back, and support triage — real automations, tested live, not diagrams.",
+  keywords: [
+    "n8n workflow templates",
+    "AI lead auto-responder",
+    "review sentiment alert",
+    "missed call text back automation",
+    "support triage automation",
+    "buy n8n automation",
+  ],
+};
+
+const SITE_URL = "https://crewlogic-labs.vercel.app";
+
+const PRODUCTS_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: AUTOMATION_TEMPLATES.map((template, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "Product",
+      name: template.title,
+      description: template.description,
+      url: `${SITE_URL}/automations`,
+      offers: {
+        "@type": "Offer",
+        price: (template.priceCents / 100).toFixed(2),
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
+      },
+    },
+  })),
 };
 
 const HOW_IT_WORKS = [
@@ -43,6 +74,10 @@ export default async function AutomationsPage({
 
   return (
     <div className="flex flex-1 flex-col bg-slate-950 font-sans">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(PRODUCTS_JSON_LD) }}
+      />
       <Navbar />
       <main id="main-content" className="flex-1">
         <section className="px-4 py-24 sm:px-6 lg:px-8">

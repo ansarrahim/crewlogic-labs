@@ -10,6 +10,13 @@ import { GITHUB_PROFILE_URL, fetchGithubRepos } from "@/lib/github";
 export const metadata: Metadata = {
   title: "Projects — CrewLogic Labs",
   description: `Live GitHub projects from ${CEO.name}, CEO & Lead Systems Architect at CrewLogic Labs.`,
+  keywords: [
+    "Muhammad Ansar projects",
+    "CrewLogic Labs GitHub",
+    "Web3 developer portfolio",
+    "Next.js developer portfolio",
+    "Solidity developer portfolio",
+  ],
 };
 
 export const revalidate = 3600;

@@ -13,6 +13,14 @@ export const metadata: Metadata = {
   title: "Custom Engineering — CrewLogic Labs",
   description:
     "Smart contract development, security audits, and custom full-stack builds — the engineering team and real case studies behind CrewLogic Labs' Custom Engineering service line.",
+  keywords: [
+    "smart contract development",
+    "smart contract security audit",
+    "custom full-stack development",
+    "Solidity developer for hire",
+    "Next.js custom development",
+    "Web3 engineering consulting",
+  ],
 };
 
 export default function EngineeringPage() {

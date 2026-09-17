@@ -9,6 +9,13 @@ export const metadata: Metadata = {
   title: "Case Studies — CrewLogic Labs",
   description:
     "Every automation and custom engineering project CrewLogic Labs has shipped, real and verifiable — smart contracts, AI pipelines, and production full-stack builds.",
+  keywords: [
+    "CrewLogic Labs case studies",
+    "AI automation case study",
+    "smart contract case study",
+    "n8n workflow case study",
+    "full-stack engineering portfolio",
+  ],
 };
 
 export default function CaseStudiesIndexPage() {

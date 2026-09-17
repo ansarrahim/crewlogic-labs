@@ -11,6 +11,12 @@ export const metadata: Metadata = {
   title: "Blog — CrewLogic Labs",
   description:
     "Real notes from building the automations in this catalog — what broke, why we made the calls we made, and what we'd do differently.",
+  keywords: [
+    "n8n automation blog",
+    "AI automation lessons",
+    "building AI workflows",
+    "n8n HTTP request vs AI agent node",
+  ],
 };
 
 export default function BlogIndexPage() {

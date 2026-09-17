@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces, Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import MotionRoot from "@/components/MotionRoot";
+import { CEO, SITE } from "@/lib/data";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -59,6 +60,27 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+const ORGANIZATION_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: SITE.name,
+  url: SITE_URL,
+  logo: `${SITE_URL}/icon`,
+  description: DESCRIPTION,
+  email: SITE.email,
+  telephone: SITE.phone,
+  founder: {
+    "@type": "Person",
+    name: CEO.name,
+    jobTitle: CEO.title,
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: SITE.location,
+  },
+  sameAs: [CEO.linkedinUrl],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -70,6 +92,10 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased dark`}
     >
       <body className="flex min-h-full flex-col bg-slate-950 text-slate-100">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_JSON_LD) }}
+        />
         <a
           href="#main-content"
           className="fixed left-4 top-4 z-[100] -translate-y-20 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 transition-transform focus-visible:translate-y-0"

@@ -11,6 +11,15 @@ export const metadata: Metadata = {
   title: "Automation by Industry — CrewLogic Labs",
   description:
     "The same real n8n automations, pitched at the specific problems each industry actually has — salons, retail, agencies, real estate, hospitality, and SaaS.",
+  keywords: [
+    "AI automation by industry",
+    "small business automation",
+    "salon automation",
+    "retail automation",
+    "real estate automation",
+    "restaurant automation",
+    "SaaS automation",
+  ],
 };
 
 export default function IndustriesPage() {
