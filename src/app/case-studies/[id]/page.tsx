@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, CheckCircle2, ExternalLink, Gauge, Layers } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle2, ExternalLink, Gauge, Layers } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import NexusChatWidget from "@/components/NexusChatWidget";
+import ShareLinks from "@/components/ShareLinks";
 import { CASE_STUDIES } from "@/lib/data";
 import { TRACK_META } from "@/lib/trackStyles";
+
+const SITE_URL = "https://crewlogic-labs.vercel.app";
 
 export async function generateStaticParams() {
   return CASE_STUDIES.map((study) => ({ id: study.id }));
@@ -35,6 +38,10 @@ export default async function CaseStudyPage({
   const study = CASE_STUDIES.find((s) => s.id === id);
   if (!study) notFound();
   const meta = TRACK_META[study.track];
+
+  const sameTrack = CASE_STUDIES.filter((s) => s.track === study.track);
+  const indexInTrack = sameTrack.findIndex((s) => s.id === study.id);
+  const nextStudy = sameTrack[(indexInTrack + 1) % sameTrack.length];
 
   return (
     <div className="flex flex-1 flex-col bg-slate-950 font-sans">
@@ -126,7 +133,27 @@ export default async function CaseStudyPage({
               </ul>
             </div>
 
-            <div className="mt-14 rounded-2xl border border-slate-800 bg-slate-900/50 p-6 text-center">
+            <div className="mt-14 flex flex-col gap-4 border-t border-slate-800 pt-8 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-xs font-medium uppercase tracking-widest text-slate-500">Share this case study</p>
+              <ShareLinks url={`${SITE_URL}/case-studies/${study.id}`} title={study.title} />
+            </div>
+
+            {nextStudy.id !== study.id && (
+              <Link
+                href={`/case-studies/${nextStudy.id}`}
+                className={`group mt-6 flex items-center justify-between gap-4 rounded-2xl border border-slate-800 bg-slate-900/50 p-6 transition-[border-color,transform] active:scale-[0.99] ${meta.hoverBorder}`}
+              >
+                <div>
+                  <span className={`text-xs font-semibold uppercase tracking-widest ${meta.eyebrow}`}>
+                    Next {meta.label} Case Study
+                  </span>
+                  <p className="mt-1.5 text-base font-semibold text-slate-100">{nextStudy.title}</p>
+                </div>
+                <ArrowRight className="h-5 w-5 shrink-0 text-slate-500 transition-transform group-hover:translate-x-1" />
+              </Link>
+            )}
+
+            <div className="mt-8 rounded-2xl border border-slate-800 bg-slate-900/50 p-6 text-center">
               <p className="text-sm text-slate-400">
                 Have something similar in mind?
               </p>

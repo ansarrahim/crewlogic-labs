@@ -44,6 +44,13 @@ export default function CaseStudies({ track }: { track: CaseStudy["track"] }) {
             {copy.heading}
           </h2>
           <p className="mt-4 text-slate-400">{copy.subtitle}</p>
+          <Link
+            href="/case-studies"
+            className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-muted transition-colors hover:text-emerald-400"
+          >
+            See all case studies
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
         </Reveal>
 
         <div className={gridClass}>
