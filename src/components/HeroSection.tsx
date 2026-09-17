@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Calendar, MapPin, ShieldCheck } from "lucide-react";
 import { AVAILABILITY, CEO, SITE } from "@/lib/data";
 import HeroIllustration from "@/components/HeroIllustration";
@@ -26,11 +27,22 @@ const fadeUp = {
 };
 
 export default function HeroSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const panelY = useTransform(scrollYProgress, [0, 1], prefersReducedMotion ? [0, 0] : [0, 80]);
+
   return (
-    <section className="relative overflow-hidden pb-24 sm:pb-28">
-      <div className="relative bg-emerald-500 px-4 pb-14 pt-8 sm:px-6 sm:pb-16 sm:pt-10 lg:px-8">
+    <section ref={sectionRef} className="relative overflow-hidden pb-24 sm:pb-28">
+      <motion.div
+        style={{ y: panelY }}
+        className="relative bg-emerald-500 px-4 pb-14 pt-8 sm:px-6 sm:pb-16 sm:pt-10 lg:px-8"
+      >
         <HeroIllustration />
-      </div>
+      </motion.div>
 
       <div className="mx-auto max-w-5xl px-4 pt-16 text-center sm:px-6 sm:pt-20 lg:px-8">
         <motion.div
