@@ -33,6 +33,7 @@ export default async function BlogPostPage({
   const { slug } = await params;
   const post = BLOG_POSTS.find((p) => p.slug === slug);
   if (!post) notFound();
+  const relatedPosts = BLOG_POSTS.filter((p) => p.slug !== post.slug);
 
   return (
     <div className="flex flex-1 flex-col bg-slate-950 font-sans">
@@ -84,7 +85,31 @@ export default async function BlogPostPage({
               ))}
             </div>
 
-            <div className="mt-14 rounded-2xl border border-slate-800 bg-slate-900/50 p-6 text-center">
+            {relatedPosts.length > 0 && (
+              <div className="mt-14 border-t border-slate-800 pt-10">
+                <p className="text-xs font-semibold uppercase tracking-widest text-muted">
+                  More From the Blog
+                </p>
+                <div className="mt-4 space-y-4">
+                  {relatedPosts.map((related) => (
+                    <Link
+                      key={related.slug}
+                      href={`/blog/${related.slug}`}
+                      className="group block rounded-xl border border-slate-800 bg-slate-900/50 p-4 transition-colors hover:border-emerald-500/40"
+                    >
+                      <p className="text-sm font-semibold leading-snug text-slate-100 transition-colors group-hover:text-emerald-400">
+                        {related.title}
+                      </p>
+                      <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-slate-400">
+                        {related.excerpt}
+                      </p>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="mt-8 rounded-2xl border border-slate-800 bg-slate-900/50 p-6 text-center">
               <p className="text-sm text-slate-400">Want the automation this post is about?</p>
               <Link
                 href="/automations"
