@@ -6,6 +6,7 @@ import AgentToolsHost from "@/components/tools/AgentToolsHost";
 import AgentGrid from "@/components/AgentGrid";
 import CaseStudies from "@/components/CaseStudies";
 import BuildCadence from "@/components/BuildCadence";
+import WhyChooseUs from "@/components/WhyChooseUs";
 import EngineeringServices from "@/components/EngineeringServices";
 
 export const metadata: Metadata = {
@@ -37,6 +38,7 @@ export default function EngineeringPage() {
         <AgentGrid />
         <CaseStudies track="engineering" />
         <BuildCadence />
+        <WhyChooseUs />
         <EngineeringServices />
       </main>
       <Footer />
