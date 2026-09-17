@@ -1,6 +1,6 @@
 import { GoogleGenAI } from "@google/genai";
 import { NextResponse } from "next/server";
-import { AGENTS, CASE_STUDIES, CEO, SITE } from "@/lib/data";
+import { AGENTS, AUTOMATION_TEMPLATES, CASE_STUDIES, CEO, ENGINEERING_SERVICES, SITE } from "@/lib/data";
 import { isRateLimited } from "@/lib/rate-limit";
 import { incrementUsage } from "@/lib/usage-stats";
 
@@ -22,7 +22,7 @@ type ChatMessage = {
   text: string;
 };
 
-const SYSTEM_INSTRUCTION = `You are NEXUS-AI, the Lead AI & Systems Automation Engineer at ${SITE.name} — "${SITE.tagline}".
+const SYSTEM_INSTRUCTION = `You are COMPASS-AI, the Lead AI & Systems Automation Engineer at ${SITE.name} — "${SITE.tagline}".
 
 You are one of 5 virtual AI engineers on the CrewLogic Labs squad, working under the human CEO & Lead Systems Architect ${CEO.name} (${CEO.education}; certifications: ${CEO.certifications.join(", ")}).
 
@@ -32,7 +32,11 @@ Representative work: ${CASE_STUDIES.map((c) => c.title).join("; ")}.
 
 CrewLogic Labs operates on the "70/30 Engineering Rule": AI agents like you handle ~70% of implementation (code, tests, automation), while ${CEO.name} owns the remaining 30% — architecture decisions, security auditing, and final QA — as the human-in-the-loop.
 
-Speak as NEXUS-AI: confident, precise, technically credible, and a little bit "systems engineer" in tone — but concise and genuinely helpful, not a wall of jargon. You can discuss AI/LLM workflows, RAG pipelines, automation, and general software/Web3 engineering questions. If a visitor wants to scope a project, direct them to the contact form or ${SITE.email}. If asked something outside engineering/business scope, answer briefly and steer back to how CrewLogic Labs could help. Keep replies under ~120 words unless the visitor clearly wants depth.`;
+CrewLogic Labs runs two business tracks, and you should steer visitors to whichever one fits them:
+1. Automation Templates (${SITE.name}/automations) — ${AUTOMATION_TEMPLATES.length} ready-made n8n workflows visitors can buy outright, from ${AUTOMATION_TEMPLATES[0].price} to ${[...AUTOMATION_TEMPLATES].sort((a, b) => b.priceCents - a.priceCents)[0].price}, each shipped with the full workflow JSON and a setup guide. Good fit for someone who wants a specific, known automation fast.
+2. Custom Engineering (${SITE.name}/engineering) — bespoke builds: ${ENGINEERING_SERVICES.map((s) => `${s.title} (from ${s.startingPrice})`).join(", ")}. Good fit for someone who needs something the templates don't cover.
+
+Speak as COMPASS-AI: confident, precise, technically credible, and a little bit "systems engineer" in tone — but concise and genuinely helpful, not a wall of jargon. You can discuss AI/LLM workflows, RAG pipelines, automation, and general software/Web3 engineering questions. If a visitor wants to scope a project, direct them to the contact form or ${SITE.email}. If asked something outside engineering/business scope, answer briefly and steer back to how CrewLogic Labs could help. Never invent capabilities, case studies, clients, or pricing beyond what's given here — if you don't know something specific, say so and point them to the contact form instead of guessing. Keep replies under ~120 words unless the visitor clearly wants depth.`;
 
 function getClient(): GoogleGenAI | null {
   const apiKey = process.env.GEMINI_API_KEY;
@@ -44,7 +48,7 @@ export async function POST(request: Request) {
   const identifier = getClientIdentifier(request);
   if (isRateLimited(identifier)) {
     return NextResponse.json(
-      { error: "NEXUS-AI is getting a lot of messages right now — please wait a moment and try again." },
+      { error: "COMPASS-AI is getting a lot of messages right now — please wait a moment and try again." },
       { status: 429, headers: { "Retry-After": "30" } }
     );
   }
@@ -84,7 +88,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error:
-          "NEXUS-AI is not connected to a live model yet. Add GEMINI_API_KEY to .env.local and restart the dev server.",
+          "COMPASS-AI is not connected to a live model yet. Add GEMINI_API_KEY to .env.local and restart the dev server.",
       },
       { status: 503 }
     );
@@ -111,7 +115,7 @@ export async function POST(request: Request) {
             if (chunk.text) controller.enqueue(encoder.encode(chunk.text));
           }
         } catch (err) {
-          console.error("NEXUS-AI stream error:", err);
+          console.error("COMPASS-AI stream error:", err);
         } finally {
           controller.close();
         }
@@ -124,9 +128,9 @@ export async function POST(request: Request) {
       headers: { "Content-Type": "text/plain; charset=utf-8" },
     });
   } catch (error) {
-    console.error("NEXUS-AI chat error:", error);
+    console.error("COMPASS-AI chat error:", error);
     return NextResponse.json(
-      { error: "NEXUS-AI hit an error reaching the model. Check the server logs and your API key." },
+      { error: "COMPASS-AI hit an error reaching the model. Check the server logs and your API key." },
       { status: 502 }
     );
   }

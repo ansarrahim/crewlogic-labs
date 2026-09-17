@@ -18,7 +18,7 @@ type ChatMessage = {
 const GREETING: ChatMessage = {
   id: "greeting",
   role: "model",
-  text: "NEXUS-AI online. I'm the AI & Systems Automation lead at CrewLogic Labs — ask me about our squad, our stack, or your project idea.",
+  text: "COMPASS-AI online. I'm the AI & Systems Automation lead at CrewLogic Labs — ask me about our squad, our stack, or your project idea.",
 };
 
 function createId() {
@@ -72,7 +72,7 @@ export default function NexusChatWidget() {
           {
             id: createId(),
             role: "model",
-            text: data.error ?? "NEXUS-AI ran into an unexpected error.",
+            text: data.error ?? "COMPASS-AI ran into an unexpected error.",
             isError: true,
           },
         ]);
@@ -82,7 +82,7 @@ export default function NexusChatWidget() {
       if (!res.body) {
         setMessages((prev) => [
           ...prev,
-          { id: createId(), role: "model", text: "NEXUS-AI returned no response — try again." },
+          { id: createId(), role: "model", text: "COMPASS-AI returned no response — try again." },
         ]);
         return;
       }
@@ -110,7 +110,7 @@ export default function NexusChatWidget() {
         setMessages((prev) =>
           prev.map((m) =>
             m.id === modelMessageId
-              ? { ...m, text: "NEXUS-AI returned an empty response. Try rephrasing.", isError: true }
+              ? { ...m, text: "COMPASS-AI returned an empty response. Try rephrasing.", isError: true }
               : m
           )
         );
@@ -121,7 +121,7 @@ export default function NexusChatWidget() {
         {
           id: createId(),
           role: "model",
-          text: "Couldn't reach NEXUS-AI — check your connection and try again.",
+          text: "Couldn't reach COMPASS-AI — check your connection and try again.",
           isError: true,
         },
       ]);
@@ -150,7 +150,7 @@ export default function NexusChatWidget() {
                 </div>
                 <div>
                   <p className="font-mono text-sm font-bold leading-tight text-slate-100">
-                    NEXUS-AI
+                    COMPASS-AI
                   </p>
                   <p className="flex items-center gap-1 text-[11px] leading-tight text-emerald-400">
                     <span className="relative flex h-1.5 w-1.5">
@@ -209,7 +209,7 @@ export default function NexusChatWidget() {
                 >
                   <div className="flex items-center gap-2 rounded-xl border border-slate-800 bg-slate-900 px-3.5 py-2.5 text-sm text-slate-400">
                     <Loader2 className="h-3.5 w-3.5 animate-spin text-emerald-400" />
-                    NEXUS-AI is thinking...
+                    COMPASS-AI is thinking...
                   </div>
                 </motion.div>
               )}
@@ -220,7 +220,7 @@ export default function NexusChatWidget() {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Ask NEXUS-AI something..."
+                placeholder="Ask COMPASS-AI something..."
                 maxLength={2000}
                 disabled={isLoading}
                 className="flex-1 rounded-lg border border-slate-800 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none placeholder:text-slate-600 focus:border-emerald-500/60 focus-visible:ring-2 focus-visible:ring-emerald-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 disabled:opacity-60"
@@ -252,7 +252,7 @@ export default function NexusChatWidget() {
             className="flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500 px-5 py-3 text-sm font-semibold text-slate-950 shadow-xl"
           >
             <Sparkles className="h-4 w-4" />
-            Chat with NEXUS-AI
+            Chat with COMPASS-AI
           </motion.button>
         )}
       </AnimatePresence>

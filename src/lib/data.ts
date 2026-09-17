@@ -62,7 +62,7 @@ export type Agent = {
 export const AGENTS: Agent[] = [
   {
     id: "nexus-ai",
-    name: "NEXUS-AI",
+    name: "COMPASS-AI",
     role: "Lead AI & Systems Automation Engineer",
     domain: "AI / LLM Workflows & RAG Systems",
     stack: ["OpenAI API", "Claude API", "LangChain", "RAG Pipelines", "Python", "FastAPI", "ChromaDB"],
@@ -193,7 +193,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Asking an LLM to \"review this code for bugs\" produces confident-sounding output that can miss real issues or hallucinate ones. A useful security tool needs a deterministic foundation the AI layer works on top of, not instead of.",
     approach: [
       "SENTINEL-SEC runs Slither's 100+ real detectors against the contract's actual compiled AST — no EVM execution ever happens, nothing submitted is run.",
-      "NEXUS-AI triages each Slither finding specifically (confirm or dismiss, with reasoning) rather than free-reviewing the code from scratch, keeping the AI grounded in real tool output.",
+      "COMPASS-AI triages each Slither finding specifically (confirm or dismiss, with reasoning) rather than free-reviewing the code from scratch, keeping the AI grounded in real tool output.",
       "STACK-CORE bundles a real solc binary directly in the deployment after discovering Vercel's sandbox silently blocks solc's runtime download — diagnosed by isolating subprocess, import, and network steps one at a time rather than guessing.",
     ],
     outcomes: [
@@ -215,7 +215,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     problem:
       "Everything else here calls an AI API per request — great for unstructured tasks like drafting a reply, wasteful for a decision made thousands of times a day like \"is this lead worth a callback.\" That's a training problem, not a prompting problem.",
     approach: [
-      "NEXUS-AI trains a gradient boosting classifier on a real public lead-conversion dataset (~9,200 leads from an online education company's marketing campaigns), deliberately excluding any column a sales rep would only fill in after contact so nothing leaks into the training signal.",
+      "COMPASS-AI trains a gradient boosting classifier on a real public lead-conversion dataset (~9,200 leads from an online education company's marketing campaigns), deliberately excluding any column a sales rep would only fill in after contact so nothing leaks into the training signal.",
       "SENTINEL-SEC evaluates it against a logistic regression baseline on a held-out test split before shipping either one, so the reported accuracy is measured, not asserted.",
       "STACK-CORE serves it through FastAPI on Vercel's Python runtime — a genuinely different backend stack from the other five projects, proving the Python/ML toolchain independently of the Next.js one.",
     ],
@@ -330,7 +330,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     problem:
       "Support and operations teams spend most of their time on repetitive triage — routing tickets, answering the same questions, and re-keying data between systems.",
     approach: [
-      "NEXUS-AI designs a LangChain-orchestrated pipeline where a router agent classifies each incoming request and hands it to a specialist agent (support, data-entry, or escalation).",
+      "COMPASS-AI designs a LangChain-orchestrated pipeline where a router agent classifies each incoming request and hands it to a specialist agent (support, data-entry, or escalation).",
       "Each specialist agent is grounded in the business's actual documentation via RAG, so answers stay accurate instead of hallucinating.",
       "A FastAPI backend exposes the pipeline as an async service that existing tools (helpdesk, CRM) call over a simple webhook.",
     ],

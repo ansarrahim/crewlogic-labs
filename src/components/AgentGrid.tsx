@@ -195,7 +195,7 @@ export default function AgentGrid() {
                     className={`mt-6 inline-flex items-center justify-center gap-2 rounded-lg border px-4 py-2.5 text-sm font-semibold transition-[background-color,transform] active:scale-[0.97] ${styles.ctaBorder} ${styles.ctaBg} ${styles.ctaText} ${styles.ctaHoverBg}`}
                   >
                     <MessageSquare className="h-4 w-4" />
-                    Chat with NEXUS-AI (Live)
+                    Chat with COMPASS-AI (Live)
                   </button>
                 ) : isToolAgent(agent.id) ? (
                   <ToolCtaButton toolId={agent.id} accent={agent.accent} />
