@@ -6,6 +6,9 @@ import { AUTOMATION_TEMPLATES } from "@/lib/data";
 
 const EASE_OUT = [0.23, 1, 0.32, 1] as const;
 
+// The 2 most recently added templates to the catalog — update when a newer one ships.
+const NEW_TEMPLATE_IDS = ["missed-call-textback", "support-triage-faq"];
+
 export default function AutomationTemplates({ templateIds }: { templateIds?: string[] } = {}) {
   const templates = templateIds
     ? AUTOMATION_TEMPLATES.filter((t) => templateIds.includes(t.id))
@@ -23,9 +26,16 @@ export default function AutomationTemplates({ templateIds }: { templateIds?: str
           whileHover={{ y: -3 }}
           className="flex h-full flex-col rounded-2xl border border-slate-800 bg-slate-900 p-6 shadow-sm transition-[border-color] hover:border-emerald-500/40"
         >
-          <span className="text-xs font-semibold uppercase tracking-widest text-cyan-400">
-            n8n Workflow Template
-          </span>
+          <div className="flex items-center justify-between gap-2">
+            <span className="text-xs font-semibold uppercase tracking-widest text-cyan-400">
+              n8n Workflow Template
+            </span>
+            {NEW_TEMPLATE_IDS.includes(template.id) && (
+              <span className="rounded-full border border-emerald-500/40 bg-emerald-500/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-emerald-400">
+                New
+              </span>
+            )}
+          </div>
           <h3 className="mt-3 text-lg font-semibold leading-snug text-slate-100">
             {template.title}
           </h3>

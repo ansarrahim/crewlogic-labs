@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ClipboardCheck, MessageSquareText, SearchCheck } from "lucide-react";
+import { CheckCircle2, ClipboardCheck, MessageSquareText, SearchCheck } from "lucide-react";
 import Reveal from "@/components/Reveal";
 
 const STEPS = [
@@ -17,6 +17,13 @@ const STEPS = [
     icon: ClipboardCheck,
     text: "No pitch deck, no obligation. If it's not worth automating, I'll say so.",
   },
+];
+
+const WHATS_INCLUDED = [
+  "A plain-English read on whether the process is actually worth automating",
+  "If it is: a rough scope and price range, the same starting points listed on /automations and /engineering",
+  "If it's not: a straight no, and why — not a pitch anyway",
+  "No sales call required — the whole thing happens over email",
 ];
 
 export default function FreeAuditSection() {
@@ -45,6 +52,20 @@ export default function FreeAuditSection() {
               <p className="mt-3 text-sm leading-relaxed text-slate-400">{step.text}</p>
             </div>
           ))}
+        </div>
+
+        <div className="mx-auto mt-8 max-w-md border-t border-slate-800 pt-6">
+          <p className="text-xs font-semibold uppercase tracking-widest text-muted">
+            What&apos;s Included
+          </p>
+          <ul className="mt-3 space-y-2">
+            {WHATS_INCLUDED.map((item) => (
+              <li key={item} className="flex items-start gap-2 text-sm leading-relaxed text-slate-400">
+                <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-500" />
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className="mt-8 flex justify-center">
