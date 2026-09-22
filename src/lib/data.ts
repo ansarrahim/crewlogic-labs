@@ -154,6 +154,7 @@ export type CaseStudy = {
   approach: string[];
   outcomes: string[];
   liveUrl?: string;
+  githubUrl?: string;
 };
 
 export const CASE_STUDIES: CaseStudy[] = [
@@ -319,26 +320,28 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
   },
   {
-    id: "multi-agent-ai",
-    title: "Multi-Agent Conversational AI & Workflow Automation Engine",
+    id: "whatsapp-support-bot",
+    title: "WhatsApp AI Support Bot — Real Answers, Real Human Handoff",
     category: "AI / Automation",
     track: "automation",
     description:
-      "An orchestrated fleet of LLM agents handling conversational support, task routing, and backend automation across multiple business workflows with minimal human intervention.",
-    stack: ["OpenAI API", "Claude API", "Python", "LangChain"],
-    metric: "24/7 autonomous processing",
+      "A WhatsApp customer-support bot that answers real questions from a real FAQ knowledge base, transcribes voice notes, and deterministically escalates anything it can't confidently handle to a real person by email — live and testable right now.",
+    stack: ["Flask", "Google Gemini (genai)", "Twilio WhatsApp", "Upstash Redis", "Vercel"],
+    metric: "Live on Vercel — verified end-to-end with a real Gemini API key",
     problem:
-      "Support and operations teams spend most of their time on repetitive triage — routing tickets, answering the same questions, and re-keying data between systems.",
+      "Small businesses lose leads answering the same WhatsApp questions on repeat, and a bot that guesses wrong (or can't tell when to hand off) costs more trust than it saves.",
     approach: [
-      "COMPASS-AI designs a LangChain-orchestrated pipeline where a router agent classifies each incoming request and hands it to a specialist agent (support, data-entry, or escalation).",
-      "Each specialist agent is grounded in the business's actual documentation via RAG, so answers stay accurate instead of hallucinating.",
-      "A FastAPI backend exposes the pipeline as an async service that existing tools (helpdesk, CRM) call over a simple webhook.",
+      "COMPASS-AI builds a classify-then-route pipeline: Gemini labels each message (greeting, FAQ, or complex), with a deterministic keyword/word-boundary override so a refund request or the word \"HUMAN\" always escalates, regardless of what the classifier says.",
+      "Every module fails toward safety, not silence — no Gemini key configured means the bot still replies and escalates instead of crashing or guessing, verified by testing the entire flow with zero credentials before a single real API call was made.",
+      "Deployed on Vercel's native Python runtime (no legacy serverless-wsgi wrapper needed), with Upstash Redis for persistent memory and an admin dashboard showing real conversation stats — no fabricated \"uptime\" for what is a stateless deployment.",
     ],
     outcomes: [
-      "Routine requests get handled without a human in the loop, day or night.",
-      "Escalations reach a human with full context already attached, instead of starting cold.",
-      "The same architecture extends to new workflows by adding a specialist agent, not rebuilding the pipeline.",
+      "FAQ questions get answered instantly from a real knowledge base — the bot is instructed to say \"not sure\" and escalate rather than invent an answer.",
+      "Anything the bot can't confidently handle reaches a real person by email within seconds, with the recent conversation already attached.",
+      "The whole system runs on Vercel's free tier and degrades gracefully at every layer — a missing credential never means a broken bot.",
     ],
+    liveUrl: "https://whatsapp-support-bot-five.vercel.app",
+    githubUrl: "https://github.com/ansarrahim/whatsapp-support-bot",
   },
   {
     id: "enterprise-portal",

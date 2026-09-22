@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import NexusChatWidget from "@/components/NexusChatWidget";
 import ShareLinks from "@/components/ShareLinks";
+import GithubMark from "@/components/icons/GithubMark";
 import { CASE_STUDIES } from "@/lib/data";
 import { TRACK_META } from "@/lib/trackStyles";
 
@@ -92,6 +93,17 @@ export default async function CaseStudyPage({
                 >
                   <ExternalLink className="h-4 w-4" />
                   View Live Demo
+                </a>
+              )}
+              {study.githubUrl && (
+                <a
+                  href={study.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/60 px-4 py-2 text-sm font-medium text-slate-300 transition-colors hover:border-slate-600 hover:text-slate-100"
+                >
+                  <GithubMark className="h-4 w-4" />
+                  View Source
                 </a>
               )}
             </div>
