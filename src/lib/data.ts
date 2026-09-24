@@ -344,6 +344,29 @@ export const CASE_STUDIES: CaseStudy[] = [
     githubUrl: "https://github.com/ansarrahim/whatsapp-support-bot",
   },
   {
+    id: "lead-qualification-followup",
+    title: "Lead Qualification & Follow-Up — Rules-Based Scoring, Not a Guess",
+    category: "AI / Automation",
+    track: "automation",
+    description:
+      "An n8n workflow that enriches an inbound lead from its company site, scores it against a 10-rule config block, logs a clean CRM record with a plain-English explanation, and routes to a real booking link, an AI-drafted follow-up, or a human — the last of which happens for anything ambiguous or flagged as spam, never a silent discard.",
+    stack: ["n8n", "Firecrawl", "Gemini AI", "Airtable", "Resend", "Cal.com"],
+    metric: "3 routing branches tested live, real CRM record on every run",
+    problem:
+      "Most 'lead scoring' automations either hand the number to an LLM (unauditable, drifts silently) or auto-book everyone above an arbitrary line (books the wrong leads, burns the sales team's time). Neither one is trustworthy enough for a business to actually hand its inbound pipeline to.",
+    approach: [
+      "COMPASS-AI builds the score as a deterministic rules engine in a single Code node — 10 additive/subtractive rules (service area, building type, size, frequency, urgency, decision authority, contact completeness, a real Firecrawl enrichment signal, referral source), never an LLM guessing at a number, so every score is auditable back to the exact rule that produced it.",
+      "A spam/junk override still routes to a human instead of discarding — verified live by sending deliberately low-quality test payloads and confirming a real CRM record and alert still get created for each one.",
+      "Booking confirmation closes the loop for real: a second webhook receives Cal.com's actual `BOOKING_CREATED` event and marks the CRM record booked, tried first via the lead ID threaded through the booking link's own metadata, falling back to an email lookup if that's missing — both paths tested against the real Airtable base.",
+    ],
+    outcomes: [
+      "Every one of the three routing branches (human review, auto-book, AI follow-up) confirmed against real Firecrawl, Gemini, Airtable, and Resend calls — not simulated, not mocked.",
+      "A salesperson opens the CRM record and sees exactly why a lead scored what it did, in plain English, not a black-box number.",
+      "The scoring thresholds live in one editable config block, so the same workflow retargets to a different vertical or business without touching the routing logic.",
+    ],
+    githubUrl: "https://github.com/ansarrahim/n8n-templates/blob/master/workflows/6-lead-qualification-followup.json",
+  },
+  {
     id: "enterprise-portal",
     title: "Scalable Next.js / Node.js Enterprise Microservice Portal",
     category: "Full-Stack Architecture",
