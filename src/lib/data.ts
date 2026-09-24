@@ -16,7 +16,7 @@ import {
 export const SITE = {
   name: "CrewLogic Labs",
   tagline: "Advanced Collaboration Systems.",
-  email: "ansarrahim789@gmail.com",
+  email: "crewlogiclabs@gmail.com",
   phone: "+92 343 1722842",
   location: "Islamabad, Pakistan",
 };
