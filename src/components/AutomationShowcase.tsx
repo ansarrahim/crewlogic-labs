@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import AutomationTemplates from "@/components/AutomationTemplates";
 import Reveal from "@/components/Reveal";
 import { INDUSTRIES } from "@/lib/data";
@@ -69,6 +71,16 @@ export default function AutomationShowcase() {
             <AutomationTemplates templateIds={activeIndustry.templateIds} />
           </motion.div>
         </AnimatePresence>
+
+        <div className="mt-10 flex justify-center">
+          <Link
+            href="/automations"
+            className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/20"
+          >
+            See all 6 templates
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+        </div>
       </div>
     </section>
   );
