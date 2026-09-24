@@ -12,13 +12,14 @@ import { AUTOMATION_TEMPLATES, SITE } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Automation Templates — CrewLogic Labs",
   description:
-    "Ready-to-deploy n8n workflow templates for lead response, review monitoring, order sync, missed-call text-back, and support triage — real automations, tested live, not diagrams.",
+    "Ready-to-deploy n8n workflow templates for lead response, review monitoring, order sync, missed-call text-back, support triage, and lead qualification — real automations, tested live, not diagrams.",
   keywords: [
     "n8n workflow templates",
     "AI lead auto-responder",
     "review sentiment alert",
     "missed call text back automation",
     "support triage automation",
+    "lead qualification automation",
     "buy n8n automation",
   ],
 };
@@ -105,11 +106,11 @@ export default async function AutomationsPage({
                 n8n Workflows Built to Run, Not Just Demo
               </h1>
               <p className="mt-4 text-slate-400">
-                Five self-contained automations for small and local businesses — an AI lead
+                Six self-contained automations for small and local businesses — an AI lead
                 responder, a review sentiment alert, an order sync pipeline, a missed-call
-                text-back, and a support triage + FAQ auto-answer. Each one was built and
-                verified live against real AI, email, and database APIs before it was listed
-                here.
+                text-back, a support triage + FAQ auto-answer, and a lead qualification +
+                follow-up pipeline. Each one was built and verified live against real AI,
+                email, and database APIs before it was listed here.
               </p>
             </div>
 
@@ -190,6 +191,23 @@ export default async function AutomationsPage({
                   height={1000}
                   className="w-full rounded-lg border border-slate-800"
                 />
+              </div>
+              <div className="mt-6 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50 p-4">
+                <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-emerald-400">
+                  Real n8n Canvas — Lead Qualification &amp; Follow-Up
+                </p>
+                <Image
+                  src="/proof/n8n-lead-qualification-canvas.png"
+                  alt="Real n8n workflow canvas: Lead Webhook, Capture & Validate, Has Company Website, Enrich via Firecrawl, Score Lead, Write Lead to CRM, Needs Human Review, Auto-Book, and a second Booking Confirmed Webhook trigger graph"
+                  width={1600}
+                  height={1000}
+                  className="w-full rounded-lg border border-slate-800"
+                />
+                <p className="mt-3 text-xs text-slate-500">
+                  Published and tested live: all three routes (human review, auto-book,
+                  follow-up) confirmed against real Firecrawl, Gemini, Airtable, and Resend
+                  calls — including a real CRM record created for each run.
+                </p>
               </div>
             </Reveal>
 

@@ -13,6 +13,9 @@ const WORKFLOW_FILES: Record<string, string> = {
   "ai-lead-autoresponder": "1-ai-lead-autoresponder.json",
   "review-sentiment-alert": "2-review-sentiment-alert.json",
   "new-order-sync": "3-new-order-sync.json",
+  "missed-call-textback": "4-missed-call-textback.json",
+  "support-triage-faq": "5-support-triage-faq-answer.json",
+  "lead-qualification-followup": "6-lead-qualification-followup.json",
 };
 
 export async function POST(request: Request) {

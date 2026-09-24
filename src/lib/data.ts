@@ -467,6 +467,22 @@ export const AUTOMATION_TEMPLATES: AutomationTemplate[] = [
       "Every escalation includes an AI-written summary, not just the raw customer message",
     ],
   },
+  {
+    id: "lead-qualification-followup",
+    title: "Lead Qualification & Follow-Up",
+    tagline: "Every lead gets scored against your rules, logged clean, and routed — never guessed, never dropped.",
+    description:
+      "A lead comes in, gets enriched from their company site if given one, scored against rules you set (service area, size, frequency, urgency, decision authority), and logged to Airtable as a clean CRM record with a plain-English explanation of the score. High-confidence leads get a real booking link, ambiguous ones go to a human — never auto-booked, never silently discarded. Built and tested for commercial cleaning; the scoring rules are a config block, not hardcoded, so any local-service business can drop in its own thresholds.",
+    stack: ["n8n", "Firecrawl", "Gemini AI", "Airtable", "Resend"],
+    price: "$229",
+    priceCents: 22900,
+    setupTime: "~20 min setup, plus your own Cal.com link",
+    features: [
+      "Rules-based scoring in a single editable config block — not an LLM guessing at a number",
+      "Low-confidence or incomplete leads always reach a human — never auto-booked, never discarded",
+      "One Airtable record per lead: score, plain-English reasoning, route decision, response time, and real booked status",
+    ],
+  },
 ];
 
 export type BlogPost = {
