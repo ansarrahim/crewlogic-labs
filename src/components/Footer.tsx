@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ExternalLink, Mail, Terminal } from "lucide-react";
 import { SITE } from "@/lib/data";
 import { GITHUB_PROFILE_URL } from "@/lib/github";
@@ -25,9 +26,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-3">
           <div>
             <div className="flex items-center gap-2">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-emerald-500/30 bg-emerald-500/10 font-mono text-xs font-bold text-emerald-400">
-                {"</>"}
-              </span>
+              <Image src="/logo.png" alt="" width={32} height={32} className="h-8 w-8 rounded-lg" />
               <span className="text-base font-semibold text-slate-100">
                 {SITE.name}
               </span>

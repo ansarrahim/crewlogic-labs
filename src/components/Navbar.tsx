@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import { Blocks, ChevronDown, Code2, Menu, Sparkles, Terminal, X } from "lucide-react";
 import { SITE } from "@/lib/data";
 
@@ -109,9 +110,7 @@ export default function Navbar() {
         className="mx-auto flex h-16 max-w-6xl items-center justify-between rounded-full border border-slate-800 bg-slate-900/95 px-4 backdrop-blur-md sm:px-6"
       >
         <Link href="/" className="flex items-center gap-2">
-          <span className="flex h-9 w-9 items-center justify-center rounded-full border border-emerald-500/30 bg-emerald-500/10 font-mono text-sm font-bold text-emerald-400">
-            {"</>"}
-          </span>
+          <Image src="/logo.png" alt="" width={36} height={36} className="h-9 w-9 rounded-full" priority />
           <span className="text-lg font-semibold tracking-tight text-slate-100">
             {SITE.name}
           </span>
