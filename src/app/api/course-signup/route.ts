@@ -22,6 +22,8 @@ const CORS_HEADERS = {
 
 const MAX_FIELD_LENGTH = 200;
 const FROM_ADDRESS = process.env.CONTACT_FROM_EMAIL?.trim() || "CrewLogic Labs <onboarding@resend.dev>";
+// See src/app/api/contact/route.ts for why this isn't just SITE.email.
+const TO_ADDRESS = process.env.CONTACT_TO_EMAIL?.trim() || SITE.email;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function getClientIdentifier(request: Request): string {
@@ -66,7 +68,7 @@ async function notifyAndRecord(email: string, course: string): Promise<number> {
       const resend = new Resend(apiKey);
       await resend.emails.send({
         from: FROM_ADDRESS,
-        to: SITE.email,
+        to: TO_ADDRESS,
         subject: `New course signup — ${course}`,
         text: `New signup for "${course}":\n\n${email}\n\nTotal signups so far: ${count}`,
       });

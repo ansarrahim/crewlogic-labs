@@ -9,6 +9,12 @@ export const runtime = "nodejs";
 const MAX_FIELD_LENGTH = 200;
 const MAX_DETAILS_LENGTH = 4000;
 const FROM_ADDRESS = process.env.CONTACT_FROM_EMAIL?.trim() || "CrewLogic Labs <onboarding@resend.dev>";
+// Resend's unverified onboarding@resend.dev sender can only deliver to the
+// email address that verified the Resend account -- not SITE.email itself
+// once that's a different address. This is a bridge until a real domain is
+// verified in Resend (see CONTACT_FROM_EMAIL above); remove it once that's
+// done and resend.emails.send's `to` can go back to using SITE.email.
+const TO_ADDRESS = process.env.CONTACT_TO_EMAIL?.trim() || SITE.email;
 
 function getClientIdentifier(request: Request): string {
   const forwardedFor = request.headers.get("x-forwarded-for");
@@ -85,7 +91,7 @@ export async function POST(request: Request) {
     const resend = new Resend(apiKey);
     const { error } = await resend.emails.send({
       from: FROM_ADDRESS,
-      to: SITE.email,
+      to: TO_ADDRESS,
       replyTo: email,
       subject: `New project inquiry from ${safeName} — ${stack}`,
       text: `Name: ${safeName}\nEmail: ${email}\nStack needed: ${stack}\n\nDetails:\n${details}`,
