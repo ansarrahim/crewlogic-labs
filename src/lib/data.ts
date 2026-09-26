@@ -415,7 +415,7 @@ export const AUTOMATION_TEMPLATES: AutomationTemplate[] = [
     title: "AI Lead Auto-Responder",
     tagline: "Every inbound lead gets a real reply in seconds — day or night.",
     description:
-      "A webhook-triggered n8n workflow: a lead comes in from your contact form, an AI model drafts a warm, on-brand reply, and it's sent automatically — before your team even sees the notification.",
+      "A webhook-triggered n8n workflow: a lead comes in from your contact form, an AI model drafts a warm, on-brand reply, and it's sent automatically — before your team even sees the notification. The lightweight, standalone version of this reply step — if you also want lead scoring, CRM logging, and routing, see the Lead Qualification & Follow-Up template on the full Automations page.",
     stack: ["n8n", "Gemini AI", "Resend"],
     price: "$149",
     priceCents: 14900,
